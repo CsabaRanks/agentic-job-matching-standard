@@ -1,4 +1,4 @@
-# AJMS Specification — Community Draft v0.1
+# Agentic-Job-Matching-Standard (AJMS) — Specification, Community Draft v0.1
 
 **Status:** Community Draft v0.1.0. This is a proposal, not an adopted standard. It has not been reviewed or endorsed by any standards body, by schema.org, by any search engine or by any ATS vendor.
 

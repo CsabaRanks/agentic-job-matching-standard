@@ -1,4 +1,4 @@
-# Agentic Job Matching Standard (AJMS)
+# Agentic-Job-Matching-Standard (AJMS)
 
 **Maintain your candidate profile once. Share it selectively.
 Enable agents to compare opportunities in both directions.**
@@ -183,7 +183,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) and [CHANGELOG.md](CHANGELOG.md). License
 
 ## Kurzfassung (Deutsch)
 
-**AJMS** ist ein offener Entwurf (Community Draft v0.1, kein verabschiedeter Standard) für zwei maschinenlesbare Profile: **CandidateProfile** und **JobProfile**. Beide nutzen gemeinsame Definitionen für Vergütung, Arbeitsort und Pendeln, Remote-Anteil, Arbeitszeit, Vertrag, Karrierelevel, Aufgaben, Kompetenzen, Entwicklung und Starttermin. Ein Kandidat pflegt sein Profil einmal und gibt Personaldienstleistern oder Arbeitgebern gezielt eine reduzierte Ansicht. Agenten können dann zwei getrennte Fragen beantworten:
+**Agentic-Job-Matching-Standard (AJMS)** ist ein offener Entwurf (Community Draft v0.1, kein verabschiedeter Standard) für zwei maschinenlesbare Profile: **CandidateProfile** und **JobProfile**. Beide nutzen gemeinsame Definitionen für Vergütung, Arbeitsort und Pendeln, Remote-Anteil, Arbeitszeit, Vertrag, Karrierelevel, Aufgaben, Kompetenzen, Entwicklung und Starttermin. Ein Kandidat pflegt sein Profil einmal und gibt Personaldienstleistern oder Arbeitgebern gezielt eine reduzierte Ansicht. Agenten können dann zwei getrennte Fragen beantworten:
 
 - **Hiring-Fit:** Erfüllt der Kandidat die Anforderungen der Stelle?
 - **Career-Fit:** Erfüllt die Stelle die Bedingungen und Wünsche des Kandidaten?

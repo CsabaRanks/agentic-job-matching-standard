@@ -1,4 +1,4 @@
-# Field catalog — AJMS Community Draft v0.1
+# Field catalog — Agentic-Job-Matching-Standard (AJMS), Community Draft v0.1
 
 This catalog explains the **shared criteria**: where each one sits in a CandidateProfile and a JobProfile, which units and reference values it uses, and how missing information is handled. Every property with its type is listed in the generated [property index](property-index.md).
 

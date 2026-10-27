@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "ajms"
 version = "0.1.0"
-description = "Reference tools for the Agentic Job Matching Standard (AJMS), Community Draft v0.1"
+description = "Reference tools for the Agentic-Job-Matching-Standard (AJMS), Community Draft v0.1"
 readme = "README.md"
 license = { text = "MIT" }
 requires-python = ">=3.10"

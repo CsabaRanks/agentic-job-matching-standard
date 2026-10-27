@@ -1,4 +1,4 @@
-"""Reference implementation of the Agentic Job Matching Standard (AJMS), Community Draft v0.1."""
+"""Reference implementation of the Agentic-Job-Matching-Standard (AJMS), Community Draft v0.1."""
 
 from pathlib import Path
 

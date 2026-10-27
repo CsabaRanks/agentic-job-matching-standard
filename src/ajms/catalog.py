@@ -122,13 +122,13 @@ def vocabulary_html() -> str:
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>AJMS vocabulary v0.1</title>
+<title>Agentic-Job-Matching-Standard (AJMS) vocabulary v0.1</title>
 <style>body{{font-family:system-ui,sans-serif;max-width:1100px;margin:2rem auto;padding:0 1rem;line-height:1.45}}
 table{{border-collapse:collapse;width:100%}}td,th{{border-bottom:1px solid #ccc;padding:.35rem;vertical-align:top;text-align:left}}
 code{{font-size:.9em}}tr:target{{background:#fff3b0}}</style>
 </head>
 <body>
-<h1>AJMS vocabulary v0.1</h1>
+<h1>Agentic-Job-Matching-Standard (AJMS) — vocabulary v0.1</h1>
 <p><strong>Community Draft v0.1</strong> &mdash; a proposal, not an adopted standard. Namespace IRI:
 <code>{escape(namespace)}</code>. Generated from the JSON-LD context
 <a href="{escape(CONTEXT_URL)}">{escape(CONTEXT_URL)}</a>.</p>
