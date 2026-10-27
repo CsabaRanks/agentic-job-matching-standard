@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ajms"
+version = "0.1.0"
+description = "Reference tools for the Agentic Job Matching Standard (AJMS), Community Draft v0.1"
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.10"
+dependencies = [
+  "jsonschema>=4.18",
+  "referencing>=0.30",
+  "PyLD>=2.0.4",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=7"]
+
+[project.scripts]
+ajms = "ajms.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

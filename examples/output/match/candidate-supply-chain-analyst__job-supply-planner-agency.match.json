@@ -1,0 +1,208 @@
+{
+  "@type": "MatchResult",
+  "schemaVersion": "0.1.0",
+  "candidateProfileId": "urn:uuid:dcde3cca-c19a-55b6-8354-1d988ad1eb21",
+  "candidateUpdatedAt": "2026-10-20T09:00:00+02:00",
+  "jobProfileId": "urn:uuid:c4d5e6f7-1a2b-4c3d-9e8f-7a6b5c4d3e2f",
+  "jobUpdatedAt": "2026-10-22T08:15:00+02:00",
+  "hiringFit": {
+    "perspective": "HIRING_FIT",
+    "policyId": "demo-hiring-fit-v0.1",
+    "calibrationStatus": "UNCALIBRATED",
+    "hardConditionStatus": "UNRESOLVED",
+    "indicativeScore": 1.0,
+    "knownWeightCoverage": 1.0,
+    "outcomeCounts": {
+      "MET": 3,
+      "PARTIALLY_MET": 0,
+      "NOT_MET": 0,
+      "UNKNOWN": 1,
+      "NOT_APPLICABLE": 0
+    },
+    "criteria": [
+      {
+        "criterionKey": "competencies/sap-mm",
+        "group": "competencies",
+        "strength": "HARD",
+        "outcome": "UNKNOWN",
+        "explanation": "SAP MM: not stated in the candidate profile"
+      },
+      {
+        "criterionKey": "languages/de",
+        "group": "languages",
+        "strength": "HARD",
+        "outcome": "MET",
+        "explanation": "de: NATIVE vs required C1"
+      },
+      {
+        "criterionKey": "totalExperience",
+        "group": "totalExperience",
+        "strength": "HARD",
+        "outcome": "MET",
+        "explanation": "74 months vs required 24"
+      },
+      {
+        "criterionKey": "careerLevel",
+        "group": "careerLevel",
+        "strength": "SOFT",
+        "outcome": "MET",
+        "explanation": "job PROFESSIONAL, candidate currently PROFESSIONAL (step +0)"
+      }
+    ]
+  },
+  "careerFit": {
+    "perspective": "CAREER_FIT",
+    "policyId": "demo-career-fit-v0.1",
+    "calibrationStatus": "UNCALIBRATED",
+    "hardConditionStatus": "NOT_MET",
+    "indicativeScore": 0.2,
+    "knownWeightCoverage": 0.385,
+    "outcomeCounts": {
+      "MET": 3,
+      "PARTIALLY_MET": 1,
+      "NOT_MET": 6,
+      "UNKNOWN": 9,
+      "NOT_APPLICABLE": 0
+    },
+    "criteria": [
+      {
+        "criterionKey": "archetypes/hard",
+        "group": "archetypes",
+        "strength": "HARD",
+        "outcome": "NOT_MET",
+        "explanation": "job archetype supply-planner: none of the job's values is included"
+      },
+      {
+        "criterionKey": "archetypes/wish",
+        "group": "archetypes",
+        "strength": "SOFT",
+        "outcome": "NOT_MET",
+        "explanation": "job archetype supply-planner: none of the job's values is included"
+      },
+      {
+        "criterionKey": "careerLevel/hard",
+        "group": "careerLevel",
+        "strength": "HARD",
+        "outcome": "MET",
+        "explanation": "job level PROFESSIONAL"
+      },
+      {
+        "criterionKey": "careerLevel/wish",
+        "group": "careerLevel",
+        "strength": "SOFT",
+        "outcome": "NOT_MET",
+        "explanation": "job level PROFESSIONAL"
+      },
+      {
+        "criterionKey": "industries/hard",
+        "group": "industries",
+        "strength": "HARD",
+        "outcome": "MET",
+        "explanation": "job industry NACE-REV2 C21: no excluded value present"
+      },
+      {
+        "criterionKey": "industries/wish",
+        "group": "industries",
+        "strength": "SOFT",
+        "outcome": "MET",
+        "explanation": "job industry NACE-REV2 C21: the job has an included value"
+      },
+      {
+        "criterionKey": "organization/wish",
+        "group": "organization",
+        "strength": "SOFT",
+        "outcome": "UNKNOWN",
+        "explanation": "size not stated"
+      },
+      {
+        "criterionKey": "tasks/wish",
+        "group": "tasks",
+        "strength": "SOFT",
+        "outcome": "PARTIALLY_MET",
+        "explanation": "1 of 2 desired tasks present"
+      },
+      {
+        "criterionKey": "compensation/hard",
+        "group": "compensation",
+        "strength": "HARD",
+        "outcome": "UNKNOWN",
+        "explanation": "job compensation not disclosed"
+      },
+      {
+        "criterionKey": "compensation/wish",
+        "group": "compensation",
+        "strength": "SOFT",
+        "outcome": "UNKNOWN",
+        "explanation": "job compensation not disclosed"
+      },
+      {
+        "criterionKey": "location/hard",
+        "group": "location",
+        "strength": "HARD",
+        "outcome": "NOT_MET",
+        "explanation": "Bremen: 89.1 km straight line (+/-10.0 km) vs max 40.0 km"
+      },
+      {
+        "criterionKey": "location/wish",
+        "group": "location",
+        "strength": "SOFT",
+        "outcome": "UNKNOWN",
+        "explanation": "Bremen: travel time limit 45 MIN needs routing or timetable data; not derived from distance"
+      },
+      {
+        "criterionKey": "workModel/hard",
+        "group": "workModel",
+        "strength": "HARD",
+        "outcome": "UNKNOWN",
+        "explanation": "arrangement HYBRID; travel share not stated"
+      },
+      {
+        "criterionKey": "workModel/wish",
+        "group": "workModel",
+        "strength": "SOFT",
+        "outcome": "UNKNOWN",
+        "explanation": "remote share not stated (HYBRID without extent)"
+      },
+      {
+        "criterionKey": "workingTime/hard",
+        "group": "workingTime",
+        "strength": "HARD",
+        "outcome": "UNKNOWN",
+        "explanation": "schedule FULL_TIME; weekly hours not stated; shiftWork not stated"
+      },
+      {
+        "criterionKey": "contract/hard",
+        "group": "contract",
+        "strength": "HARD",
+        "outcome": "NOT_MET",
+        "explanation": "TEMPORARY_AGENCY_WORK; 12 months vs at least 24"
+      },
+      {
+        "criterionKey": "contract/wish",
+        "group": "contract",
+        "strength": "SOFT",
+        "outcome": "NOT_MET",
+        "explanation": "TEMPORARY_AGENCY_WORK"
+      },
+      {
+        "criterionKey": "development/wish",
+        "group": "development",
+        "strength": "SOFT",
+        "outcome": "UNKNOWN",
+        "explanation": "job paths: not stated"
+      },
+      {
+        "criterionKey": "domainCriteria/org.example.supplychain.planning_tool_budget",
+        "group": "domainCriteria",
+        "strength": "SOFT",
+        "outcome": "UNKNOWN",
+        "explanation": "Budget for planning tool licences available: no value stated on the other side"
+      }
+    ]
+  },
+  "generatedBy": {
+    "tool": "ajms-reference",
+    "toolVersion": "0.1.0"
+  },
+  "disclaimer": "Demonstration output. Weights are UNCALIBRATED and illustrative. UNKNOWN means information is missing or not comparable; it is not a negative result. Not suitable for automated decisions about people."
+}

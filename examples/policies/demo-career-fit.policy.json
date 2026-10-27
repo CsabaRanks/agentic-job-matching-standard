@@ -1,0 +1,22 @@
+{
+  "@type": "MatchPolicy",
+  "policyId": "demo-career-fit-v0.1",
+  "schemaVersion": "0.1.0",
+  "perspective": "CAREER_FIT",
+  "calibrationStatus": "UNCALIBRATED",
+  "weights": {
+    "archetype": 3,
+    "careerLevel": 2,
+    "industry": 1,
+    "organization": 1,
+    "tasks": 2,
+    "compensation": 2,
+    "location": 1,
+    "workModel": 2,
+    "workingTime": 1,
+    "contract": 1,
+    "development": 1,
+    "domainCriteria": 1
+  },
+  "note": "Illustrative demonstration weights. Not calibrated against the candidate's own judgements. Weights apply only to wishes; hard conditions are reported separately and are never weighted."
+}

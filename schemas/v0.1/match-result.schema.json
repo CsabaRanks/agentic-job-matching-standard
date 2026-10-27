@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/CsabaRanks/agentic-job-matching-standard/v0.1.0/schemas/v0.1/match-result.schema.json",
+  "title": "AJMS MatchResult v0.1",
+  "description": "Output of a bidirectional comparison. Hiring-Fit (does the candidate meet the job's requirements?) and Career-Fit (does the job meet the candidate's conditions and wishes?) are reported separately and never merged into one number. Community Draft - not an adopted standard.",
+  "type": "object",
+  "properties": {
+    "@type": { "const": "MatchResult" },
+    "schemaVersion": { "$ref": "common.schema.json#/$defs/SchemaVersion" },
+    "candidateProfileId": { "$ref": "common.schema.json#/$defs/ProfileId" },
+    "candidateUpdatedAt": { "$ref": "common.schema.json#/$defs/DateTime" },
+    "jobProfileId": { "$ref": "common.schema.json#/$defs/ProfileId" },
+    "jobUpdatedAt": { "$ref": "common.schema.json#/$defs/DateTime" },
+    "hiringFit": { "$ref": "#/$defs/PerspectiveResult" },
+    "careerFit": { "$ref": "#/$defs/PerspectiveResult" },
+    "generatedBy": {
+      "type": "object",
+      "properties": {
+        "tool": { "type": "string" },
+        "toolVersion": { "type": "string" }
+      },
+      "required": [ "tool", "toolVersion" ],
+      "additionalProperties": false
+    },
+    "disclaimer": { "type": "string" }
+  },
+  "required": [ "@type", "schemaVersion", "candidateProfileId", "jobProfileId", "hiringFit", "careerFit", "generatedBy" ],
+  "additionalProperties": false,
+  "$defs": {
+    "Outcome": {
+      "description": "MET, PARTIALLY_MET, NOT_MET, UNKNOWN (information missing or not comparable), NOT_APPLICABLE (criterion does not apply).",
+      "enum": [ "MET", "PARTIALLY_MET", "NOT_MET", "UNKNOWN", "NOT_APPLICABLE" ]
+    },
+    "CriterionResult": {
+      "type": "object",
+      "properties": {
+        "criterionKey": { "type": "string", "pattern": "^[A-Za-z]+(/[A-Za-z0-9._:-]+)?$" },
+        "group": { "type": "string" },
+        "strength": { "enum": [ "HARD", "SOFT" ] },
+        "outcome": { "$ref": "#/$defs/Outcome" },
+        "explanation": { "type": "string" }
+      },
+      "required": [ "criterionKey", "group", "strength", "outcome", "explanation" ],
+      "additionalProperties": false
+    },
+    "PerspectiveResult": {
+      "type": "object",
+      "properties": {
+        "perspective": { "enum": [ "HIRING_FIT", "CAREER_FIT" ] },
+        "policyId": { "$ref": "common.schema.json#/$defs/Identifier" },
+        "calibrationStatus": { "enum": [ "UNCALIBRATED", "CALIBRATED" ] },
+        "hardConditionStatus": {
+          "description": "NONE_DEFINED, ALL_MET, NOT_MET (at least one hard criterion NOT_MET), UNRESOLVED (none NOT_MET, at least one UNKNOWN or PARTIALLY_MET).",
+          "enum": [ "NONE_DEFINED", "ALL_MET", "NOT_MET", "UNRESOLVED" ]
+        },
+        "indicativeScore": {
+          "description": "Weighted share of soft criteria met, computed only over criteria with a known outcome. null when no soft criterion is known.",
+          "type": [ "number", "null" ],
+          "minimum": 0,
+          "maximum": 1
+        },
+        "knownWeightCoverage": {
+          "description": "Share of the total soft-criterion weight whose outcome is known. Read together with indicativeScore.",
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "outcomeCounts": {
+          "type": "object",
+          "propertyNames": { "$ref": "#/$defs/Outcome" },
+          "additionalProperties": { "type": "integer", "minimum": 0 }
+        },
+        "criteria": { "type": "array", "items": { "$ref": "#/$defs/CriterionResult" } }
+      },
+      "required": [ "perspective", "policyId", "calibrationStatus", "hardConditionStatus", "indicativeScore", "knownWeightCoverage", "outcomeCounts", "criteria" ],
+      "additionalProperties": false
+    }
+  }
+}

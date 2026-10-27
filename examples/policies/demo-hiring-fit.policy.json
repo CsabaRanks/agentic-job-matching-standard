@@ -1,0 +1,19 @@
+{
+  "@type": "MatchPolicy",
+  "policyId": "demo-hiring-fit-v0.1",
+  "schemaVersion": "0.1.0",
+  "perspective": "HIRING_FIT",
+  "calibrationStatus": "UNCALIBRATED",
+  "weights": {
+    "competencies": 3,
+    "languages": 1,
+    "qualifications": 1,
+    "domainExperience": 2,
+    "totalExperience": 1,
+    "leadershipExperience": 1,
+    "careerLevel": 1,
+    "startTiming": 1,
+    "domainCriteria": 1
+  },
+  "note": "Illustrative demonstration weights. Not calibrated against hiring outcomes or human judgements. Weights apply only to PREFERRED (soft) requirements; REQUIRED items are reported as hard conditions and are never weighted."
+}

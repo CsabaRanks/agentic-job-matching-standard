@@ -1,0 +1,110 @@
+{
+  "invalid/candidate-missing-schema-version.json": {
+    "kind": "schema",
+    "path": "",
+    "contains": "'schemaVersion' is a required property",
+    "why": "Every profile must state its schema version."
+  },
+  "invalid/candidate-compensation-without-currency.json": {
+    "kind": "schema",
+    "path": "/jobPreferences/compensation",
+    "contains": "closest cause at /jobPreferences/compensation/hardCondition/atLeast: 'currency' is a required property",
+    "why": "A salary without currency is ambiguous."
+  },
+  "invalid/job-compensation-without-period.json": {
+    "kind": "schema",
+    "path": "/offer/compensation",
+    "contains": "closest cause at /offer/compensation/0: 'period' is a required property",
+    "why": "A salary without period (hour, month, year) is ambiguous."
+  },
+  "invalid/job-estimated-salary-as-point-value.json": {
+    "kind": "schema",
+    "path": "/offer/compensation",
+    "contains": "closest cause at /offer/compensation/2: 'min' is a required property",
+    "why": "Estimates must be stated as an interval."
+  },
+  "invalid/job-remote-share-without-reference-period.json": {
+    "kind": "schema",
+    "path": "/offer/workModel",
+    "contains": "closest cause at /offer/workModel/remoteShare: 'referencePeriod' is a required property",
+    "why": "A remote share needs its reference period (week, month, year)."
+  },
+  "invalid/candidate-commute-distance-in-minutes.json": {
+    "kind": "schema",
+    "path": "/jobPreferences/location",
+    "contains": "maxOneWayDistance/unitCode: 'MIN' is not one of",
+    "why": "Distance and travel time are different quantities; MIN is not a distance unit."
+  },
+  "invalid/candidate-public-minimal-with-identity.json": {
+    "kind": "schema",
+    "path": "",
+    "contains": "False schema does not allow this value (keys: displayName)",
+    "why": "A public minimal representation must not carry identity data."
+  },
+  "invalid/job-domain-criterion-wrong-value-type.json": {
+    "kind": "schema",
+    "path": "/requirements/domainCriteria/0/criterion/value",
+    "contains": "is not of type 'boolean'",
+    "why": "dataType BOOLEAN requires a boolean value."
+  },
+  "invalid/job-domain-criterion-unstable-id.json": {
+    "kind": "schema",
+    "path": "/requirements/domainCriteria/1/criterion/criterionId",
+    "contains": "does not match",
+    "why": "Domain criteria need a stable reverse-DNS identifier."
+  },
+  "invalid/job-with-candidate-preferences.json": {
+    "kind": "schema",
+    "path": "",
+    "contains": "('jobPreferences' was unexpected)",
+    "why": "A JobProfile must not carry candidate-side fields."
+  },
+  "invalid/candidate-evidenced-without-evidence-ref.json": {
+    "kind": "schema",
+    "path": "/capabilities/qualifications/0/provenance",
+    "contains": "'evidenceRefs' is a required property",
+    "why": "An evidenced statement must point to its evidence."
+  },
+  "invalid/candidate-wrong-type.json": {
+    "kind": "schema",
+    "path": "/@type",
+    "contains": "missing or unknown @type",
+    "why": "Only AJMS document types are accepted."
+  },
+  "invalid/candidate-hybrid-wish-without-wrapper.json": {
+    "kind": "schema",
+    "path": "/jobPreferences/workModel",
+    "contains": "('arrangements' was unexpected)",
+    "why": "Preferences must say whether they are a hardCondition or a wish."
+  },
+  "invalid-semantic/job-salary-min-greater-than-max.json": {
+    "kind": "semantic",
+    "path": "/offer/compensation/0",
+    "contains": "min (80000) is greater than max (70000)",
+    "why": "Ranges must be ordered; JSON Schema cannot express this."
+  },
+  "invalid-semantic/candidate-dangling-evidence-ref.json": {
+    "kind": "semantic",
+    "path": "/capabilities/competencies/2/provenance/evidenceRefs",
+    "contains": "evidence 'ev-missing' is not listed",
+    "why": "Evidence references must resolve within the document."
+  },
+  "invalid-semantic/job-start-window-reversed.json": {
+    "kind": "semantic",
+    "path": "/requirements/startTiming",
+    "contains": "earliestStartDate is after latestStartDate",
+    "why": "Date windows must be ordered."
+  },
+  "invalid-semantic/candidate-ongoing-with-end-month.json": {
+    "kind": "semantic",
+    "path": "/experienceHistory/0",
+    "contains": "an ongoing entry must not have endMonth",
+    "why": "Contradictory employment period."
+  },
+  "invalid-semantic/candidate-duplicate-competency-id.json": {
+    "kind": "semantic",
+    "path": "/capabilities/competencies/1/competencyId",
+    "contains": "duplicate competencyId",
+    "why": "Local identifiers must be unique."
+  }
+}

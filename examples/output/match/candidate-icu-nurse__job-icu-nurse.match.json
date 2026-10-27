@@ -1,0 +1,152 @@
+{
+  "@type": "MatchResult",
+  "schemaVersion": "0.1.0",
+  "candidateProfileId": "urn:uuid:5a6b7c8d-9e0f-4a1b-8c2d-3e4f5a6b7c8d",
+  "candidateUpdatedAt": "2026-10-15T18:00:00+02:00",
+  "jobProfileId": "urn:uuid:0e1f2a3b-4c5d-4e6f-a7b8-c9d0e1f2a3b4",
+  "jobUpdatedAt": "2026-10-19T10:00:00+02:00",
+  "hiringFit": {
+    "perspective": "HIRING_FIT",
+    "policyId": "demo-hiring-fit-v0.1",
+    "calibrationStatus": "UNCALIBRATED",
+    "hardConditionStatus": "ALL_MET",
+    "indicativeScore": 1.0,
+    "knownWeightCoverage": 1.0,
+    "outcomeCounts": {
+      "MET": 7,
+      "PARTIALLY_MET": 0,
+      "NOT_MET": 0,
+      "UNKNOWN": 0,
+      "NOT_APPLICABLE": 0
+    },
+    "criteria": [
+      {
+        "criterionKey": "languages/de",
+        "group": "languages",
+        "strength": "HARD",
+        "outcome": "MET",
+        "explanation": "de: NATIVE vs required B2"
+      },
+      {
+        "criterionKey": "qualifications/q-nursing",
+        "group": "qualifications",
+        "strength": "HARD",
+        "outcome": "MET",
+        "explanation": "Abgeschlossene Pflegeausbildung: EQF 4 vs required 4; field of study not compared automatically"
+      },
+      {
+        "criterionKey": "domainExperience/icu-care",
+        "group": "domainExperience",
+        "strength": "SOFT",
+        "outcome": "MET",
+        "explanation": "Intensivpflege: 96 months vs required 24"
+      },
+      {
+        "criterionKey": "careerLevel",
+        "group": "careerLevel",
+        "strength": "SOFT",
+        "outcome": "MET",
+        "explanation": "job SENIOR, candidate currently SENIOR (step +0)"
+      },
+      {
+        "criterionKey": "domainCriteria/org.example.healthcare.professional_registration",
+        "group": "domainCriteria",
+        "strength": "HARD",
+        "outcome": "MET",
+        "explanation": "Berufserlaubnis Pflege: stated true, condition EQUALS true"
+      },
+      {
+        "criterionKey": "domainCriteria/org.example.healthcare.specialties",
+        "group": "domainCriteria",
+        "strength": "HARD",
+        "outcome": "MET",
+        "explanation": "Fachgebiet: stated [\"ICU\", \"ANESTHESIA\"], condition ANY_OF [\"ICU\"]"
+      },
+      {
+        "criterionKey": "domainCriteria/org.example.healthcare.ventilation_hours",
+        "group": "domainCriteria",
+        "strength": "SOFT",
+        "outcome": "MET",
+        "explanation": "Erfahrung Beatmungspflege: stated 800, condition AT_LEAST 500"
+      }
+    ]
+  },
+  "careerFit": {
+    "perspective": "CAREER_FIT",
+    "policyId": "demo-career-fit-v0.1",
+    "calibrationStatus": "UNCALIBRATED",
+    "hardConditionStatus": "NOT_MET",
+    "indicativeScore": 0.0,
+    "knownWeightCoverage": 1.0,
+    "outcomeCounts": {
+      "MET": 3,
+      "PARTIALLY_MET": 1,
+      "NOT_MET": 2,
+      "UNKNOWN": 1,
+      "NOT_APPLICABLE": 1
+    },
+    "criteria": [
+      {
+        "criterionKey": "archetypes/hard",
+        "group": "archetypes",
+        "strength": "HARD",
+        "outcome": "MET",
+        "explanation": "job archetype icu-nurse: the job has an included value"
+      },
+      {
+        "criterionKey": "compensation/hard",
+        "group": "compensation",
+        "strength": "HARD",
+        "outcome": "PARTIALLY_MET",
+        "explanation": "job 3,849-4,356 EUR/month vs at least 3,900; job pays 13 times per year; compared per month; scaled from 38.5 h to 39 h per week"
+      },
+      {
+        "criterionKey": "location/hard",
+        "group": "location",
+        "strength": "HARD",
+        "outcome": "UNKNOWN",
+        "explanation": "Leipzig: travel time limit 40 MIN needs routing or timetable data; not derived from distance"
+      },
+      {
+        "criterionKey": "workModel",
+        "group": "workModel",
+        "strength": "SOFT",
+        "outcome": "NOT_APPLICABLE",
+        "explanation": "candidate marked this as not applicable"
+      },
+      {
+        "criterionKey": "workingTime/hard",
+        "group": "workingTime",
+        "strength": "HARD",
+        "outcome": "MET",
+        "explanation": "38.5-38.5 h/week vs acceptable 30-39; shiftWork yes"
+      },
+      {
+        "criterionKey": "workingTime/wish",
+        "group": "workingTime",
+        "strength": "SOFT",
+        "outcome": "NOT_MET",
+        "explanation": "schedule FULL_TIME"
+      },
+      {
+        "criterionKey": "contract/hard",
+        "group": "contract",
+        "strength": "HARD",
+        "outcome": "MET",
+        "explanation": "PERMANENT_EMPLOYMENT"
+      },
+      {
+        "criterionKey": "domainCriteria/org.example.healthcare.night_shifts_per_month",
+        "group": "domainCriteria",
+        "strength": "HARD",
+        "outcome": "NOT_MET",
+        "explanation": "Nachtdienste pro Monat: stated 6, condition AT_MOST 4"
+      }
+    ]
+  },
+  "generatedBy": {
+    "tool": "ajms-reference",
+    "toolVersion": "0.1.0"
+  },
+  "disclaimer": "Demonstration output. Weights are UNCALIBRATED and illustrative. UNKNOWN means information is missing or not comparable; it is not a negative result. Not suitable for automated decisions about people."
+}

@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/CsabaRanks/agentic-job-matching-standard/v0.1.0/schemas/v0.1/profile-reference.schema.json",
+  "title": "AJMS ProfileReference v0.1",
+  "description": "Minimal exchange convention: tells a recipient which profile exists, in which version and where it can be retrieved. Carries no profile content. Access control is the responsibility of the hosting or transport solution. Community Draft - not an adopted standard.",
+  "type": "object",
+  "properties": {
+    "@context": { "$ref": "common.schema.json#/$defs/JsonLdContext" },
+    "@type": { "const": "ProfileReference" },
+    "profileId": { "$ref": "common.schema.json#/$defs/ProfileId" },
+    "profileType": { "enum": [ "CandidateProfile", "JobProfile" ] },
+    "schemaVersion": { "$ref": "common.schema.json#/$defs/SchemaVersion" },
+    "updatedAt": { "$ref": "common.schema.json#/$defs/DateTime" },
+    "profileView": { "enum": [ "FULL_PRIVATE", "SHARED_VIEW", "PUBLIC_MINIMAL", "PUBLIC" ] },
+    "profileUrl": {
+      "description": "Where the profile document can be retrieved (https). Retrieval may require authorization by the host.",
+      "type": "string",
+      "pattern": "^https://[^\\s]+$"
+    },
+    "accessMethod": {
+      "description": "PUBLIC: no authorization. ACCESS_CONTROLLED: the host authorizes each request. ON_REQUEST: ask via accessRequestUrl first.",
+      "enum": [ "PUBLIC", "ACCESS_CONTROLLED", "ON_REQUEST" ]
+    },
+    "accessRequestUrl": { "type": "string", "pattern": "^https://[^\\s]+$" },
+    "mediaType": { "enum": [ "application/ld+json", "application/json" ] },
+    "contentDigest": {
+      "description": "Optional integrity hint over the referenced document (SHA-256 of its canonical JSON serialization, see docs/privacy-and-exchange.md). Not a signature: it does not prove who created the document.",
+      "type": "object",
+      "properties": {
+        "algorithm": { "const": "SHA-256" },
+        "canonicalization": { "const": "AJMS-JSON-SORTED-KEYS-V1" },
+        "value": { "type": "string", "pattern": "^[0-9a-f]{64}$" }
+      },
+      "required": [ "algorithm", "canonicalization", "value" ],
+      "additionalProperties": false
+    },
+    "expiresAt": { "$ref": "common.schema.json#/$defs/DateTime" },
+    "intendedRecipient": {
+      "description": "Free-text label of the recipient a SHARED_VIEW is meant for. Not an access control mechanism.",
+      "type": "string"
+    }
+  },
+  "required": [ "@context", "@type", "profileId", "profileType", "schemaVersion", "updatedAt", "profileView", "profileUrl", "accessMethod" ],
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": { "properties": { "accessMethod": { "const": "ON_REQUEST" } } },
+      "then": { "required": [ "accessRequestUrl" ] }
+    },
+    {
+      "$comment": "A full private profile is never announced as publicly retrievable.",
+      "if": { "properties": { "profileView": { "const": "FULL_PRIVATE" } } },
+      "then": { "properties": { "accessMethod": { "enum": [ "ACCESS_CONTROLLED", "ON_REQUEST" ] } } }
+    }
+  ]
+}

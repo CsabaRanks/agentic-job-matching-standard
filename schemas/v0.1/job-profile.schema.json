@@ -1,0 +1,198 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/CsabaRanks/agentic-job-matching-standard/v0.1.0/schemas/v0.1/job-profile.schema.json",
+  "title": "AJMS JobProfile v0.1",
+  "description": "A job: what it requires from a candidate (requirements, input to Hiring-Fit) and what it offers (offer, input to Career-Fit). Uses the same shared definitions as CandidateProfile. Community Draft - not an adopted standard.",
+  "type": "object",
+  "properties": {
+    "@context": { "$ref": "common.schema.json#/$defs/JsonLdContext" },
+    "@type": { "const": "JobProfile" },
+    "profileId": { "$ref": "common.schema.json#/$defs/ProfileId" },
+    "schemaVersion": { "$ref": "common.schema.json#/$defs/SchemaVersion" },
+    "updatedAt": { "$ref": "common.schema.json#/$defs/DateTime" },
+    "profileView": {
+      "description": "PUBLIC: a published vacancy. SHARED_VIEW: shared with selected candidates or agents (e.g. confidential search). FULL_PRIVATE: internal working version.",
+      "enum": [ "PUBLIC", "SHARED_VIEW", "FULL_PRIVATE" ]
+    },
+    "defaultLanguage": { "$ref": "common.schema.json#/$defs/LanguageCode" },
+    "title": { "$ref": "common.schema.json#/$defs/Text" },
+    "hiringOrganization": { "$ref": "common.schema.json#/$defs/Organization" },
+    "intermediary": {
+      "description": "Staffing agency or recruitment consultancy publishing on behalf of the hiring organization.",
+      "$ref": "common.schema.json#/$defs/Organization"
+    },
+    "archetype": { "$ref": "common.schema.json#/$defs/JobArchetype" },
+    "careerLevel": { "$ref": "common.schema.json#/$defs/CareerLevel" },
+    "leadership": { "$ref": "common.schema.json#/$defs/Leadership" },
+    "tasks": {
+      "type": "array",
+      "items": { "$ref": "common.schema.json#/$defs/Task" }
+    },
+    "requirements": { "$ref": "#/$defs/Requirements" },
+    "offer": { "$ref": "#/$defs/Offer" },
+    "datePosted": { "$ref": "common.schema.json#/$defs/Date" },
+    "validThrough": { "$ref": "common.schema.json#/$defs/Date" },
+    "postingUrl": { "$ref": "common.schema.json#/$defs/Uri" },
+    "provenance": {
+      "description": "Who stated the job data: ORGANIZATION_STATED for employer-published data, DERIVED for data extracted by a third party or agent.",
+      "$ref": "common.schema.json#/$defs/Provenance"
+    }
+  },
+  "required": [ "@context", "@type", "profileId", "schemaVersion", "updatedAt", "profileView", "title" ],
+  "additionalProperties": false,
+  "$defs": {
+    "CompetencyRequirement": {
+      "type": "object",
+      "properties": {
+        "competencyId": { "$ref": "common.schema.json#/$defs/Identifier" },
+        "label": { "$ref": "common.schema.json#/$defs/Text" },
+        "code": { "$ref": "common.schema.json#/$defs/ClassificationCode" },
+        "minimumProficiency": { "$ref": "common.schema.json#/$defs/Proficiency" },
+        "minimumYearsOfPractice": { "type": "number", "minimum": 0 },
+        "requirementLevel": { "$ref": "common.schema.json#/$defs/RequirementLevel" }
+      },
+      "required": [ "competencyId", "label", "requirementLevel" ],
+      "additionalProperties": false
+    },
+    "LanguageRequirement": {
+      "type": "object",
+      "properties": {
+        "languageCode": { "$ref": "common.schema.json#/$defs/LanguageCode" },
+        "minimumCefrLevel": { "$ref": "common.schema.json#/$defs/CefrLevel" },
+        "requirementLevel": { "$ref": "common.schema.json#/$defs/RequirementLevel" }
+      },
+      "required": [ "languageCode", "minimumCefrLevel", "requirementLevel" ],
+      "additionalProperties": false
+    },
+    "QualificationRequirement": {
+      "type": "object",
+      "properties": {
+        "requirementId": { "$ref": "common.schema.json#/$defs/Identifier" },
+        "qualificationType": { "$ref": "common.schema.json#/$defs/QualificationType" },
+        "label": { "$ref": "common.schema.json#/$defs/Text" },
+        "minimumEqfLevel": { "type": "integer", "minimum": 1, "maximum": 8 },
+        "fieldsOfStudy": { "type": "array", "items": { "$ref": "common.schema.json#/$defs/Text" } },
+        "experienceInPlaceOfEducation": { "type": "boolean" },
+        "requirementLevel": { "$ref": "common.schema.json#/$defs/RequirementLevel" }
+      },
+      "required": [ "requirementId", "qualificationType", "label", "requirementLevel" ],
+      "additionalProperties": false
+    },
+    "ExperienceRequirement": {
+      "type": "object",
+      "properties": {
+        "domainId": { "$ref": "common.schema.json#/$defs/Identifier" },
+        "label": { "$ref": "common.schema.json#/$defs/Text" },
+        "code": { "$ref": "common.schema.json#/$defs/ClassificationCode" },
+        "minimumMonths": { "type": "integer", "minimum": 0 },
+        "requirementLevel": { "$ref": "common.schema.json#/$defs/RequirementLevel" }
+      },
+      "required": [ "domainId", "label", "minimumMonths", "requirementLevel" ],
+      "additionalProperties": false
+    },
+    "DomainRequirementEntry": {
+      "type": "object",
+      "properties": {
+        "criterion": {
+          "allOf": [ { "$ref": "common.schema.json#/$defs/DomainCriterion" } ],
+          "required": [ "comparator" ]
+        },
+        "requirementLevel": { "$ref": "common.schema.json#/$defs/RequirementLevel" }
+      },
+      "required": [ "criterion", "requirementLevel" ],
+      "additionalProperties": false
+    },
+    "Requirements": {
+      "description": "What the job requires from a candidate. REQUIRED items are hard requirements; PREFERRED items are desirable.",
+      "type": "object",
+      "properties": {
+        "competencies": { "type": "array", "items": { "$ref": "#/$defs/CompetencyRequirement" } },
+        "languages": { "type": "array", "items": { "$ref": "#/$defs/LanguageRequirement" } },
+        "qualifications": { "type": "array", "items": { "$ref": "#/$defs/QualificationRequirement" } },
+        "domainExperience": { "type": "array", "items": { "$ref": "#/$defs/ExperienceRequirement" } },
+        "totalExperienceMonths": {
+          "type": "object",
+          "properties": {
+            "minimumMonths": { "type": "integer", "minimum": 0 },
+            "requirementLevel": { "$ref": "common.schema.json#/$defs/RequirementLevel" }
+          },
+          "required": [ "minimumMonths", "requirementLevel" ],
+          "additionalProperties": false
+        },
+        "leadershipExperience": {
+          "type": "object",
+          "properties": {
+            "leadershipType": { "enum": [ "FUNCTIONAL", "DISCIPLINARY" ] },
+            "requirementLevel": { "$ref": "common.schema.json#/$defs/RequirementLevel" }
+          },
+          "required": [ "leadershipType", "requirementLevel" ],
+          "additionalProperties": false
+        },
+        "workAuthorization": {
+          "type": "object",
+          "properties": {
+            "countryCodes": { "type": "array", "items": { "$ref": "common.schema.json#/$defs/CountryCode" }, "minItems": 1, "uniqueItems": true },
+            "sponsorshipAvailable": { "type": "boolean" }
+          },
+          "required": [ "countryCodes" ],
+          "additionalProperties": false
+        },
+        "startTiming": {
+          "description": "When the job must be filled. Compared with the candidate's availability.",
+          "$ref": "common.schema.json#/$defs/StartTiming"
+        },
+        "domainCriteria": { "type": "array", "items": { "$ref": "#/$defs/DomainRequirementEntry" } }
+      },
+      "additionalProperties": false
+    },
+    "Offer": {
+      "description": "What the job offers. An omitted block is UNKNOWN; StatedAbsence marks NOT_APPLICABLE or NOT_DISCLOSED (e.g. salary on request).",
+      "type": "object",
+      "properties": {
+        "compensation": {
+          "oneOf": [
+            { "type": "array", "minItems": 1, "items": { "$ref": "common.schema.json#/$defs/CompensationAmount" } },
+            { "$ref": "common.schema.json#/$defs/StatedAbsence" }
+          ]
+        },
+        "locations": {
+          "oneOf": [
+            { "type": "array", "minItems": 1, "items": { "$ref": "common.schema.json#/$defs/Place" } },
+            { "$ref": "common.schema.json#/$defs/StatedAbsence" }
+          ]
+        },
+        "workModel": {
+          "oneOf": [
+            { "$ref": "common.schema.json#/$defs/WorkModel" },
+            { "$ref": "common.schema.json#/$defs/StatedAbsence" }
+          ]
+        },
+        "workingTime": {
+          "oneOf": [
+            { "$ref": "common.schema.json#/$defs/WorkingTime" },
+            { "$ref": "common.schema.json#/$defs/StatedAbsence" }
+          ]
+        },
+        "contract": {
+          "oneOf": [
+            { "$ref": "common.schema.json#/$defs/Contract" },
+            { "$ref": "common.schema.json#/$defs/StatedAbsence" }
+          ]
+        },
+        "development": {
+          "oneOf": [
+            { "$ref": "common.schema.json#/$defs/Development" },
+            { "$ref": "common.schema.json#/$defs/StatedAbsence" }
+          ]
+        },
+        "benefits": { "type": "array", "items": { "$ref": "common.schema.json#/$defs/Text" } },
+        "domainCriteria": {
+          "description": "Domain-specific facts about the job (comparator not used).",
+          "type": "array",
+          "items": { "$ref": "common.schema.json#/$defs/DomainCriterion" }
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "@context": "https://raw.githubusercontent.com/CsabaRanks/agentic-job-matching-standard/v0.1.0/context/v0.1/ajms.context.jsonld",
+  "@type": "ProfileReference",
+  "profileId": "urn:uuid:dcde3cca-c19a-55b6-8354-1d988ad1eb21",
+  "profileType": "CandidateProfile",
+  "schemaVersion": "0.1.0",
+  "updatedAt": "2026-10-20T09:00:00+02:00",
+  "profileView": "SHARED_VIEW",
+  "profileUrl": "https://profiles.example.org/p/7c1e0b52.json",
+  "accessMethod": "ACCESS_CONTROLLED",
+  "mediaType": "application/ld+json",
+  "contentDigest": {
+    "algorithm": "SHA-256",
+    "canonicalization": "AJMS-JSON-SORTED-KEYS-V1",
+    "value": "96c14cf7911fb428c404b04cf22f714fe8601dd7be6e85c985be805db297b6ec"
+  },
+  "intendedRecipient": "Example Staffing Partner GmbH (synthetic)",
+  "expiresAt": "2027-01-31T23:59:59+01:00"
+}

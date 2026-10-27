@@ -1,0 +1,284 @@
+{
+  "@context": "https://raw.githubusercontent.com/CsabaRanks/agentic-job-matching-standard/v0.1.0/context/v0.1/ajms.context.jsonld",
+  "@type": "JobProfile",
+  "profileId": "urn:uuid:9b2e4d71-0c3a-4f5e-8d6b-1a2b3c4d5e6f",
+  "schemaVersion": "0.1.0",
+  "updatedAt": "2026-10-18T14:30:00+02:00",
+  "profileView": "PUBLIC",
+  "defaultLanguage": "en",
+  "title": {
+    "text": "Demand Planner (m/f/d)",
+    "language": "en"
+  },
+  "hiringOrganization": {
+    "name": "Harbour Beverages Example GmbH",
+    "organizationType": "EMPLOYER",
+    "industries": [
+      {
+        "scheme": "NACE-REV2",
+        "code": "C11"
+      }
+    ],
+    "sizeClass": "EMPLOYEES_250_999",
+    "url": "https://example.com/harbour-beverages"
+  },
+  "archetype": {
+    "archetypeId": "demand-planner",
+    "label": {
+      "text": "Demand Planner",
+      "language": "en"
+    },
+    "occupationCodes": [
+      {
+        "scheme": "ISCO-08",
+        "code": "3323"
+      }
+    ]
+  },
+  "careerLevel": "SENIOR",
+  "leadership": {
+    "leadershipType": "NONE"
+  },
+  "tasks": [
+    {
+      "taskId": "t-forecast",
+      "label": {
+        "text": "Build and maintain statistical demand forecasts",
+        "language": "en"
+      },
+      "shareOfTimePercent": 50
+    },
+    {
+      "taskId": "t-consensus",
+      "label": {
+        "text": "Run the monthly consensus forecast meeting",
+        "language": "en"
+      },
+      "shareOfTimePercent": 25
+    },
+    {
+      "taskId": "t-automation",
+      "label": {
+        "text": "Automate planning reports",
+        "language": "en"
+      },
+      "shareOfTimePercent": 25
+    }
+  ],
+  "requirements": {
+    "competencies": [
+      {
+        "competencyId": "demand-forecasting",
+        "label": {
+          "text": "Demand forecasting",
+          "language": "en"
+        },
+        "minimumProficiency": "ADVANCED",
+        "minimumYearsOfPractice": 3,
+        "requirementLevel": "REQUIRED"
+      },
+      {
+        "competencyId": "sql",
+        "label": {
+          "text": "SQL",
+          "language": "en"
+        },
+        "minimumProficiency": "INTERMEDIATE",
+        "requirementLevel": "PREFERRED"
+      },
+      {
+        "competencyId": "python",
+        "label": {
+          "text": "Python",
+          "language": "en"
+        },
+        "minimumProficiency": "ADVANCED",
+        "requirementLevel": "PREFERRED"
+      },
+      {
+        "competencyId": "stakeholder-facilitation",
+        "label": {
+          "text": "Facilitating cross-functional meetings",
+          "language": "en"
+        },
+        "requirementLevel": "PREFERRED"
+      }
+    ],
+    "languages": [
+      {
+        "languageCode": "de",
+        "minimumCefrLevel": "C1",
+        "requirementLevel": "REQUIRED"
+      },
+      {
+        "languageCode": "en",
+        "minimumCefrLevel": "B2",
+        "requirementLevel": "REQUIRED"
+      }
+    ],
+    "qualifications": [
+      {
+        "requirementId": "q-degree",
+        "qualificationType": "DEGREE",
+        "label": {
+          "text": "Degree in logistics, business or a related field",
+          "language": "en"
+        },
+        "minimumEqfLevel": 6,
+        "experienceInPlaceOfEducation": true,
+        "requirementLevel": "REQUIRED"
+      }
+    ],
+    "domainExperience": [
+      {
+        "domainId": "supply-chain-planning",
+        "label": {
+          "text": "Supply chain planning",
+          "language": "en"
+        },
+        "minimumMonths": 36,
+        "requirementLevel": "REQUIRED"
+      }
+    ],
+    "workAuthorization": {
+      "countryCodes": [
+        "DE"
+      ],
+      "sponsorshipAvailable": false
+    },
+    "startTiming": {
+      "earliestStartDate": "2026-12-01",
+      "latestStartDate": "2027-03-01"
+    },
+    "domainCriteria": [
+      {
+        "criterion": {
+          "criterionId": "org.example.supplychain.erp_systems",
+          "label": {
+            "text": "ERP systems",
+            "language": "en"
+          },
+          "dataType": "CODE_LIST",
+          "value": [
+            "SAP_S4HANA",
+            "SAP_IBP"
+          ],
+          "comparator": "ALL_OF"
+        },
+        "requirementLevel": "REQUIRED"
+      },
+      {
+        "criterion": {
+          "criterionId": "org.example.logistics.drivers_license_b",
+          "label": {
+            "text": "Driving licence class B",
+            "language": "en"
+          },
+          "dataType": "BOOLEAN",
+          "value": true,
+          "comparator": "EQUALS"
+        },
+        "requirementLevel": "PREFERRED"
+      }
+    ]
+  },
+  "offer": {
+    "compensation": [
+      {
+        "component": "BASE_SALARY",
+        "currency": "EUR",
+        "period": "YEAR",
+        "grossOrNet": "GROSS",
+        "min": 64000,
+        "max": 74000,
+        "hoursPerWeekBasis": 38,
+        "informationKind": "STATED"
+      },
+      {
+        "component": "VARIABLE_TARGET",
+        "currency": "EUR",
+        "period": "YEAR",
+        "grossOrNet": "GROSS",
+        "value": 4000,
+        "hoursPerWeekBasis": 38,
+        "informationKind": "STATED",
+        "note": "Annual bonus at 100 % target achievement."
+      }
+    ],
+    "locations": [
+      {
+        "countryCode": "DE",
+        "region": "Hamburg",
+        "locality": "Hamburg",
+        "postalCode": "20457",
+        "geo": {
+          "latitude": 53.5413,
+          "longitude": 9.9666,
+          "precisionKm": 0.5
+        }
+      }
+    ],
+    "workModel": {
+      "arrangement": "HYBRID",
+      "remoteShare": {
+        "percent": {
+          "min": 40,
+          "max": 60
+        },
+        "referencePeriod": "WEEK"
+      },
+      "onsiteDays": {
+        "days": {
+          "min": 2,
+          "max": 3
+        },
+        "referencePeriod": "WEEK"
+      },
+      "travelShare": {
+        "percent": {
+          "max": 5
+        },
+        "referencePeriod": "YEAR"
+      }
+    },
+    "workingTime": {
+      "schedule": "FULL_TIME",
+      "weeklyHours": {
+        "min": 38,
+        "max": 38
+      },
+      "shiftWork": false,
+      "flexibleHours": true
+    },
+    "contract": {
+      "contractType": "PERMANENT_EMPLOYMENT",
+      "probationMonths": 6
+    },
+    "development": {
+      "paths": [
+        "EXPERT",
+        "PROJECT"
+      ],
+      "trainingDaysPerYear": {
+        "min": 5
+      }
+    },
+    "benefits": [
+      {
+        "text": "Public transport ticket",
+        "language": "en"
+      },
+      {
+        "text": "Company pension scheme",
+        "language": "en"
+      }
+    ]
+  },
+  "datePosted": "2026-10-18",
+  "validThrough": "2026-12-15",
+  "postingUrl": "https://example.com/harbour-beverages/jobs/demand-planner",
+  "provenance": {
+    "basis": "ORGANIZATION_STATED"
+  },
+  "jobPreferences": {}
+}

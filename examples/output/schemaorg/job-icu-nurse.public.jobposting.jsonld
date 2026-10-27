@@ -1,0 +1,69 @@
+{
+  "@context": "https://schema.org",
+  "@type": "JobPosting",
+  "title": "Pflegefachkraft Intensivstation (m/w/d)",
+  "responsibilities": "Pflege beatmeter Patientinnen und Patienten; Praxisanleitung neuer Kolleginnen und Kollegen",
+  "description": "<p>Pflege beatmeter Patientinnen und Patienten</p><p>Praxisanleitung neuer Kolleginnen und Kollegen</p>",
+  "datePosted": "2026-10-19",
+  "validThrough": "2026-12-31",
+  "identifier": {
+    "@type": "PropertyValue",
+    "propertyID": "ajms:profileId",
+    "value": "urn:uuid:0e1f2a3b-4c5d-4e6f-a7b8-c9d0e1f2a3b4"
+  },
+  "hiringOrganization": {
+    "@type": "Organization",
+    "name": "Klinikum Beispielstadt (synthetisch)"
+  },
+  "industry": [
+    {
+      "@type": "DefinedTerm",
+      "name": "NACE-REV2 Q86.1",
+      "termCode": "Q86.1"
+    }
+  ],
+  "occupationalCategory": [
+    {
+      "@type": "CategoryCode",
+      "codeValue": "2221",
+      "inCodeSet": {
+        "@type": "CategoryCodeSet",
+        "name": "ISCO-08"
+      }
+    }
+  ],
+  "jobLocation": [
+    {
+      "@type": "Place",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "DE",
+        "addressRegion": "Sachsen",
+        "addressLocality": "Leipzig"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 51.3181,
+        "longitude": 12.4105
+      }
+    }
+  ],
+  "employmentType": [
+    "FULL_TIME"
+  ],
+  "workHours": "38.5 hours per week",
+  "baseSalary": {
+    "@type": "MonetaryAmount",
+    "currency": "EUR",
+    "value": {
+      "@type": "QuantitativeValue",
+      "unitText": "MONTH",
+      "minValue": 3800,
+      "maxValue": 4300
+    }
+  },
+  "experienceRequirements": {
+    "@type": "OccupationalExperienceRequirements",
+    "monthsOfExperience": 24
+  }
+}

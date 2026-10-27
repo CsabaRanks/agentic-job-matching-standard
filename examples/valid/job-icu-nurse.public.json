@@ -1,0 +1,46 @@
+{
+  "@context": "https://raw.githubusercontent.com/CsabaRanks/agentic-job-matching-standard/v0.1.0/context/v0.1/ajms.context.jsonld",
+  "@type": "JobProfile",
+  "profileId": "urn:uuid:0e1f2a3b-4c5d-4e6f-a7b8-c9d0e1f2a3b4",
+  "schemaVersion": "0.1.0",
+  "updatedAt": "2026-10-19T10:00:00+02:00",
+  "profileView": "PUBLIC",
+  "defaultLanguage": "de",
+  "title": { "text": "Pflegefachkraft Intensivstation (m/w/d)", "language": "de" },
+  "hiringOrganization": { "name": "Klinikum Beispielstadt (synthetisch)", "organizationType": "EMPLOYER", "industries": [ { "scheme": "NACE-REV2", "code": "Q86.1" } ], "sizeClass": "EMPLOYEES_1000_PLUS" },
+  "archetype": { "archetypeId": "icu-nurse", "label": { "text": "Intensivpflegekraft", "language": "de" }, "occupationCodes": [ { "scheme": "ISCO-08", "code": "2221" } ] },
+  "careerLevel": "SENIOR",
+  "tasks": [
+    { "taskId": "t-ventilation", "label": { "text": "Pflege beatmeter Patientinnen und Patienten", "language": "de" } },
+    { "taskId": "t-mentoring", "label": { "text": "Praxisanleitung neuer Kolleginnen und Kollegen", "language": "de" } }
+  ],
+  "requirements": {
+    "languages": [ { "languageCode": "de", "minimumCefrLevel": "B2", "requirementLevel": "REQUIRED" } ],
+    "qualifications": [
+      { "requirementId": "q-nursing", "qualificationType": "VOCATIONAL_QUALIFICATION", "label": { "text": "Abgeschlossene Pflegeausbildung", "language": "de" }, "minimumEqfLevel": 4, "requirementLevel": "REQUIRED" }
+    ],
+    "domainExperience": [ { "domainId": "icu-care", "label": { "text": "Intensivpflege", "language": "de" }, "minimumMonths": 24, "requirementLevel": "PREFERRED" } ],
+    "domainCriteria": [
+      { "criterion": { "criterionId": "org.example.healthcare.professional_registration", "label": { "text": "Berufserlaubnis Pflege", "language": "de" }, "dataType": "BOOLEAN", "value": true, "comparator": "EQUALS" }, "requirementLevel": "REQUIRED" },
+      { "criterion": { "criterionId": "org.example.healthcare.specialties", "label": { "text": "Fachgebiet", "language": "de" }, "dataType": "CODE_LIST", "value": [ "ICU" ], "comparator": "ANY_OF" }, "requirementLevel": "REQUIRED" },
+      { "criterion": { "criterionId": "org.example.healthcare.ventilation_hours", "label": { "text": "Erfahrung Beatmungspflege", "language": "de" }, "dataType": "NUMBER", "unitCode": "HUR", "value": 500, "comparator": "AT_LEAST" }, "requirementLevel": "PREFERRED" }
+    ]
+  },
+  "offer": {
+    "compensation": [
+      { "component": "BASE_SALARY", "currency": "EUR", "period": "MONTH", "grossOrNet": "GROSS", "min": 3800, "max": 4300, "hoursPerWeekBasis": 38.5, "paymentsPerYear": 13, "informationKind": "STATED", "note": "Collective agreement pay grade, synthetic figures." },
+      { "component": "ALLOWANCE", "currency": "EUR", "period": "MONTH", "grossOrNet": "GROSS", "value": 150, "hoursPerWeekBasis": 38.5, "informationKind": "STATED", "note": "ICU allowance." }
+    ],
+    "locations": [ { "countryCode": "DE", "region": "Sachsen", "locality": "Leipzig", "geo": { "latitude": 51.3181, "longitude": 12.4105, "precisionKm": 0.5 } } ],
+    "workModel": { "arrangement": "ONSITE" },
+    "workingTime": { "schedule": "FULL_TIME", "weeklyHours": { "min": 38.5, "max": 38.5 }, "shiftWork": true },
+    "contract": { "contractType": "PERMANENT_EMPLOYMENT" },
+    "development": { "paths": [ "FURTHER_EDUCATION", "LEADERSHIP" ] },
+    "domainCriteria": [
+      { "criterionId": "org.example.healthcare.night_shifts_per_month", "label": { "text": "Nachtdienste pro Monat (Durchschnitt)", "language": "de" }, "dataType": "INTEGER", "value": 6 }
+    ]
+  },
+  "datePosted": "2026-10-19",
+  "validThrough": "2026-12-31",
+  "provenance": { "basis": "ORGANIZATION_STATED" }
+}

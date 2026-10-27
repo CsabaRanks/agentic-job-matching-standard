@@ -1,0 +1,581 @@
+{
+  "@context": "https://raw.githubusercontent.com/CsabaRanks/agentic-job-matching-standard/v0.1.0/context/v0.1/ajms.context.jsonld",
+  "@type": "CandidateProfile",
+  "profileId": "urn:uuid:3f1c2a6e-8b4d-4c1e-9a7f-2d5e6b7c8a90",
+  "schemaVersion": "0.1.0",
+  "updatedAt": "2026-10-20T09:00:00+02:00",
+  "profileView": "FULL_PRIVATE",
+  "defaultLanguage": "en",
+  "identity": {
+    "displayName": "Jordan Example",
+    "contactPoints": [
+      {
+        "contactType": "EMAIL",
+        "contactValue": "jordan.example@example.org"
+      },
+      {
+        "contactType": "URL",
+        "contactValue": "https://example.org/jordan"
+      }
+    ],
+    "residence": {
+      "countryCode": "DE",
+      "region": "Hamburg",
+      "locality": "Hamburg",
+      "postalCode": "21073",
+      "geo": {
+        "latitude": 53.4608,
+        "longitude": 9.9835,
+        "precisionKm": 1
+      }
+    }
+  },
+  "headline": {
+    "text": "Supply chain analyst moving into demand planning",
+    "language": "en"
+  },
+  "summary": {
+    "text": "Synthetic example profile. Six years in supply chain analytics for consumer goods, focus on forecasting and S&OP reporting.",
+    "language": "en"
+  },
+  "capabilities": {
+    "currentCareerLevel": "PROFESSIONAL",
+    "archetypes": [
+      {
+        "archetypeId": "supply-chain-analyst",
+        "label": {
+          "text": "Supply Chain Analyst",
+          "language": "en"
+        },
+        "occupationCodes": [
+          {
+            "scheme": "ISCO-08",
+            "code": "3323",
+            "label": {
+              "text": "Buyers",
+              "language": "en"
+            }
+          }
+        ]
+      }
+    ],
+    "competencies": [
+      {
+        "competencyId": "demand-forecasting",
+        "label": {
+          "text": "Demand forecasting",
+          "language": "en"
+        },
+        "proficiency": "ADVANCED",
+        "yearsOfPractice": 5,
+        "lastUsedYear": 2026,
+        "provenance": {
+          "basis": "SELF_REPORTED"
+        }
+      },
+      {
+        "competencyId": "sql",
+        "label": {
+          "text": "SQL",
+          "language": "en"
+        },
+        "proficiency": "ADVANCED",
+        "yearsOfPractice": 6,
+        "lastUsedYear": 2026,
+        "provenance": {
+          "basis": "SELF_REPORTED"
+        }
+      },
+      {
+        "competencyId": "python",
+        "label": {
+          "text": "Python",
+          "language": "en"
+        },
+        "proficiency": "INTERMEDIATE",
+        "yearsOfPractice": 3,
+        "lastUsedYear": 2026,
+        "provenance": {
+          "basis": "DOCUMENT_EVIDENCED",
+          "evidenceRefs": [
+            "ev-python-cert"
+          ]
+        }
+      },
+      {
+        "competencyId": "sop-process",
+        "label": {
+          "text": "S&OP process",
+          "language": "en"
+        },
+        "proficiency": "INTERMEDIATE",
+        "yearsOfPractice": 3,
+        "provenance": {
+          "basis": "SELF_REPORTED"
+        }
+      }
+    ],
+    "languages": [
+      {
+        "languageCode": "de",
+        "cefrLevel": "NATIVE",
+        "provenance": {
+          "basis": "SELF_REPORTED"
+        }
+      },
+      {
+        "languageCode": "en",
+        "cefrLevel": "C1",
+        "provenance": {
+          "basis": "DOCUMENT_EVIDENCED",
+          "evidenceRefs": [
+            "ev-english-test"
+          ]
+        }
+      }
+    ],
+    "qualifications": [
+      {
+        "qualificationId": "msc-logistics",
+        "qualificationType": "DEGREE",
+        "label": {
+          "text": "Master of Science, Logistics",
+          "language": "en"
+        },
+        "eqfLevel": 7,
+        "fieldOfStudy": {
+          "text": "Logistics",
+          "language": "en"
+        },
+        "completedOn": "2019-09",
+        "provenance": {
+          "basis": "DOCUMENT_EVIDENCED",
+          "evidenceRefs": [
+            "ev-msc"
+          ]
+        }
+      }
+    ],
+    "domainExperience": [
+      {
+        "domainId": "supply-chain-planning",
+        "label": {
+          "text": "Supply chain planning",
+          "language": "en"
+        },
+        "months": 72,
+        "provenance": {
+          "basis": "SELF_REPORTED"
+        }
+      },
+      {
+        "domainId": "consumer-goods",
+        "label": {
+          "text": "Consumer goods industry",
+          "language": "en"
+        },
+        "code": {
+          "scheme": "NACE-REV2",
+          "code": "C10"
+        },
+        "months": 72,
+        "provenance": {
+          "basis": "SELF_REPORTED"
+        }
+      }
+    ],
+    "totalExperienceMonths": 74,
+    "leadershipExperience": {
+      "leadershipType": "FUNCTIONAL",
+      "directReports": {
+        "min": 0,
+        "max": 0
+      }
+    },
+    "workAuthorizations": [
+      {
+        "countryCode": "DE",
+        "status": "AUTHORIZED",
+        "provenance": {
+          "basis": "SELF_REPORTED"
+        }
+      }
+    ],
+    "domainCriteria": [
+      {
+        "criterionId": "org.example.supplychain.erp_systems",
+        "label": {
+          "text": "ERP systems used in production",
+          "language": "en"
+        },
+        "dataType": "CODE_LIST",
+        "value": [
+          "SAP_S4HANA",
+          "SAP_IBP"
+        ],
+        "provenance": {
+          "basis": "SELF_REPORTED"
+        }
+      },
+      {
+        "criterionId": "org.example.logistics.drivers_license_b",
+        "label": {
+          "text": "Driving licence class B",
+          "language": "en"
+        },
+        "dataType": "BOOLEAN",
+        "value": true,
+        "provenance": {
+          "basis": "SELF_REPORTED"
+        }
+      }
+    ]
+  },
+  "experienceHistory": [
+    {
+      "experienceId": "exp-2020",
+      "roleTitle": {
+        "text": "Supply Chain Analyst",
+        "language": "en"
+      },
+      "organization": {
+        "name": "Example Foods GmbH",
+        "organizationType": "EMPLOYER",
+        "industries": [
+          {
+            "scheme": "NACE-REV2",
+            "code": "C10"
+          }
+        ],
+        "sizeClass": "EMPLOYEES_1000_PLUS"
+      },
+      "careerLevel": "PROFESSIONAL",
+      "startMonth": "2020-10",
+      "ongoing": true,
+      "tasks": [
+        {
+          "taskId": "t-forecast",
+          "label": {
+            "text": "Build and maintain statistical demand forecasts",
+            "language": "en"
+          },
+          "shareOfTimePercent": 50
+        },
+        {
+          "taskId": "t-sop",
+          "label": {
+            "text": "Prepare monthly S&OP reporting",
+            "language": "en"
+          },
+          "shareOfTimePercent": 30
+        }
+      ],
+      "provenance": {
+        "basis": "THIRD_PARTY_CONFIRMED",
+        "evidenceRefs": [
+          "ev-reference-2020"
+        ]
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "evidenceId": "ev-msc",
+      "evidenceKind": "DEGREE_CERTIFICATE",
+      "label": {
+        "text": "Master's degree certificate",
+        "language": "en"
+      },
+      "issuerName": "Example University",
+      "issuedOn": "2019-09-30",
+      "verificationStatus": "UNVERIFIED"
+    },
+    {
+      "evidenceId": "ev-python-cert",
+      "evidenceKind": "CERTIFICATION",
+      "label": {
+        "text": "Python data analysis course certificate",
+        "language": "en"
+      },
+      "issuerName": "Example Academy",
+      "issuedOn": "2023-05-12",
+      "verificationStatus": "UNVERIFIED"
+    },
+    {
+      "evidenceId": "ev-english-test",
+      "evidenceKind": "CERTIFICATION",
+      "label": {
+        "text": "English test, C1",
+        "language": "en"
+      },
+      "issuerName": "Example Language Institute",
+      "issuedOn": "2022-03-01",
+      "verificationStatus": "UNVERIFIED"
+    },
+    {
+      "evidenceId": "ev-reference-2020",
+      "evidenceKind": "EMPLOYMENT_REFERENCE",
+      "label": {
+        "text": "Interim reference letter",
+        "language": "en"
+      },
+      "issuerName": "Example Foods GmbH",
+      "issuedOn": "2025-06-30",
+      "verificationStatus": "VERIFIED_BY_THIRD_PARTY",
+      "verifiedBy": "Example Staffing Partner (synthetic)",
+      "verifiedOn": "2025-07-15"
+    }
+  ],
+  "jobPreferences": {
+    "archetypes": {
+      "wish": {
+        "include": [
+          {
+            "archetypeId": "demand-planner",
+            "label": {
+              "text": "Demand Planner",
+              "language": "en"
+            }
+          }
+        ]
+      },
+      "hardCondition": {
+        "include": [
+          {
+            "archetypeId": "demand-planner",
+            "label": {
+              "text": "Demand Planner",
+              "language": "en"
+            }
+          },
+          {
+            "archetypeId": "supply-chain-analyst",
+            "label": {
+              "text": "Supply Chain Analyst",
+              "language": "en"
+            }
+          }
+        ]
+      }
+    },
+    "careerLevel": {
+      "hardCondition": {
+        "include": [
+          "PROFESSIONAL",
+          "SENIOR"
+        ]
+      },
+      "wish": {
+        "include": [
+          "SENIOR"
+        ]
+      }
+    },
+    "industries": {
+      "wish": {
+        "include": [
+          {
+            "scheme": "NACE-REV2",
+            "code": "C10"
+          },
+          {
+            "scheme": "NACE-REV2",
+            "code": "C21"
+          }
+        ]
+      },
+      "hardCondition": {
+        "exclude": [
+          {
+            "scheme": "NACE-REV2",
+            "code": "C12"
+          }
+        ]
+      },
+      "note": "No tobacco industry."
+    },
+    "organization": {
+      "wish": {
+        "sizeClasses": {
+          "include": [
+            "EMPLOYEES_250_999",
+            "EMPLOYEES_1000_PLUS"
+          ]
+        }
+      }
+    },
+    "tasks": {
+      "wish": {
+        "include": [
+          {
+            "taskId": "t-forecast",
+            "label": {
+              "text": "Build and maintain statistical demand forecasts",
+              "language": "en"
+            }
+          },
+          {
+            "taskId": "t-automation",
+            "label": {
+              "text": "Automate planning reports",
+              "language": "en"
+            }
+          }
+        ]
+      }
+    },
+    "compensation": {
+      "hardCondition": {
+        "atLeast": {
+          "component": "BASE_SALARY",
+          "currency": "EUR",
+          "period": "YEAR",
+          "grossOrNet": "GROSS",
+          "value": 62000,
+          "hoursPerWeekBasis": 40,
+          "informationKind": "STATED"
+        }
+      },
+      "wish": {
+        "atLeast": {
+          "component": "BASE_SALARY",
+          "currency": "EUR",
+          "period": "YEAR",
+          "grossOrNet": "GROSS",
+          "value": 70000,
+          "hoursPerWeekBasis": 40,
+          "informationKind": "STATED"
+        }
+      }
+    },
+    "location": {
+      "hardCondition": {
+        "commute": {
+          "origin": {
+            "countryCode": "DE",
+            "region": "Hamburg",
+            "geo": {
+              "latitude": 53.46,
+              "longitude": 9.98,
+              "precisionKm": 5
+            }
+          },
+          "maxOneWayDistance": {
+            "value": 40,
+            "unitCode": "MIN",
+            "measurement": "STRAIGHT_LINE"
+          },
+          "transportModes": [
+            "PUBLIC_TRANSPORT",
+            "BICYCLE"
+          ],
+          "relocationPossible": false
+        }
+      },
+      "wish": {
+        "commute": {
+          "origin": {
+            "countryCode": "DE",
+            "region": "Hamburg",
+            "geo": {
+              "latitude": 53.46,
+              "longitude": 9.98,
+              "precisionKm": 5
+            }
+          },
+          "maxOneWayDuration": {
+            "value": 45,
+            "unitCode": "MIN"
+          },
+          "transportModes": [
+            "PUBLIC_TRANSPORT"
+          ]
+        }
+      }
+    },
+    "workModel": {
+      "hardCondition": {
+        "arrangements": {
+          "include": [
+            "HYBRID",
+            "REMOTE"
+          ]
+        },
+        "travelShareAtMost": {
+          "percent": 20,
+          "referencePeriod": "YEAR"
+        }
+      },
+      "wish": {
+        "remoteShareAtLeast": {
+          "percent": 40,
+          "referencePeriod": "WEEK"
+        }
+      }
+    },
+    "workingTime": {
+      "hardCondition": {
+        "schedules": {
+          "include": [
+            "FULL_TIME"
+          ]
+        },
+        "weeklyHours": {
+          "min": 35,
+          "max": 40
+        },
+        "shiftWorkAcceptable": false
+      }
+    },
+    "contract": {
+      "hardCondition": {
+        "contractTypes": {
+          "include": [
+            "PERMANENT_EMPLOYMENT",
+            "FIXED_TERM_EMPLOYMENT"
+          ]
+        },
+        "fixedTermMonthsAtLeast": 24
+      },
+      "wish": {
+        "contractTypes": {
+          "include": [
+            "PERMANENT_EMPLOYMENT"
+          ]
+        }
+      }
+    },
+    "development": {
+      "wish": {
+        "paths": {
+          "include": [
+            "EXPERT",
+            "FURTHER_EDUCATION"
+          ]
+        }
+      }
+    },
+    "domainCriteria": {
+      "wish": [
+        {
+          "criterionId": "org.example.supplychain.planning_tool_budget",
+          "label": {
+            "text": "Budget for planning tool licences available",
+            "language": "en"
+          },
+          "dataType": "BOOLEAN",
+          "value": true,
+          "comparator": "EQUALS"
+        }
+      ]
+    }
+  },
+  "availability": {
+    "earliestStartDate": "2027-01-01",
+    "noticePeriod": {
+      "value": 3,
+      "unitCode": "MON"
+    }
+  },
+  "searchStatus": "OPEN_TO_OFFERS"
+}

@@ -1,0 +1,102 @@
+{
+  "@context": "https://schema.org",
+  "@type": "JobPosting",
+  "title": "Demand Planner (m/f/d)",
+  "responsibilities": "Build and maintain statistical demand forecasts; Run the monthly consensus forecast meeting; Automate planning reports",
+  "description": "<p>Build and maintain statistical demand forecasts</p><p>Run the monthly consensus forecast meeting</p><p>Automate planning reports</p>",
+  "datePosted": "2026-10-18",
+  "validThrough": "2026-12-15",
+  "url": "https://example.com/harbour-beverages/jobs/demand-planner",
+  "identifier": {
+    "@type": "PropertyValue",
+    "propertyID": "ajms:profileId",
+    "value": "urn:uuid:9b2e4d71-0c3a-4f5e-8d6b-1a2b3c4d5e6f"
+  },
+  "hiringOrganization": {
+    "@type": "Organization",
+    "name": "Harbour Beverages Example GmbH",
+    "sameAs": "https://example.com/harbour-beverages"
+  },
+  "industry": [
+    {
+      "@type": "DefinedTerm",
+      "name": "NACE-REV2 C11",
+      "termCode": "C11"
+    }
+  ],
+  "occupationalCategory": [
+    {
+      "@type": "CategoryCode",
+      "codeValue": "3323",
+      "inCodeSet": {
+        "@type": "CategoryCodeSet",
+        "name": "ISCO-08"
+      }
+    }
+  ],
+  "jobLocation": [
+    {
+      "@type": "Place",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "DE",
+        "addressRegion": "Hamburg",
+        "addressLocality": "Hamburg",
+        "postalCode": "20457"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 53.5413,
+        "longitude": 9.9666
+      }
+    }
+  ],
+  "employmentType": [
+    "FULL_TIME"
+  ],
+  "workHours": "38 hours per week",
+  "baseSalary": {
+    "@type": "MonetaryAmount",
+    "currency": "EUR",
+    "value": {
+      "@type": "QuantitativeValue",
+      "unitText": "YEAR",
+      "minValue": 64000,
+      "maxValue": 74000
+    }
+  },
+  "incentiveCompensation": "variable target 4000 EUR per year",
+  "jobBenefits": "Public transport ticket; Company pension scheme",
+  "skills": [
+    {
+      "@type": "DefinedTerm",
+      "name": "Demand forecasting"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "SQL"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "Python"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "Facilitating cross-functional meetings"
+    }
+  ],
+  "educationRequirements": [
+    {
+      "@type": "EducationalOccupationalCredential",
+      "credentialCategory": "degree",
+      "educationalLevel": "EQF level 6"
+    }
+  ],
+  "experienceInPlaceOfEducation": true,
+  "experienceRequirements": {
+    "@type": "OccupationalExperienceRequirements",
+    "monthsOfExperience": 36
+  },
+  "eligibilityToWorkRequirement": "Work authorization required for: DE",
+  "jobStartDate": "2026-12-01"
+}

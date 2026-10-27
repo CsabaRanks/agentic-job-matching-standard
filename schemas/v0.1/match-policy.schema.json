@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/CsabaRanks/agentic-job-matching-standard/v0.1.0/schemas/v0.1/match-policy.schema.json",
+  "title": "AJMS MatchPolicy v0.1",
+  "description": "Evaluation weights for one matching perspective, kept separate from profile data. Weights only rank WISH / PREFERRED criteria; hard conditions are never weighted. Community Draft - not an adopted standard.",
+  "type": "object",
+  "properties": {
+    "@type": { "const": "MatchPolicy" },
+    "policyId": { "$ref": "common.schema.json#/$defs/Identifier" },
+    "schemaVersion": { "$ref": "common.schema.json#/$defs/SchemaVersion" },
+    "perspective": { "enum": [ "HIRING_FIT", "CAREER_FIT" ] },
+    "calibrationStatus": {
+      "description": "UNCALIBRATED: weights are illustrative and were not validated against outcomes or user judgements.",
+      "enum": [ "UNCALIBRATED", "CALIBRATED" ]
+    },
+    "weights": {
+      "type": "object",
+      "propertyNames": { "$ref": "#/$defs/CriterionGroup" },
+      "additionalProperties": { "type": "number", "minimum": 0 }
+    },
+    "note": { "type": "string" }
+  },
+  "required": [ "@type", "policyId", "schemaVersion", "perspective", "calibrationStatus", "weights" ],
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": { "properties": { "perspective": { "const": "HIRING_FIT" } } },
+      "then": { "properties": { "weights": { "propertyNames": { "$ref": "#/$defs/HiringFitGroup" } } } }
+    },
+    {
+      "if": { "properties": { "perspective": { "const": "CAREER_FIT" } } },
+      "then": { "properties": { "weights": { "propertyNames": { "$ref": "#/$defs/CareerFitGroup" } } } }
+    }
+  ],
+  "$defs": {
+    "HiringFitGroup": {
+      "enum": [ "competencies", "languages", "qualifications", "domainExperience", "totalExperience", "leadershipExperience", "careerLevel", "workAuthorization", "startTiming", "domainCriteria" ]
+    },
+    "CareerFitGroup": {
+      "enum": [ "archetype", "careerLevel", "industry", "organization", "tasks", "compensation", "location", "workModel", "workingTime", "contract", "development", "domainCriteria" ]
+    },
+    "CriterionGroup": {
+      "anyOf": [ { "$ref": "#/$defs/HiringFitGroup" }, { "$ref": "#/$defs/CareerFitGroup" } ]
+    }
+  }
+}

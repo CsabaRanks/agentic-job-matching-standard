@@ -1,0 +1,46 @@
+{
+  "@context": "https://raw.githubusercontent.com/CsabaRanks/agentic-job-matching-standard/v0.1.0/context/v0.1/ajms.context.jsonld",
+  "@type": "CandidateProfile",
+  "profileId": "urn:uuid:5a6b7c8d-9e0f-4a1b-8c2d-3e4f5a6b7c8d",
+  "schemaVersion": "0.1.0",
+  "updatedAt": "2026-10-15T18:00:00+02:00",
+  "profileView": "SHARED_VIEW",
+  "defaultLanguage": "de",
+  "headline": { "text": "Fachpflegekraft Intensivpflege mit Beatmungserfahrung", "language": "de" },
+  "capabilities": {
+    "currentCareerLevel": "SENIOR",
+    "archetypes": [ { "archetypeId": "icu-nurse", "label": { "text": "Intensivpflegekraft", "language": "de" }, "occupationCodes": [ { "scheme": "ISCO-08", "code": "2221" } ] } ],
+    "languages": [ { "languageCode": "de", "cefrLevel": "NATIVE", "provenance": { "basis": "SELF_REPORTED" } } ],
+    "qualifications": [
+      { "qualificationId": "q-nursing", "qualificationType": "VOCATIONAL_QUALIFICATION", "label": { "text": "Pflegefachfrau/-mann (Berufsabschluss)", "language": "de" }, "eqfLevel": 4, "provenance": { "basis": "DOCUMENT_EVIDENCED", "evidenceRefs": [ "ev-nursing" ] } },
+      { "qualificationId": "q-icu", "qualificationType": "CERTIFICATION", "label": { "text": "Fachweiterbildung Intensiv- und Anästhesiepflege", "language": "de" }, "provenance": { "basis": "DOCUMENT_EVIDENCED", "evidenceRefs": [ "ev-icu" ] } }
+    ],
+    "domainExperience": [ { "domainId": "icu-care", "label": { "text": "Intensivpflege", "language": "de" }, "months": 96 } ],
+    "totalExperienceMonths": 132,
+    "workAuthorizations": [ { "countryCode": "DE", "status": "AUTHORIZED" } ],
+    "domainCriteria": [
+      { "criterionId": "org.example.healthcare.professional_registration", "label": { "text": "Berufserlaubnis Pflege liegt vor", "language": "de" }, "dataType": "BOOLEAN", "value": true, "provenance": { "basis": "DOCUMENT_EVIDENCED", "evidenceRefs": [ "ev-nursing" ] } },
+      { "criterionId": "org.example.healthcare.specialties", "label": { "text": "Fachgebiete", "language": "de" }, "dataType": "CODE_LIST", "value": [ "ICU", "ANESTHESIA" ], "provenance": { "basis": "DOCUMENT_EVIDENCED", "evidenceRefs": [ "ev-icu" ] } },
+      { "criterionId": "org.example.healthcare.ventilation_hours", "label": { "text": "Stunden Beatmungspflege", "language": "de" }, "dataType": "NUMBER", "unitCode": "HUR", "value": 800, "provenance": { "basis": "SELF_REPORTED" } }
+    ]
+  },
+  "evidence": [
+    { "evidenceId": "ev-nursing", "evidenceKind": "LICENSE", "label": { "text": "Urkunde Berufsbezeichnung", "language": "de" }, "verificationStatus": "UNVERIFIED" },
+    { "evidenceId": "ev-icu", "evidenceKind": "CERTIFICATION", "label": { "text": "Zeugnis Fachweiterbildung", "language": "de" }, "verificationStatus": "UNVERIFIED" }
+  ],
+  "jobPreferences": {
+    "archetypes": { "hardCondition": { "include": [ { "archetypeId": "icu-nurse", "label": { "text": "Intensivpflegekraft", "language": "de" } } ] } },
+    "compensation": { "hardCondition": { "atLeast": { "component": "BASE_SALARY", "currency": "EUR", "period": "MONTH", "grossOrNet": "GROSS", "value": 3900, "hoursPerWeekBasis": 39, "informationKind": "STATED" } } },
+    "location": { "hardCondition": { "commute": { "origin": { "countryCode": "DE", "region": "Sachsen", "geo": { "latitude": 51.34, "longitude": 12.37, "precisionKm": 10 } }, "maxOneWayDuration": { "value": 40, "unitCode": "MIN" }, "transportModes": [ "PUBLIC_TRANSPORT" ] } } },
+    "workModel": { "state": "NOT_APPLICABLE", "note": "Pflege am Bett, kein Remote-Anteil erwartet." },
+    "workingTime": { "hardCondition": { "weeklyHours": { "min": 30, "max": 39 }, "shiftWorkAcceptable": true }, "wish": { "schedules": { "include": [ "PART_TIME" ] } } },
+    "contract": { "hardCondition": { "contractTypes": { "include": [ "PERMANENT_EMPLOYMENT" ] } } },
+    "domainCriteria": {
+      "hardCondition": [
+        { "criterionId": "org.example.healthcare.night_shifts_per_month", "label": { "text": "Nachtdienste pro Monat", "language": "de" }, "dataType": "INTEGER", "value": 4, "comparator": "AT_MOST" }
+      ]
+    }
+  },
+  "availability": { "earliestStartDate": "2026-12-01", "noticePeriod": { "value": 6, "unitCode": "WEE" } },
+  "searchStatus": "ACTIVELY_SEEKING"
+}

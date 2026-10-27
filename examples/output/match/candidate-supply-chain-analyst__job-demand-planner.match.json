@@ -1,0 +1,271 @@
+{
+  "@type": "MatchResult",
+  "schemaVersion": "0.1.0",
+  "candidateProfileId": "urn:uuid:dcde3cca-c19a-55b6-8354-1d988ad1eb21",
+  "candidateUpdatedAt": "2026-10-20T09:00:00+02:00",
+  "jobProfileId": "urn:uuid:9b2e4d71-0c3a-4f5e-8d6b-1a2b3c4d5e6f",
+  "jobUpdatedAt": "2026-10-18T14:30:00+02:00",
+  "hiringFit": {
+    "perspective": "HIRING_FIT",
+    "policyId": "demo-hiring-fit-v0.1",
+    "calibrationStatus": "UNCALIBRATED",
+    "hardConditionStatus": "ALL_MET",
+    "indicativeScore": 0.9,
+    "knownWeightCoverage": 0.833,
+    "outcomeCounts": {
+      "MET": 11,
+      "PARTIALLY_MET": 1,
+      "NOT_MET": 0,
+      "UNKNOWN": 1,
+      "NOT_APPLICABLE": 0
+    },
+    "criteria": [
+      {
+        "criterionKey": "competencies/demand-forecasting",
+        "group": "competencies",
+        "strength": "HARD",
+        "outcome": "MET",
+        "explanation": "Demand forecasting: proficiency ADVANCED vs required ADVANCED; 5 years vs required 3 (SELF_REPORTED)"
+      },
+      {
+        "criterionKey": "competencies/sql",
+        "group": "competencies",
+        "strength": "SOFT",
+        "outcome": "MET",
+        "explanation": "SQL: proficiency ADVANCED vs required INTERMEDIATE (SELF_REPORTED)"
+      },
+      {
+        "criterionKey": "competencies/python",
+        "group": "competencies",
+        "strength": "SOFT",
+        "outcome": "PARTIALLY_MET",
+        "explanation": "Python: proficiency INTERMEDIATE vs required ADVANCED (DOCUMENT_EVIDENCED)"
+      },
+      {
+        "criterionKey": "competencies/stakeholder-facilitation",
+        "group": "competencies",
+        "strength": "SOFT",
+        "outcome": "UNKNOWN",
+        "explanation": "Facilitating cross-functional meetings: not stated in the candidate profile"
+      },
+      {
+        "criterionKey": "languages/de",
+        "group": "languages",
+        "strength": "HARD",
+        "outcome": "MET",
+        "explanation": "de: NATIVE vs required C1"
+      },
+      {
+        "criterionKey": "languages/en",
+        "group": "languages",
+        "strength": "HARD",
+        "outcome": "MET",
+        "explanation": "en: C1 vs required B2"
+      },
+      {
+        "criterionKey": "qualifications/q-degree",
+        "group": "qualifications",
+        "strength": "HARD",
+        "outcome": "MET",
+        "explanation": "Degree in logistics, business or a related field: EQF 7 vs required 6; field of study not compared automatically"
+      },
+      {
+        "criterionKey": "domainExperience/supply-chain-planning",
+        "group": "domainExperience",
+        "strength": "HARD",
+        "outcome": "MET",
+        "explanation": "Supply chain planning: 72 months vs required 36"
+      },
+      {
+        "criterionKey": "careerLevel",
+        "group": "careerLevel",
+        "strength": "SOFT",
+        "outcome": "MET",
+        "explanation": "job SENIOR, candidate currently PROFESSIONAL (step +1)"
+      },
+      {
+        "criterionKey": "workAuthorization",
+        "group": "workAuthorization",
+        "strength": "HARD",
+        "outcome": "MET",
+        "explanation": "DE: authorized"
+      },
+      {
+        "criterionKey": "startTiming",
+        "group": "startTiming",
+        "strength": "SOFT",
+        "outcome": "MET",
+        "explanation": "candidate from 2027-01-01, job latest 2027-03-01"
+      },
+      {
+        "criterionKey": "domainCriteria/org.example.supplychain.erp_systems",
+        "group": "domainCriteria",
+        "strength": "HARD",
+        "outcome": "MET",
+        "explanation": "ERP systems: all of [\"SAP_IBP\", \"SAP_S4HANA\"] present"
+      },
+      {
+        "criterionKey": "domainCriteria/org.example.logistics.drivers_license_b",
+        "group": "domainCriteria",
+        "strength": "SOFT",
+        "outcome": "MET",
+        "explanation": "Driving licence class B: stated true, condition EQUALS true"
+      }
+    ]
+  },
+  "careerFit": {
+    "perspective": "CAREER_FIT",
+    "policyId": "demo-career-fit-v0.1",
+    "calibrationStatus": "UNCALIBRATED",
+    "hardConditionStatus": "ALL_MET",
+    "indicativeScore": 0.909,
+    "knownWeightCoverage": 0.846,
+    "outcomeCounts": {
+      "MET": 15,
+      "PARTIALLY_MET": 1,
+      "NOT_MET": 1,
+      "UNKNOWN": 2,
+      "NOT_APPLICABLE": 0
+    },
+    "criteria": [
+      {
+        "criterionKey": "archetypes/hard",
+        "group": "archetypes",
+        "strength": "HARD",
+        "outcome": "MET",
+        "explanation": "job archetype demand-planner: the job has an included value"
+      },
+      {
+        "criterionKey": "archetypes/wish",
+        "group": "archetypes",
+        "strength": "SOFT",
+        "outcome": "MET",
+        "explanation": "job archetype demand-planner: the job has an included value"
+      },
+      {
+        "criterionKey": "careerLevel/hard",
+        "group": "careerLevel",
+        "strength": "HARD",
+        "outcome": "MET",
+        "explanation": "job level SENIOR"
+      },
+      {
+        "criterionKey": "careerLevel/wish",
+        "group": "careerLevel",
+        "strength": "SOFT",
+        "outcome": "MET",
+        "explanation": "job level SENIOR"
+      },
+      {
+        "criterionKey": "industries/hard",
+        "group": "industries",
+        "strength": "HARD",
+        "outcome": "MET",
+        "explanation": "job industry NACE-REV2 C11: no excluded value present"
+      },
+      {
+        "criterionKey": "industries/wish",
+        "group": "industries",
+        "strength": "SOFT",
+        "outcome": "NOT_MET",
+        "explanation": "job industry NACE-REV2 C11: none of the job's values is included"
+      },
+      {
+        "criterionKey": "organization/wish",
+        "group": "organization",
+        "strength": "SOFT",
+        "outcome": "MET",
+        "explanation": "size EMPLOYEES_250_999"
+      },
+      {
+        "criterionKey": "tasks/wish",
+        "group": "tasks",
+        "strength": "SOFT",
+        "outcome": "MET",
+        "explanation": "2 of 2 desired tasks present"
+      },
+      {
+        "criterionKey": "compensation/hard",
+        "group": "compensation",
+        "strength": "HARD",
+        "outcome": "MET",
+        "explanation": "job 67,368-77,895 EUR/year vs at least 62,000; scaled from 38 h to 40 h per week"
+      },
+      {
+        "criterionKey": "compensation/wish",
+        "group": "compensation",
+        "strength": "SOFT",
+        "outcome": "PARTIALLY_MET",
+        "explanation": "job 67,368-77,895 EUR/year vs at least 70,000; scaled from 38 h to 40 h per week"
+      },
+      {
+        "criterionKey": "location/hard",
+        "group": "location",
+        "strength": "HARD",
+        "outcome": "MET",
+        "explanation": "Hamburg: 9.1 km straight line (+/-5.5 km) vs max 40.0 km"
+      },
+      {
+        "criterionKey": "location/wish",
+        "group": "location",
+        "strength": "SOFT",
+        "outcome": "UNKNOWN",
+        "explanation": "Hamburg: travel time limit 45 MIN needs routing or timetable data; not derived from distance"
+      },
+      {
+        "criterionKey": "workModel/hard",
+        "group": "workModel",
+        "strength": "HARD",
+        "outcome": "MET",
+        "explanation": "arrangement HYBRID; travel share up to 5 % vs at most 20 %"
+      },
+      {
+        "criterionKey": "workModel/wish",
+        "group": "workModel",
+        "strength": "SOFT",
+        "outcome": "MET",
+        "explanation": "remote share 40-60 % vs at least 40 %"
+      },
+      {
+        "criterionKey": "workingTime/hard",
+        "group": "workingTime",
+        "strength": "HARD",
+        "outcome": "MET",
+        "explanation": "schedule FULL_TIME; 38-38 h/week vs acceptable 35-40; shiftWork no"
+      },
+      {
+        "criterionKey": "contract/hard",
+        "group": "contract",
+        "strength": "HARD",
+        "outcome": "MET",
+        "explanation": "PERMANENT_EMPLOYMENT"
+      },
+      {
+        "criterionKey": "contract/wish",
+        "group": "contract",
+        "strength": "SOFT",
+        "outcome": "MET",
+        "explanation": "PERMANENT_EMPLOYMENT"
+      },
+      {
+        "criterionKey": "development/wish",
+        "group": "development",
+        "strength": "SOFT",
+        "outcome": "MET",
+        "explanation": "job paths: EXPERT, PROJECT"
+      },
+      {
+        "criterionKey": "domainCriteria/org.example.supplychain.planning_tool_budget",
+        "group": "domainCriteria",
+        "strength": "SOFT",
+        "outcome": "UNKNOWN",
+        "explanation": "Budget for planning tool licences available: no value stated on the other side"
+      }
+    ]
+  },
+  "generatedBy": {
+    "tool": "ajms-reference",
+    "toolVersion": "0.1.0"
+  },
+  "disclaimer": "Demonstration output. Weights are UNCALIBRATED and illustrative. UNKNOWN means information is missing or not comparable; it is not a negative result. Not suitable for automated decisions about people."
+}

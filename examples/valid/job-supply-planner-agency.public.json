@@ -1,0 +1,34 @@
+{
+  "@context": "https://raw.githubusercontent.com/CsabaRanks/agentic-job-matching-standard/v0.1.0/context/v0.1/ajms.context.jsonld",
+  "@type": "JobProfile",
+  "profileId": "urn:uuid:c4d5e6f7-1a2b-4c3d-9e8f-7a6b5c4d3e2f",
+  "schemaVersion": "0.1.0",
+  "updatedAt": "2026-10-22T08:15:00+02:00",
+  "profileView": "PUBLIC",
+  "defaultLanguage": "de",
+  "title": { "text": "Supply Planner (m/w/d) in Arbeitnehmerüberlassung", "language": "de" },
+  "hiringOrganization": { "organizationType": "EMPLOYER", "industries": [ { "scheme": "NACE-REV2", "code": "C21" } ] },
+  "intermediary": { "name": "Example Staffing Partner GmbH", "organizationType": "STAFFING_AGENCY" },
+  "archetype": { "archetypeId": "supply-planner", "label": { "text": "Supply Planner", "language": "de" } },
+  "careerLevel": "PROFESSIONAL",
+  "tasks": [
+    { "taskId": "t-supply-plan", "label": { "text": "Materialbedarfsplanung für zwei Werke", "language": "de" } },
+    { "taskId": "t-forecast", "label": { "text": "Build and maintain statistical demand forecasts", "language": "en" } }
+  ],
+  "requirements": {
+    "competencies": [
+      { "competencyId": "sap-mm", "label": { "text": "SAP MM", "language": "de" }, "minimumProficiency": "ADVANCED", "requirementLevel": "REQUIRED" }
+    ],
+    "languages": [ { "languageCode": "de", "minimumCefrLevel": "C1", "requirementLevel": "REQUIRED" } ],
+    "totalExperienceMonths": { "minimumMonths": 24, "requirementLevel": "REQUIRED" }
+  },
+  "offer": {
+    "compensation": { "state": "NOT_DISCLOSED", "note": "Gehalt auf Anfrage." },
+    "locations": [ { "countryCode": "DE", "region": "Bremen", "locality": "Bremen", "geo": { "latitude": 53.0793, "longitude": 8.8017, "precisionKm": 5 } } ],
+    "workModel": { "arrangement": "HYBRID" },
+    "workingTime": { "schedule": "FULL_TIME" },
+    "contract": { "contractType": "TEMPORARY_AGENCY_WORK", "fixedTermMonths": 12, "permanentConversionPossible": true }
+  },
+  "datePosted": "2026-10-22",
+  "provenance": { "basis": "DERIVED", "sourceUrl": "https://example.com/staffing/jobs/4711", "note": "Extracted from a published job ad by a third-party agent; not confirmed by the employer." }
+}

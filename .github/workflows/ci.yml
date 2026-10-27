@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.10", "3.11", "3.12", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install
+        run: pip install -e ".[test]"
+      - name: Validate examples, negative cases, JSON-LD and generated outputs
+        run: ajms check
+      - name: Quickstart commands
+        run: |
+          ajms validate --jsonld examples/valid/job-demand-planner.public.json
+          ajms render examples/valid/candidate-supply-chain-analyst.shared-view.json --lang de > /dev/null
+          ajms match examples/valid/candidate-supply-chain-analyst.shared-view.json examples/valid/job-supply-planner-agency.public.json > /dev/null
+          ajms derive-view examples/valid/candidate-supply-chain-analyst.full-private.json --view PUBLIC_MINIMAL > /dev/null
+          ajms export-schemaorg examples/valid/job-demand-planner.public.json > /dev/null
+          python tools/make_invalid_examples.py
+          git diff --exit-code
+      - name: Tests
+        run: pytest -q

@@ -1,0 +1,302 @@
+{
+  "@context": "https://raw.githubusercontent.com/CsabaRanks/agentic-job-matching-standard/v0.1.0/context/v0.1/ajms.context.jsonld",
+  "@type": "CandidateProfile",
+  "profileId": "urn:uuid:b5fd5d50-a858-5411-ba0e-c7dc0e39ef41",
+  "schemaVersion": "0.1.0",
+  "updatedAt": "2026-10-20T09:00:00+02:00",
+  "profileView": "PUBLIC_MINIMAL",
+  "defaultLanguage": "en",
+  "headline": {
+    "text": "Supply chain analyst moving into demand planning",
+    "language": "en"
+  },
+  "capabilities": {
+    "currentCareerLevel": "PROFESSIONAL",
+    "archetypes": [
+      {
+        "archetypeId": "supply-chain-analyst",
+        "label": {
+          "text": "Supply Chain Analyst",
+          "language": "en"
+        },
+        "occupationCodes": [
+          {
+            "scheme": "ISCO-08",
+            "code": "3323",
+            "label": {
+              "text": "Buyers",
+              "language": "en"
+            }
+          }
+        ]
+      }
+    ],
+    "competencies": [
+      {
+        "competencyId": "demand-forecasting",
+        "label": {
+          "text": "Demand forecasting",
+          "language": "en"
+        },
+        "proficiency": "ADVANCED",
+        "yearsOfPractice": 5,
+        "provenance": {
+          "basis": "SELF_REPORTED"
+        }
+      },
+      {
+        "competencyId": "sql",
+        "label": {
+          "text": "SQL",
+          "language": "en"
+        },
+        "proficiency": "ADVANCED",
+        "yearsOfPractice": 6,
+        "provenance": {
+          "basis": "SELF_REPORTED"
+        }
+      },
+      {
+        "competencyId": "python",
+        "label": {
+          "text": "Python",
+          "language": "en"
+        },
+        "proficiency": "INTERMEDIATE",
+        "yearsOfPractice": 3,
+        "provenance": {
+          "basis": "DOCUMENT_EVIDENCED",
+          "evidenceRefs": [
+            "ev-python-cert"
+          ]
+        }
+      },
+      {
+        "competencyId": "sop-process",
+        "label": {
+          "text": "S&OP process",
+          "language": "en"
+        },
+        "proficiency": "INTERMEDIATE",
+        "yearsOfPractice": 3,
+        "provenance": {
+          "basis": "SELF_REPORTED"
+        }
+      }
+    ],
+    "languages": [
+      {
+        "languageCode": "de",
+        "cefrLevel": "NATIVE",
+        "provenance": {
+          "basis": "SELF_REPORTED"
+        }
+      },
+      {
+        "languageCode": "en",
+        "cefrLevel": "C1",
+        "provenance": {
+          "basis": "DOCUMENT_EVIDENCED",
+          "evidenceRefs": [
+            "ev-english-test"
+          ]
+        }
+      }
+    ],
+    "qualifications": [
+      {
+        "qualificationId": "msc-logistics",
+        "qualificationType": "DEGREE",
+        "label": {
+          "text": "Master of Science, Logistics",
+          "language": "en"
+        },
+        "eqfLevel": 7,
+        "fieldOfStudy": {
+          "text": "Logistics",
+          "language": "en"
+        },
+        "provenance": {
+          "basis": "DOCUMENT_EVIDENCED",
+          "evidenceRefs": [
+            "ev-msc"
+          ]
+        }
+      }
+    ],
+    "totalExperienceMonths": 74
+  },
+  "jobPreferences": {
+    "archetypes": {
+      "wish": {
+        "include": [
+          {
+            "archetypeId": "demand-planner",
+            "label": {
+              "text": "Demand Planner",
+              "language": "en"
+            }
+          }
+        ]
+      },
+      "hardCondition": {
+        "include": [
+          {
+            "archetypeId": "demand-planner",
+            "label": {
+              "text": "Demand Planner",
+              "language": "en"
+            }
+          },
+          {
+            "archetypeId": "supply-chain-analyst",
+            "label": {
+              "text": "Supply Chain Analyst",
+              "language": "en"
+            }
+          }
+        ]
+      }
+    },
+    "careerLevel": {
+      "hardCondition": {
+        "include": [
+          "PROFESSIONAL",
+          "SENIOR"
+        ]
+      },
+      "wish": {
+        "include": [
+          "SENIOR"
+        ]
+      }
+    },
+    "industries": {
+      "wish": {
+        "include": [
+          {
+            "scheme": "NACE-REV2",
+            "code": "C10"
+          },
+          {
+            "scheme": "NACE-REV2",
+            "code": "C21"
+          }
+        ]
+      },
+      "hardCondition": {
+        "exclude": [
+          {
+            "scheme": "NACE-REV2",
+            "code": "C12"
+          }
+        ]
+      },
+      "note": "No tobacco industry."
+    },
+    "workModel": {
+      "hardCondition": {
+        "arrangements": {
+          "include": [
+            "HYBRID",
+            "REMOTE"
+          ]
+        },
+        "travelShareAtMost": {
+          "percent": 20,
+          "referencePeriod": "YEAR"
+        }
+      },
+      "wish": {
+        "remoteShareAtLeast": {
+          "percent": 40,
+          "referencePeriod": "WEEK"
+        }
+      }
+    },
+    "workingTime": {
+      "hardCondition": {
+        "schedules": {
+          "include": [
+            "FULL_TIME"
+          ]
+        },
+        "weeklyHours": {
+          "min": 35,
+          "max": 40
+        },
+        "shiftWorkAcceptable": false
+      }
+    },
+    "contract": {
+      "hardCondition": {
+        "contractTypes": {
+          "include": [
+            "PERMANENT_EMPLOYMENT",
+            "FIXED_TERM_EMPLOYMENT"
+          ]
+        },
+        "fixedTermMonthsAtLeast": 24
+      },
+      "wish": {
+        "contractTypes": {
+          "include": [
+            "PERMANENT_EMPLOYMENT"
+          ]
+        }
+      }
+    },
+    "location": {
+      "hardCondition": {
+        "commute": {
+          "origin": {
+            "countryCode": "DE",
+            "region": "Hamburg",
+            "geo": {
+              "latitude": 53.5,
+              "longitude": 10.0,
+              "precisionKm": 10.0
+            }
+          },
+          "maxOneWayDistance": {
+            "value": 40,
+            "unitCode": "KMT",
+            "measurement": "STRAIGHT_LINE"
+          },
+          "transportModes": [
+            "PUBLIC_TRANSPORT",
+            "BICYCLE"
+          ],
+          "relocationPossible": false
+        }
+      },
+      "wish": {
+        "commute": {
+          "origin": {
+            "countryCode": "DE",
+            "region": "Hamburg",
+            "geo": {
+              "latitude": 53.5,
+              "longitude": 10.0,
+              "precisionKm": 10.0
+            }
+          },
+          "maxOneWayDuration": {
+            "value": 45,
+            "unitCode": "MIN"
+          },
+          "transportModes": [
+            "PUBLIC_TRANSPORT"
+          ]
+        }
+      }
+    }
+  },
+  "availability": {
+    "earliestStartDate": "2027-01-01"
+  },
+  "searchStatus": "OPEN_TO_OFFERS",
+  "identity": {
+    "displayName": "Jordan Example"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "@context": "https://raw.githubusercontent.com/CsabaRanks/agentic-job-matching-standard/v0.1.0/context/v0.1/ajms.context.jsonld",
+  "@type": "ProfileReference",
+  "profileId": "urn:uuid:9b2e4d71-0c3a-4f5e-8d6b-1a2b3c4d5e6f",
+  "profileType": "JobProfile",
+  "schemaVersion": "0.1.0",
+  "updatedAt": "2026-10-18T14:30:00+02:00",
+  "profileView": "PUBLIC",
+  "profileUrl": "https://example.com/harbour-beverages/jobs/demand-planner.ajms.json",
+  "accessMethod": "PUBLIC",
+  "mediaType": "application/ld+json",
+  "contentDigest": {
+    "algorithm": "SHA-256",
+    "canonicalization": "AJMS-JSON-SORTED-KEYS-V1",
+    "value": "2c16ba645c3c34e09a0315ce8cb87d09fe396f089c2824c072cad9206db95d5e"
+  }
+}
