@@ -1,0 +1,509 @@
+{
+  "@context": "https://csabaranks.github.io/agentic-job-matching-standard/context/v0.1/ajms.context.jsonld",
+  "@type": "CandidateProfile",
+  "profileId": "urn:uuid:1f969c0f-9978-5a35-9ad7-cf4a80bb7e3f",
+  "schemaVersion": "0.1.0",
+  "updatedAt": "2026-10-27T11:05:00+01:00",
+  "profileView": "FULL_PRIVATE",
+  "defaultLanguage": "en",
+  "identity": {
+    "displayName": "Jordan Example",
+    "residence": {
+      "countryCode": "DE",
+      "geo": {
+        "latitude": 53.55,
+        "longitude": 9.99,
+        "precisionKm": 10
+      },
+      "locality": "Hamburg"
+    }
+  },
+  "headline": {
+    "text": "Supply Chain Analyst | Demand Forecasting",
+    "language": "en"
+  },
+  "summary": {
+    "text": "Synthetic example profile. Forecasting and S&OP reporting in consumer goods.",
+    "language": "en"
+  },
+  "experienceHistory": [
+    {
+      "experienceId": "exp-1",
+      "roleTitle": {
+        "text": "Supply Chain Analyst",
+        "language": "en"
+      },
+      "organization": {
+        "name": "Example Foods GmbH"
+      },
+      "startMonth": "2020-10",
+      "ongoing": true,
+      "tasks": [
+        {
+          "taskId": "task-1",
+          "label": {
+            "text": "Build and maintain statistical demand forecasts; monthly S&OP reporting",
+            "language": "en"
+          }
+        }
+      ]
+    },
+    {
+      "experienceId": "exp-2",
+      "roleTitle": {
+        "text": "Logistics Trainee",
+        "language": "en"
+      },
+      "organization": {
+        "name": "Example Logistics AG"
+      },
+      "startMonth": "2019-09",
+      "endMonth": "2020-09",
+      "tasks": [
+        {
+          "taskId": "task-1",
+          "label": {
+            "text": "Rotation through planning and warehouse operations",
+            "language": "en"
+          }
+        }
+      ]
+    }
+  ],
+  "evidence": [
+    {
+      "evidenceId": "ev-cert-1",
+      "evidenceKind": "CERTIFICATION",
+      "label": {
+        "text": "Python for Data Analysis",
+        "language": "en"
+      },
+      "documentUrl": "https://example.org/certificates/abc123",
+      "verificationStatus": "UNVERIFIED"
+    }
+  ],
+  "capabilities": {
+    "qualifications": [
+      {
+        "qualificationId": "edu-1",
+        "qualificationType": "DEGREE",
+        "label": {
+          "text": "Master of Science - MS Logistics",
+          "language": "en"
+        },
+        "issuerName": "Example University",
+        "eqfLevel": 7
+      },
+      {
+        "qualificationId": "edu-2",
+        "qualificationType": "DEGREE",
+        "label": {
+          "text": "Bachelor of Science - BS Business Administration",
+          "language": "en"
+        },
+        "issuerName": "Example University",
+        "eqfLevel": 6
+      },
+      {
+        "qualificationId": "cert-1",
+        "qualificationType": "CERTIFICATION",
+        "label": {
+          "text": "Python for Data Analysis",
+          "language": "en"
+        },
+        "issuerName": "Example Academy",
+        "completedOn": "2023-05",
+        "validUntil": "2028-05-31",
+        "provenance": {
+          "basis": "DOCUMENT_EVIDENCED",
+          "evidenceRefs": [
+            "ev-cert-1"
+          ]
+        }
+      }
+    ],
+    "competencies": [
+      {
+        "competencyId": "demand-forecasting",
+        "label": {
+          "text": "Demand Forecasting",
+          "language": "en"
+        }
+      },
+      {
+        "competencyId": "sql",
+        "label": {
+          "text": "SQL",
+          "language": "en"
+        }
+      },
+      {
+        "competencyId": "python",
+        "label": {
+          "text": "Python",
+          "language": "en"
+        }
+      },
+      {
+        "competencyId": "sales-and-operations-planning-s-op",
+        "label": {
+          "text": "Sales and Operations Planning (S&OP)",
+          "language": "en"
+        }
+      }
+    ],
+    "languages": [
+      {
+        "languageCode": "de",
+        "cefrLevel": "NATIVE"
+      },
+      {
+        "languageCode": "en",
+        "cefrLevel": "C1"
+      }
+    ]
+  },
+  "source": {
+    "sourceUrl": "urn:sha256:86b2b5dd879cd18c015ce1efd06bfd1d9cca110beb4f08370c86bcaf8d6cb1cb",
+    "sourceFileName": "export",
+    "retrievedAt": "2026-10-27T11:05:00+01:00",
+    "sourceKind": "PLATFORM_EXPORT",
+    "sourceFormat": "linkedin-data-export-csv",
+    "inputKind": "STRUCTURED",
+    "textDigest": {
+      "algorithm": "SHA-256",
+      "value": "86b2b5dd879cd18c015ce1efd06bfd1d9cca110beb4f08370c86bcaf8d6cb1cb"
+    },
+    "importedBy": {
+      "tool": "ajms-adapters",
+      "toolVersion": "linkedin-csv-1"
+    },
+    "extractionQuality": {
+      "status": "PASSED",
+      "checks": [
+        "Certifications.csv: header has all expected columns, 1 rows",
+        "Connections.csv: not imported (DATA_MINIMISATION)",
+        "Education.csv: header has all expected columns, 2 rows",
+        "Languages.csv: header has all expected columns, 3 rows",
+        "Positions.csv: header has all expected columns, 2 rows",
+        "Profile.csv: header has all expected columns, 1 rows",
+        "Skills.csv: header has all expected columns, 4 rows"
+      ]
+    },
+    "unmapped": [
+      {
+        "sourceField": "Connections.csv",
+        "reason": "DATA_MINIMISATION",
+        "note": "personal data of third parties; never imported"
+      },
+      {
+        "sourceField": "Profile.csv:Address",
+        "reason": "DATA_MINIMISATION",
+        "note": "a full address is not needed for matching"
+      },
+      {
+        "sourceField": "Profile.csv:Birth Date",
+        "reason": "PROTECTED_CHARACTERISTIC_NOT_MAPPED",
+        "note": "age is not represented in AJMS; value not stored"
+      },
+      {
+        "sourceField": "Profile.csv:Industry",
+        "reason": "NO_AJMS_FIELD",
+        "note": "current industry without duration; experience by industry needs months"
+      },
+      {
+        "sourceField": "Profile.csv:Zip Code",
+        "reason": "DATA_MINIMISATION",
+        "note": "postal code of the residence is not needed for matching"
+      },
+      {
+        "sourceField": "Profile.csv:Websites",
+        "reason": "NO_AJMS_FIELD"
+      },
+      {
+        "sourceField": "Positions.csv row 1:Location",
+        "reason": "NO_AJMS_FIELD",
+        "note": "experience entries have no location in AJMS v0.1"
+      },
+      {
+        "sourceField": "Positions.csv row 2:Location",
+        "reason": "NO_AJMS_FIELD",
+        "note": "experience entries have no location in AJMS v0.1"
+      },
+      {
+        "sourceField": "Education.csv row 1:End Date",
+        "reason": "MISSING_REQUIRED_DETAIL",
+        "note": "year without month; completion month stays unknown"
+      },
+      {
+        "sourceField": "Education.csv row 1:Activities",
+        "reason": "NO_AJMS_FIELD"
+      },
+      {
+        "sourceField": "Education.csv row 2:End Date",
+        "reason": "MISSING_REQUIRED_DETAIL",
+        "note": "year without month; completion month stays unknown"
+      },
+      {
+        "sourceField": "Certifications.csv row 1:License Number",
+        "reason": "DATA_MINIMISATION"
+      },
+      {
+        "sourceField": "Languages.csv row 3:Proficiency",
+        "reason": "MISSING_REQUIRED_DETAIL",
+        "note": "no proficiency stated; AJMS requires a level, so the language is not mapped"
+      }
+    ]
+  },
+  "fieldStatements": [
+    {
+      "path": "/capabilities/competencies/0/competencyId",
+      "statementKind": "DERIVED",
+      "sourceExcerpt": "Demand Forecasting",
+      "method": "slug-of-label"
+    },
+    {
+      "path": "/capabilities/competencies/0/label",
+      "statementKind": "EXPLICIT",
+      "sourceExcerpt": "Demand Forecasting"
+    },
+    {
+      "path": "/capabilities/competencies/1/competencyId",
+      "statementKind": "DERIVED",
+      "sourceExcerpt": "SQL",
+      "method": "slug-of-label"
+    },
+    {
+      "path": "/capabilities/competencies/1/label",
+      "statementKind": "EXPLICIT",
+      "sourceExcerpt": "SQL"
+    },
+    {
+      "path": "/capabilities/competencies/2/competencyId",
+      "statementKind": "DERIVED",
+      "sourceExcerpt": "Python",
+      "method": "slug-of-label"
+    },
+    {
+      "path": "/capabilities/competencies/2/label",
+      "statementKind": "EXPLICIT",
+      "sourceExcerpt": "Python"
+    },
+    {
+      "path": "/capabilities/competencies/3/competencyId",
+      "statementKind": "DERIVED",
+      "sourceExcerpt": "Sales and Operations Planning (S&OP)",
+      "method": "slug-of-label"
+    },
+    {
+      "path": "/capabilities/competencies/3/label",
+      "statementKind": "EXPLICIT",
+      "sourceExcerpt": "Sales and Operations Planning (S&OP)"
+    },
+    {
+      "path": "/capabilities/languages/0/cefrLevel",
+      "statementKind": "DERIVED",
+      "sourceExcerpt": "Native or bilingual proficiency",
+      "method": "linkedin-proficiency-to-cefr"
+    },
+    {
+      "path": "/capabilities/languages/0/languageCode",
+      "statementKind": "NORMALIZED",
+      "sourceExcerpt": "German",
+      "method": "language-name-en-to-bcp47"
+    },
+    {
+      "path": "/capabilities/languages/1/cefrLevel",
+      "statementKind": "DERIVED",
+      "sourceExcerpt": "Full professional proficiency",
+      "method": "linkedin-proficiency-to-cefr",
+      "lossy": true,
+      "note": "no official equivalence between LinkedIn 'Full professional proficiency' and CEFR C1"
+    },
+    {
+      "path": "/capabilities/languages/1/languageCode",
+      "statementKind": "NORMALIZED",
+      "sourceExcerpt": "English",
+      "method": "language-name-en-to-bcp47"
+    },
+    {
+      "path": "/capabilities/qualifications/0/eqfLevel",
+      "statementKind": "DERIVED",
+      "sourceExcerpt": "Master of Science - MS Logistics",
+      "method": "degree-keyword-to-eqf"
+    },
+    {
+      "path": "/capabilities/qualifications/0/issuerName",
+      "statementKind": "EXPLICIT",
+      "sourceExcerpt": "Example University"
+    },
+    {
+      "path": "/capabilities/qualifications/0/label",
+      "statementKind": "EXPLICIT",
+      "sourceExcerpt": "Master of Science - MS Logistics"
+    },
+    {
+      "path": "/capabilities/qualifications/0/qualificationType",
+      "statementKind": "DERIVED",
+      "method": "education-row-is-degree"
+    },
+    {
+      "path": "/capabilities/qualifications/1/eqfLevel",
+      "statementKind": "DERIVED",
+      "sourceExcerpt": "Bachelor of Science - BS Business Administration",
+      "method": "degree-keyword-to-eqf"
+    },
+    {
+      "path": "/capabilities/qualifications/1/issuerName",
+      "statementKind": "EXPLICIT",
+      "sourceExcerpt": "Example University"
+    },
+    {
+      "path": "/capabilities/qualifications/1/label",
+      "statementKind": "EXPLICIT",
+      "sourceExcerpt": "Bachelor of Science - BS Business Administration"
+    },
+    {
+      "path": "/capabilities/qualifications/1/qualificationType",
+      "statementKind": "DERIVED",
+      "method": "education-row-is-degree"
+    },
+    {
+      "path": "/capabilities/qualifications/2/completedOn",
+      "statementKind": "NORMALIZED",
+      "sourceExcerpt": "May 2023",
+      "method": "linkedin-month-year",
+      "note": "'Started On' read as issue month"
+    },
+    {
+      "path": "/capabilities/qualifications/2/issuerName",
+      "statementKind": "EXPLICIT",
+      "sourceExcerpt": "Example Academy"
+    },
+    {
+      "path": "/capabilities/qualifications/2/label",
+      "statementKind": "EXPLICIT",
+      "sourceExcerpt": "Python for Data Analysis"
+    },
+    {
+      "path": "/capabilities/qualifications/2/provenance",
+      "statementKind": "DERIVED",
+      "method": "certificate-url-is-evidence-reference"
+    },
+    {
+      "path": "/capabilities/qualifications/2/qualificationType",
+      "statementKind": "DERIVED",
+      "method": "certification-row"
+    },
+    {
+      "path": "/capabilities/qualifications/2/validUntil",
+      "statementKind": "DERIVED",
+      "sourceExcerpt": "May 2028",
+      "method": "month-to-last-day",
+      "lossy": true,
+      "note": "month-precision expiry mapped to the last day of that month"
+    },
+    {
+      "path": "/evidence/0/documentUrl",
+      "statementKind": "EXPLICIT",
+      "sourceExcerpt": "https://example.org/certificates/abc123"
+    },
+    {
+      "path": "/evidence/0/verificationStatus",
+      "statementKind": "DERIVED",
+      "method": "nothing-verified-on-import"
+    },
+    {
+      "path": "/experienceHistory/0/ongoing",
+      "statementKind": "DERIVED",
+      "method": "empty-finished-on-means-current"
+    },
+    {
+      "path": "/experienceHistory/0/organization/name",
+      "statementKind": "EXPLICIT",
+      "sourceExcerpt": "Example Foods GmbH"
+    },
+    {
+      "path": "/experienceHistory/0/roleTitle",
+      "statementKind": "EXPLICIT",
+      "sourceExcerpt": "Supply Chain Analyst"
+    },
+    {
+      "path": "/experienceHistory/0/startMonth",
+      "statementKind": "NORMALIZED",
+      "sourceExcerpt": "Oct 2020",
+      "method": "linkedin-month-year"
+    },
+    {
+      "path": "/experienceHistory/0/tasks/0/label",
+      "statementKind": "EXPLICIT",
+      "sourceExcerpt": "Build and maintain statistical demand forecasts; monthly S&OP reporting",
+      "lossy": true,
+      "note": "the whole description becomes one task"
+    },
+    {
+      "path": "/experienceHistory/1/endMonth",
+      "statementKind": "NORMALIZED",
+      "sourceExcerpt": "Sep 2020",
+      "method": "linkedin-month-year"
+    },
+    {
+      "path": "/experienceHistory/1/organization/name",
+      "statementKind": "EXPLICIT",
+      "sourceExcerpt": "Example Logistics AG"
+    },
+    {
+      "path": "/experienceHistory/1/roleTitle",
+      "statementKind": "EXPLICIT",
+      "sourceExcerpt": "Logistics Trainee"
+    },
+    {
+      "path": "/experienceHistory/1/startMonth",
+      "statementKind": "NORMALIZED",
+      "sourceExcerpt": "Sep 2019",
+      "method": "linkedin-month-year"
+    },
+    {
+      "path": "/experienceHistory/1/tasks/0/label",
+      "statementKind": "EXPLICIT",
+      "sourceExcerpt": "Rotation through planning and warehouse operations",
+      "lossy": true,
+      "note": "the whole description becomes one task"
+    },
+    {
+      "path": "/headline",
+      "statementKind": "EXPLICIT",
+      "sourceExcerpt": "Supply Chain Analyst | Demand Forecasting"
+    },
+    {
+      "path": "/identity/displayName",
+      "statementKind": "NORMALIZED",
+      "sourceExcerpt": "Jordan",
+      "method": "join-first-and-last-name",
+      "note": "First Name and Last Name joined"
+    },
+    {
+      "path": "/identity/residence/countryCode",
+      "statementKind": "NORMALIZED",
+      "sourceExcerpt": "Germany",
+      "method": "country-name-to-iso3166"
+    },
+    {
+      "path": "/identity/residence/geo",
+      "statementKind": "DERIVED",
+      "sourceExcerpt": "Hamburg",
+      "method": "gazetteer-city-centroid",
+      "note": "city centroid, precision 10 km"
+    },
+    {
+      "path": "/identity/residence/locality",
+      "statementKind": "EXPLICIT",
+      "sourceExcerpt": "Hamburg"
+    },
+    {
+      "path": "/summary",
+      "statementKind": "EXPLICIT",
+      "sourceExcerpt": "Synthetic example profile. Forecasting and S&OP reporting in consumer goods."
+    }
+  ]
+}

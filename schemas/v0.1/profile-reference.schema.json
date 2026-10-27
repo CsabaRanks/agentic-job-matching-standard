@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://raw.githubusercontent.com/CsabaRanks/agentic-job-matching-standard/v0.1.0/schemas/v0.1/profile-reference.schema.json",
+  "$id": "https://csabaranks.github.io/agentic-job-matching-standard/schemas/v0.1/profile-reference.schema.json",
   "title": "AJMS ProfileReference v0.1",
   "description": "Minimal exchange convention: tells a recipient which profile exists, in which version and where it can be retrieved. Carries no profile content. Access control is the responsibility of the hosting or transport solution. Community Draft - not an adopted standard.",
   "type": "object",

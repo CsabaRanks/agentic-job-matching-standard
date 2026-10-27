@@ -1,0 +1,64 @@
+Bundesagentur für Arbeit
+Ihr Bewerberprofil - Demand Planner/in
+
+Überblick über das Bewerberprofil
+Referenznummer	10000-0000000000-S
+Titel des Bewerberprofils	Demand Planner/in
+Alternativberufe	Supply-Chain-Analyst/in
+Anzeigentext	Erfahrene Fachkraft für Absatzplanung sucht neue Aufgabe
+Gewünschte Arbeitsorte	20095 Hamburg, Hamburg, Deutschland - Umkreis 40 km
+	Bremen, Bremen, Deutschland - Umkreis 10 km
+Beginn der Tätigkeit	01.01.2027
+Schulabschluss	Allgemeine Hochschulreife - Gymnasium
+Berufserfahrung	Mit Berufserfahrung
+
+Anforderungen an die Stelle
+Bewerberprofilart	Arbeitsplatz
+Arbeitszeit	Vollzeit
+
+Berufserfahrung
+01.10.2020 - 31.12.2026	Supply-Chain-Analyst/in
+	Beschreibung: Statistische Absatzprognosen und S&OP-Reporting
+	Aufbau automatisierter Planungsberichte
+01.09.2019 - 30.09.2020	Sonstiges
+	Beschreibung: Traineeprogramm Logistik
+
+Schul- und Berufsbildung
+Schulabschluss	Allgemeine Hochschulreife - Gymnasium
+01.10.2014 - 30.09.2019	Logistik (Master of Science)
+	Beschreibung/ Schwerpunkte: Supply Chain Planning, Operations Research
+	Master / Diplom / Magister
+01.08.2006 - 30.06.2014	Allgemeine Hochschulreife
+
+Persönliche Fähigkeiten und Kompetenzen
+Wirtschaft, Verwaltung
+	Expertenkenntnisse
+	Absatzplanung, Bedarfsprognose
+	Erweiterte Kenntnisse
+	S&OP-Prozess
+IT, DV, Computer
+	Erweiterte Kenntnisse
+	SQL, Python, SAP ERP
+Sprachkenntnisse	Muttersprache
+	Deutsch
+	Verhandlungssicher
+	Englisch
+	Grundkenntnisse
+	Französisch
+Persönliche Stärken	Analysefähigkeit, Teamfähigkeit
+Weiterbildungen und Zertifikate	Zertifikat Datenanalyse
+	Datenanalyse mit Python (Zertifikatskurs)
+	Gültig von 12.05.2023 bis 11.05.2028
+	Zertifikat Datenanalyse
+	Datenanalyse mit Python (Zertifikatskurs)
+	Gültig von 12.05.2023 bis 11.05.2028
+Führerscheine	Fahrerlaubnis B PKW/Kleinbusse (alt: FS 3)
+Fahrzeug	Fahrzeug vorhanden
+Mobilität	Reisebereitschaft vorhanden
+
+Kontaktdaten und sonstige Angaben zur Bewerberin/ zum Bewerber
+Name	Bewerber anonymisiert
+Anschrift	Kontakt über:
+	Agentur für Arbeit Beispielstadt
+Telekommunikation	Telefon über die Agentur für Arbeit
+Sonstige Angaben zum Bewerber	weiblich, Alter: 30 Jahre

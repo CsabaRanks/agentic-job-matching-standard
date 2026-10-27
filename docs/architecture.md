@@ -17,12 +17,14 @@ flowchart TB
         R["render.py<br/>deterministic Markdown EN/DE"]
         M["match.py<br/>Hiring-Fit + Career-Fit demo"]
         E["schemaorg_export.py<br/>JobProfile → JobPosting"]
+        I["adapters/<br/>BA · LinkedIn CSV · JSON Resume · job ad<br/>→ profile + field statements"]
     end
     subgraph Outside["Outside AJMS (deployment-specific)"]
         H["hosting, storage, authentication,<br/>authorization, transport"]
         A["agents, LLMs, embeddings,<br/>ranking, calibration"]
     end
     S1 --> V
+    I --> V
     S2 --> J
     S1 --> M
     D --> X
@@ -62,7 +64,8 @@ flowchart LR
 | Weights in a separate `MatchPolicy` | profiles describe facts and preferences; weights are an evaluator's choice and must be visible and replaceable |
 | Absence = UNKNOWN, explicit `StatedAbsence` | avoids `null` ambiguity and the common error of reading silence as "no" |
 | Deterministic reference tools without network, LLM or API keys | reproducible results, runnable offline and in CI |
-| Schema IDs pinned to a release tag | a published schema version never changes |
+| Schema IDs on GitHub Pages under a versioned path (`schemas/v0.1/`) | IDs, context and namespace are served with proper content types from one host; a published schema line never changes |
+| Import adapters separate from retrieval | adapters convert provided data and record field-level provenance; fetching data from platforms is a different concern |
 
 ## Repository layout
 
@@ -76,6 +79,10 @@ flowchart LR
 | `examples/policies/` | demonstration weights (UNCALIBRATED) |
 | `examples/exchange/` | generated ProfileReferences |
 | `examples/output/` | generated Markdown renderings, match results, schema.org exports |
+| `src/ajms/adapters/` | import adapters (BA text, LinkedIn CSV, JSON Resume, job ad text) and the conversion report |
+| `examples/adapters/` | synthetic adapter inputs, converted profiles, conversion reports |
+| `ns/v0.1/index.html`, `index.html`, `.nojekyll` | GitHub Pages: vocabulary page (generated) and landing page |
 | `tools/make_invalid_examples.py` | regenerates the negative examples |
+| `tools/check_published_urls.py` | checks the published schema IDs, context and namespace |
 | `tests/` | pytest suite |
 | `docs/` | specification and supporting documents |

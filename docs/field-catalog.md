@@ -72,7 +72,21 @@ A `DomainCriterion` has:
 | `org.example.healthcare.ventilation_hours` | job requirement / candidate fact | `NUMBER`, `HUR` | `AT_LEAST` |
 | `org.example.healthcare.night_shifts_per_month` | candidate hard condition / job fact | `INTEGER` | `AT_MOST` |
 
-## 5. Profile envelope
+## 5. Imported profiles
+
+| Property | Meaning |
+|---|---|
+| `source.sourceUrl`, `sourceFileName`, `sourceRecordId` | where the data came from (`urn:sha256:<digest>` for files without URL) |
+| `source.retrievedAt` | when the data was retrieved or provided |
+| `source.sourceFormat`, `source.inputKind` | adapter format; `STRUCTURED` (fields mapped directly) or `TEXT` (values extracted) |
+| `source.textDigest` | SHA-256 of the original data |
+| `source.extractionQuality` | `PASSED` / `REVIEW`, recognized share, checks |
+| `source.unmapped[]` | source fields not carried, with reason; never their values |
+| `fieldStatements[]` | per field: `EXPLICIT`, `NORMALIZED`, `DERIVED`, `sourceExcerpt`, `method`, `lossy`, `note` |
+
+Details: [import-adapters.md](import-adapters.md).
+
+## 6. Profile envelope
 
 | Property | CandidateProfile | JobProfile | Meaning |
 |---|---|---|---|

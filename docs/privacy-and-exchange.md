@@ -12,7 +12,7 @@ This document separates two things: **which data a profile representation contai
 | **SHARED_VIEW** | one named recipient (agency, employer), after the candidate decided to share | capabilities, preferences, history without employer names, evidence descriptions without document links; identity only if the candidate chooses to disclose it | by default: identity, employer names, document links, postal codes, precise coordinates |
 | **PUBLIC_MINIMAL** (optional) | anyone | headline, career level, archetypes, competencies, languages, qualifications, coarse preferences, coarse region, earliest start | identity, employment history, evidence, postal codes, coordinates finer than 10 km |
 
-`ajms derive-view --view SHARED_VIEW|PUBLIC_MINIMAL <private.json>` derives the two reduced views deterministically. A derived view gets its own `profileId`, so the views cannot be joined by identifier alone.
+`ajms derive-view --view SHARED_VIEW|PUBLIC_MINIMAL <private.json>` derives the two reduced views deterministically. Import metadata (`source`, `fieldStatements`) is dropped from derived views. Import adapters never store the values of fields they do not map (e.g. sex, age, birth date, third-party contacts). A derived view gets its own `profileId`, so the views cannot be joined by identifier alone.
 
 ### What a reduced view does not achieve
 
@@ -28,7 +28,7 @@ A ProfileReference announces a profile without containing it:
 
 ```json
 {
-  "@context": "https://raw.githubusercontent.com/CsabaRanks/agentic-job-matching-standard/v0.1.0/context/v0.1/ajms.context.jsonld",
+  "@context": "https://csabaranks.github.io/agentic-job-matching-standard/context/v0.1/ajms.context.jsonld",
   "@type": "ProfileReference",
   "profileId": "urn:uuid:…",
   "profileType": "CandidateProfile",

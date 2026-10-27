@@ -1,0 +1,730 @@
+{
+  "@context": "https://csabaranks.github.io/agentic-job-matching-standard/context/v0.1/ajms.context.jsonld",
+  "@type": "CandidateProfile",
+  "profileId": "urn:uuid:8f73559a-b25b-56dd-a91d-cf81a2926480",
+  "schemaVersion": "0.1.0",
+  "updatedAt": "2026-10-27T11:00:00+01:00",
+  "profileView": "FULL_PRIVATE",
+  "defaultLanguage": "de",
+  "headline": {
+    "text": "Erfahrene Fachkraft für Absatzplanung sucht neue Aufgabe",
+    "language": "de"
+  },
+  "availability": {
+    "earliestStartDate": "2027-01-01"
+  },
+  "capabilities": {
+    "qualifications": [
+      {
+        "qualificationId": "school-leaving",
+        "qualificationType": "OTHER",
+        "label": {
+          "text": "Allgemeine Hochschulreife - Gymnasium",
+          "language": "de"
+        },
+        "eqfLevel": 4
+      },
+      {
+        "qualificationId": "edu-2",
+        "qualificationType": "DEGREE",
+        "label": {
+          "text": "Logistik (Master of Science)",
+          "language": "de"
+        },
+        "completedOn": "2019-09",
+        "eqfLevel": 7
+      },
+      {
+        "qualificationId": "cert-3",
+        "qualificationType": "CERTIFICATION",
+        "label": {
+          "text": "Datenanalyse mit Python (Zertifikatskurs)",
+          "language": "de"
+        },
+        "completedOn": "2023-05",
+        "validUntil": "2028-05-11"
+      }
+    ],
+    "competencies": [
+      {
+        "competencyId": "absatzplanung",
+        "label": {
+          "text": "Absatzplanung",
+          "language": "de"
+        },
+        "proficiency": "EXPERT"
+      },
+      {
+        "competencyId": "bedarfsprognose",
+        "label": {
+          "text": "Bedarfsprognose",
+          "language": "de"
+        },
+        "proficiency": "EXPERT"
+      },
+      {
+        "competencyId": "s-op-prozess",
+        "label": {
+          "text": "S&OP-Prozess",
+          "language": "de"
+        },
+        "proficiency": "ADVANCED"
+      },
+      {
+        "competencyId": "sql",
+        "label": {
+          "text": "SQL",
+          "language": "de"
+        },
+        "proficiency": "ADVANCED"
+      },
+      {
+        "competencyId": "python",
+        "label": {
+          "text": "Python",
+          "language": "de"
+        },
+        "proficiency": "ADVANCED"
+      },
+      {
+        "competencyId": "sap-erp",
+        "label": {
+          "text": "SAP ERP",
+          "language": "de"
+        },
+        "proficiency": "ADVANCED"
+      }
+    ],
+    "languages": [
+      {
+        "languageCode": "de",
+        "cefrLevel": "NATIVE"
+      },
+      {
+        "languageCode": "en",
+        "cefrLevel": "C1"
+      },
+      {
+        "languageCode": "fr",
+        "cefrLevel": "A2"
+      }
+    ],
+    "domainCriteria": [
+      {
+        "criterionId": "io.github.csabaranks.ajms.driving_licence_classes",
+        "label": {
+          "text": "Fahrerlaubnisklassen",
+          "language": "de"
+        },
+        "dataType": "CODE_LIST",
+        "value": [
+          "B"
+        ]
+      },
+      {
+        "criterionId": "io.github.csabaranks.ajms.own_vehicle",
+        "label": {
+          "text": "Eigenes Fahrzeug",
+          "language": "de"
+        },
+        "dataType": "BOOLEAN",
+        "value": true
+      }
+    ]
+  },
+  "experienceHistory": [
+    {
+      "experienceId": "exp-1",
+      "roleTitle": {
+        "text": "Supply-Chain-Analyst/in",
+        "language": "de"
+      },
+      "startMonth": "2020-10",
+      "endMonth": "2026-12",
+      "tasks": [
+        {
+          "taskId": "task-1",
+          "label": {
+            "text": "Statistische Absatzprognosen und S&OP-Reporting",
+            "language": "de"
+          }
+        },
+        {
+          "taskId": "task-2",
+          "label": {
+            "text": "Aufbau automatisierter Planungsberichte",
+            "language": "de"
+          }
+        }
+      ]
+    },
+    {
+      "experienceId": "exp-2",
+      "roleTitle": {
+        "text": "Sonstiges",
+        "language": "de"
+      },
+      "startMonth": "2019-09",
+      "endMonth": "2020-09",
+      "tasks": [
+        {
+          "taskId": "task-1",
+          "label": {
+            "text": "Traineeprogramm Logistik",
+            "language": "de"
+          }
+        }
+      ]
+    }
+  ],
+  "jobPreferences": {
+    "archetypes": {
+      "wish": {
+        "include": [
+          {
+            "archetypeId": "demand-planner",
+            "label": {
+              "text": "Demand Planner/in",
+              "language": "de"
+            }
+          },
+          {
+            "archetypeId": "supply-chain-analyst",
+            "label": {
+              "text": "Supply-Chain-Analyst/in",
+              "language": "de"
+            }
+          }
+        ]
+      }
+    },
+    "location": {
+      "wish": {
+        "commute": {
+          "origin": {
+            "countryCode": "DE",
+            "geo": {
+              "latitude": 53.55,
+              "longitude": 9.99,
+              "precisionKm": 10
+            },
+            "region": "Hamburg",
+            "locality": "Hamburg",
+            "postalCode": "20095"
+          },
+          "maxOneWayDistance": {
+            "value": 40,
+            "unitCode": "KMT",
+            "measurement": "STRAIGHT_LINE"
+          }
+        },
+        "places": [
+          {
+            "countryCode": "DE",
+            "region": "Bremen",
+            "locality": "Bremen"
+          }
+        ]
+      }
+    },
+    "workingTime": {
+      "wish": {
+        "schedules": {
+          "include": [
+            "FULL_TIME"
+          ]
+        }
+      }
+    }
+  },
+  "source": {
+    "sourceUrl": "urn:sha256:910624853b490d848c0750b1299a5bb513a294510477765e2a0af89af20114a4",
+    "sourceFileName": "synthetic-demand-planner.ba.txt",
+    "sourceRecordId": "10000-0000000000-S",
+    "retrievedAt": "2026-10-27T11:00:00+01:00",
+    "sourceKind": "PORTAL_PROFILE",
+    "sourceFormat": "ba-bewerberprofil-text",
+    "inputKind": "TEXT",
+    "textDigest": {
+      "algorithm": "SHA-256",
+      "value": "910624853b490d848c0750b1299a5bb513a294510477765e2a0af89af20114a4"
+    },
+    "importedBy": {
+      "tool": "ajms-adapters",
+      "toolVersion": "ba-text-1"
+    },
+    "extractionQuality": {
+      "status": "REVIEW",
+      "recognizedShare": 0.983,
+      "uninterpretedLines": 1,
+      "checks": [
+        "221 tokens (minimum 30)",
+        "readable word share 100% (minimum 60%)",
+        "layout anchors present",
+        "every source excerpt found verbatim in the input",
+        "57 of 58 non-empty lines recognized, 1 not interpreted"
+      ]
+    },
+    "unmapped": [
+      {
+        "sourceField": "Überblick: Berufserfahrung",
+        "reason": "REDUNDANT",
+        "note": "yes/no flag; the experience entries are mapped individually"
+      },
+      {
+        "sourceField": "Anforderungen: Bewerberprofilart",
+        "reason": "NO_AJMS_FIELD",
+        "note": "type of position sought (job, apprenticeship, ...)"
+      },
+      {
+        "sourceField": "Schul- und Berufsbildung: Schulabschluss",
+        "reason": "REDUNDANT",
+        "note": "same certificate listed twice in the BA export"
+      },
+      {
+        "sourceField": "Schul- und Berufsbildung: Logistik (Master of Science): Schwerpunkte",
+        "reason": "NO_AJMS_FIELD",
+        "note": "focus areas of a degree have no AJMS field"
+      },
+      {
+        "sourceField": "Schul- und Berufsbildung: Allgemeine Hochschulreife (01.08.2006 - 30.06.2014)",
+        "reason": "REDUNDANT",
+        "note": "dated school period of the school-leaving certificate already mapped"
+      },
+      {
+        "sourceField": "Persönliche Stärken",
+        "reason": "NO_AJMS_FIELD",
+        "note": "self-described personal strengths are not mapped to competencies"
+      },
+      {
+        "sourceField": "Weiterbildungen und Zertifikate: short title of 'Datenanalyse mit Python (Zertifikatskurs)'",
+        "reason": "REDUNDANT",
+        "note": "short title next to the full certificate name"
+      },
+      {
+        "sourceField": "Weiterbildungen und Zertifikate: 'Datenanalyse mit Python (Zertifikatskurs)' (repeated)",
+        "reason": "REDUNDANT",
+        "note": "identical certificate listed more than once in the BA export"
+      },
+      {
+        "sourceField": "line 57",
+        "reason": "NOT_INTERPRETED",
+        "note": "row label 'Mobilität' is unknown to ba-text-1"
+      },
+      {
+        "sourceField": "Kontaktdaten: Name",
+        "reason": "INTERMEDIARY_CONTACT",
+        "note": "the BA profile is anonymised; contact runs via the employment agency"
+      },
+      {
+        "sourceField": "Kontaktdaten: Anschrift",
+        "reason": "INTERMEDIARY_CONTACT",
+        "note": "the BA profile is anonymised; contact runs via the employment agency"
+      },
+      {
+        "sourceField": "Kontaktdaten: Telekommunikation",
+        "reason": "INTERMEDIARY_CONTACT",
+        "note": "the BA profile is anonymised; contact runs via the employment agency"
+      },
+      {
+        "sourceField": "Sonstige Angaben zum Bewerber",
+        "reason": "PROTECTED_CHARACTERISTIC_NOT_MAPPED",
+        "note": "sex and age are not represented in AJMS; values are not stored"
+      }
+    ]
+  },
+  "fieldStatements": [
+    {
+      "path": "/availability/earliestStartDate",
+      "statementKind": "NORMALIZED",
+      "sourceExcerpt": "01.01.2027",
+      "method": "german-date"
+    },
+    {
+      "path": "/capabilities/competencies/0/competencyId",
+      "statementKind": "DERIVED",
+      "sourceExcerpt": "Absatzplanung",
+      "method": "slug-of-label"
+    },
+    {
+      "path": "/capabilities/competencies/0/label",
+      "statementKind": "EXPLICIT",
+      "sourceExcerpt": "Absatzplanung"
+    },
+    {
+      "path": "/capabilities/competencies/0/proficiency",
+      "statementKind": "NORMALIZED",
+      "sourceExcerpt": "Expertenkenntnisse",
+      "method": "ba-skill-level",
+      "lossy": true,
+      "note": "BA uses three levels; mapped onto the four AJMS levels; BA skill domain 'Wirtschaft, Verwaltung' not carried"
+    },
+    {
+      "path": "/capabilities/competencies/1/competencyId",
+      "statementKind": "DERIVED",
+      "sourceExcerpt": "Bedarfsprognose",
+      "method": "slug-of-label"
+    },
+    {
+      "path": "/capabilities/competencies/1/label",
+      "statementKind": "EXPLICIT",
+      "sourceExcerpt": "Bedarfsprognose"
+    },
+    {
+      "path": "/capabilities/competencies/1/proficiency",
+      "statementKind": "NORMALIZED",
+      "sourceExcerpt": "Expertenkenntnisse",
+      "method": "ba-skill-level",
+      "lossy": true,
+      "note": "BA uses three levels; mapped onto the four AJMS levels; BA skill domain 'Wirtschaft, Verwaltung' not carried"
+    },
+    {
+      "path": "/capabilities/competencies/2/competencyId",
+      "statementKind": "DERIVED",
+      "sourceExcerpt": "S&OP-Prozess",
+      "method": "slug-of-label"
+    },
+    {
+      "path": "/capabilities/competencies/2/label",
+      "statementKind": "EXPLICIT",
+      "sourceExcerpt": "S&OP-Prozess"
+    },
+    {
+      "path": "/capabilities/competencies/2/proficiency",
+      "statementKind": "NORMALIZED",
+      "sourceExcerpt": "Erweiterte Kenntnisse",
+      "method": "ba-skill-level",
+      "lossy": true,
+      "note": "BA uses three levels; mapped onto the four AJMS levels; BA skill domain 'Wirtschaft, Verwaltung' not carried"
+    },
+    {
+      "path": "/capabilities/competencies/3/competencyId",
+      "statementKind": "DERIVED",
+      "sourceExcerpt": "SQL",
+      "method": "slug-of-label"
+    },
+    {
+      "path": "/capabilities/competencies/3/label",
+      "statementKind": "EXPLICIT",
+      "sourceExcerpt": "SQL"
+    },
+    {
+      "path": "/capabilities/competencies/3/proficiency",
+      "statementKind": "NORMALIZED",
+      "sourceExcerpt": "Erweiterte Kenntnisse",
+      "method": "ba-skill-level",
+      "lossy": true,
+      "note": "BA uses three levels; mapped onto the four AJMS levels; BA skill domain 'IT, DV, Computer' not carried"
+    },
+    {
+      "path": "/capabilities/competencies/4/competencyId",
+      "statementKind": "DERIVED",
+      "sourceExcerpt": "Python",
+      "method": "slug-of-label"
+    },
+    {
+      "path": "/capabilities/competencies/4/label",
+      "statementKind": "EXPLICIT",
+      "sourceExcerpt": "Python"
+    },
+    {
+      "path": "/capabilities/competencies/4/proficiency",
+      "statementKind": "NORMALIZED",
+      "sourceExcerpt": "Erweiterte Kenntnisse",
+      "method": "ba-skill-level",
+      "lossy": true,
+      "note": "BA uses three levels; mapped onto the four AJMS levels; BA skill domain 'IT, DV, Computer' not carried"
+    },
+    {
+      "path": "/capabilities/competencies/5/competencyId",
+      "statementKind": "DERIVED",
+      "sourceExcerpt": "SAP ERP",
+      "method": "slug-of-label"
+    },
+    {
+      "path": "/capabilities/competencies/5/label",
+      "statementKind": "EXPLICIT",
+      "sourceExcerpt": "SAP ERP"
+    },
+    {
+      "path": "/capabilities/competencies/5/proficiency",
+      "statementKind": "NORMALIZED",
+      "sourceExcerpt": "Erweiterte Kenntnisse",
+      "method": "ba-skill-level",
+      "lossy": true,
+      "note": "BA uses three levels; mapped onto the four AJMS levels; BA skill domain 'IT, DV, Computer' not carried"
+    },
+    {
+      "path": "/capabilities/domainCriteria/0/value",
+      "statementKind": "NORMALIZED",
+      "sourceExcerpt": "Fahrerlaubnis B",
+      "method": "ba-driving-licence",
+      "lossy": true,
+      "note": "description of the class and old class designation not carried"
+    },
+    {
+      "path": "/capabilities/domainCriteria/1/value",
+      "statementKind": "NORMALIZED",
+      "sourceExcerpt": "Fahrzeug vorhanden",
+      "method": "ba-vehicle"
+    },
+    {
+      "path": "/capabilities/languages/0/cefrLevel",
+      "statementKind": "NORMALIZED",
+      "sourceExcerpt": "Muttersprache",
+      "method": "ba-language-level-to-cefr"
+    },
+    {
+      "path": "/capabilities/languages/0/languageCode",
+      "statementKind": "NORMALIZED",
+      "sourceExcerpt": "Deutsch",
+      "method": "language-name-de-to-bcp47"
+    },
+    {
+      "path": "/capabilities/languages/1/cefrLevel",
+      "statementKind": "DERIVED",
+      "sourceExcerpt": "Verhandlungssicher",
+      "method": "ba-language-level-to-cefr",
+      "lossy": true,
+      "note": "no official equivalence between the BA level 'Verhandlungssicher' and CEFR C1"
+    },
+    {
+      "path": "/capabilities/languages/1/languageCode",
+      "statementKind": "NORMALIZED",
+      "sourceExcerpt": "Englisch",
+      "method": "language-name-de-to-bcp47"
+    },
+    {
+      "path": "/capabilities/languages/2/cefrLevel",
+      "statementKind": "DERIVED",
+      "sourceExcerpt": "Grundkenntnisse",
+      "method": "ba-language-level-to-cefr",
+      "lossy": true,
+      "note": "no official equivalence between the BA level 'Grundkenntnisse' and CEFR A2"
+    },
+    {
+      "path": "/capabilities/languages/2/languageCode",
+      "statementKind": "NORMALIZED",
+      "sourceExcerpt": "Französisch",
+      "method": "language-name-de-to-bcp47"
+    },
+    {
+      "path": "/capabilities/qualifications/0/eqfLevel",
+      "statementKind": "DERIVED",
+      "sourceExcerpt": "Allgemeine Hochschulreife",
+      "method": "dqr-eqf-table",
+      "note": "German qualifications framework assigns the Abitur to level 4"
+    },
+    {
+      "path": "/capabilities/qualifications/0/label",
+      "statementKind": "EXPLICIT",
+      "sourceExcerpt": "Allgemeine Hochschulreife - Gymnasium"
+    },
+    {
+      "path": "/capabilities/qualifications/0/qualificationType",
+      "statementKind": "DERIVED",
+      "sourceExcerpt": "Allgemeine Hochschulreife - Gymnasium",
+      "method": "ba-school-certificate-type"
+    },
+    {
+      "path": "/capabilities/qualifications/1/completedOn",
+      "statementKind": "NORMALIZED",
+      "sourceExcerpt": "30.09.2019",
+      "method": "german-date-to-month",
+      "lossy": true,
+      "note": "day of month dropped"
+    },
+    {
+      "path": "/capabilities/qualifications/1/eqfLevel",
+      "statementKind": "NORMALIZED",
+      "sourceExcerpt": "Master / Diplom / Magister",
+      "method": "ba-degree-category-to-eqf"
+    },
+    {
+      "path": "/capabilities/qualifications/1/label",
+      "statementKind": "EXPLICIT",
+      "sourceExcerpt": "Logistik (Master of Science)"
+    },
+    {
+      "path": "/capabilities/qualifications/1/qualificationType",
+      "statementKind": "NORMALIZED",
+      "sourceExcerpt": "Master / Diplom / Magister",
+      "method": "ba-degree-category-to-eqf"
+    },
+    {
+      "path": "/capabilities/qualifications/2/completedOn",
+      "statementKind": "NORMALIZED",
+      "sourceExcerpt": "12.05.2023",
+      "method": "german-date-to-month",
+      "lossy": true,
+      "note": "'valid from' read as completion month; day dropped"
+    },
+    {
+      "path": "/capabilities/qualifications/2/label",
+      "statementKind": "EXPLICIT",
+      "sourceExcerpt": "Datenanalyse mit Python (Zertifikatskurs)"
+    },
+    {
+      "path": "/capabilities/qualifications/2/qualificationType",
+      "statementKind": "DERIVED",
+      "sourceExcerpt": "Weiterbildungen und Zertifikate",
+      "method": "ba-further-training-is-certification"
+    },
+    {
+      "path": "/capabilities/qualifications/2/validUntil",
+      "statementKind": "NORMALIZED",
+      "sourceExcerpt": "11.05.2028",
+      "method": "german-date"
+    },
+    {
+      "path": "/experienceHistory/0/endMonth",
+      "statementKind": "NORMALIZED",
+      "sourceExcerpt": "31.12.2026",
+      "method": "german-date-to-month",
+      "lossy": true,
+      "note": "day of month dropped"
+    },
+    {
+      "path": "/experienceHistory/0/roleTitle",
+      "statementKind": "EXPLICIT",
+      "sourceExcerpt": "Supply-Chain-Analyst/in"
+    },
+    {
+      "path": "/experienceHistory/0/startMonth",
+      "statementKind": "NORMALIZED",
+      "sourceExcerpt": "01.10.2020",
+      "method": "german-date-to-month",
+      "lossy": true,
+      "note": "day of month dropped"
+    },
+    {
+      "path": "/experienceHistory/0/tasks/0/label",
+      "statementKind": "EXPLICIT",
+      "sourceExcerpt": "Statistische Absatzprognosen und S&OP-Reporting"
+    },
+    {
+      "path": "/experienceHistory/0/tasks/1/label",
+      "statementKind": "EXPLICIT",
+      "sourceExcerpt": "Aufbau automatisierter Planungsberichte",
+      "note": "further description line"
+    },
+    {
+      "path": "/experienceHistory/1/endMonth",
+      "statementKind": "NORMALIZED",
+      "sourceExcerpt": "30.09.2020",
+      "method": "german-date-to-month",
+      "lossy": true,
+      "note": "day of month dropped"
+    },
+    {
+      "path": "/experienceHistory/1/roleTitle",
+      "statementKind": "EXPLICIT",
+      "sourceExcerpt": "Sonstiges"
+    },
+    {
+      "path": "/experienceHistory/1/startMonth",
+      "statementKind": "NORMALIZED",
+      "sourceExcerpt": "01.09.2019",
+      "method": "german-date-to-month",
+      "lossy": true,
+      "note": "day of month dropped"
+    },
+    {
+      "path": "/experienceHistory/1/tasks/0/label",
+      "statementKind": "EXPLICIT",
+      "sourceExcerpt": "Traineeprogramm Logistik"
+    },
+    {
+      "path": "/headline",
+      "statementKind": "EXPLICIT",
+      "sourceExcerpt": "Erfahrene Fachkraft für Absatzplanung sucht neue Aufgabe"
+    },
+    {
+      "path": "/jobPreferences/archetypes/wish/include/0/archetypeId",
+      "statementKind": "DERIVED",
+      "sourceExcerpt": "Demand Planner/in",
+      "method": "slug-of-label-without-gender-suffix",
+      "lossy": true,
+      "note": "the BA occupation code (KldB) is not contained in the text"
+    },
+    {
+      "path": "/jobPreferences/archetypes/wish/include/0/label",
+      "statementKind": "EXPLICIT",
+      "sourceExcerpt": "Demand Planner/in",
+      "note": "BA profile title = target occupation"
+    },
+    {
+      "path": "/jobPreferences/archetypes/wish/include/1/archetypeId",
+      "statementKind": "DERIVED",
+      "sourceExcerpt": "Supply-Chain-Analyst/in",
+      "method": "slug-of-label-without-gender-suffix"
+    },
+    {
+      "path": "/jobPreferences/archetypes/wish/include/1/label",
+      "statementKind": "EXPLICIT",
+      "sourceExcerpt": "Supply-Chain-Analyst/in",
+      "note": "BA alternative occupation"
+    },
+    {
+      "path": "/jobPreferences/location/wish/commute/maxOneWayDistance",
+      "statementKind": "NORMALIZED",
+      "sourceExcerpt": "Umkreis 40 km",
+      "method": "ba-radius-km",
+      "lossy": true,
+      "note": "BA 'Umkreis' read as straight-line one-way distance; BA does not state how it is measured"
+    },
+    {
+      "path": "/jobPreferences/location/wish/commute/origin/countryCode",
+      "statementKind": "NORMALIZED",
+      "sourceExcerpt": "Deutschland",
+      "method": "country-name-to-iso3166"
+    },
+    {
+      "path": "/jobPreferences/location/wish/commute/origin/geo",
+      "statementKind": "DERIVED",
+      "sourceExcerpt": "Hamburg",
+      "method": "gazetteer-city-centroid",
+      "note": "city centroid, precision 10 km"
+    },
+    {
+      "path": "/jobPreferences/location/wish/commute/origin/locality",
+      "statementKind": "EXPLICIT",
+      "sourceExcerpt": "Hamburg"
+    },
+    {
+      "path": "/jobPreferences/location/wish/commute/origin/postalCode",
+      "statementKind": "EXPLICIT",
+      "sourceExcerpt": "20095"
+    },
+    {
+      "path": "/jobPreferences/location/wish/commute/origin/region",
+      "statementKind": "EXPLICIT",
+      "sourceExcerpt": "Hamburg"
+    },
+    {
+      "path": "/jobPreferences/location/wish/places/0/countryCode",
+      "statementKind": "NORMALIZED",
+      "sourceExcerpt": "Deutschland",
+      "method": "country-name-to-iso3166"
+    },
+    {
+      "path": "/jobPreferences/location/wish/places/0/locality",
+      "statementKind": "EXPLICIT",
+      "sourceExcerpt": "Bremen",
+      "lossy": true,
+      "note": "radius 'Umkreis 10 km' dropped: an AJMS condition has one commute origin"
+    },
+    {
+      "path": "/jobPreferences/location/wish/places/0/region",
+      "statementKind": "EXPLICIT",
+      "sourceExcerpt": "Bremen"
+    },
+    {
+      "path": "/jobPreferences/workingTime/wish/schedules/include",
+      "statementKind": "NORMALIZED",
+      "sourceExcerpt": "Vollzeit",
+      "method": "ba-working-time",
+      "note": "BA search criterion read as a wish, not a hard condition"
+    }
+  ]
+}

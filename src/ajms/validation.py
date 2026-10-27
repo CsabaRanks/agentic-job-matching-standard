@@ -171,6 +171,16 @@ def _semantic_issues(doc: dict, doc_type: str) -> list[Issue]:
                 elif "evidence" not in doc:
                     warn(path + ("evidenceRefs",), f"evidence {ref!r} is referenced but not included in this view")
 
+    # Field statements of imported profiles must point at existing, distinct fields.
+    seen_paths: set[str] = set()
+    for index, statement in enumerate(doc.get("fieldStatements", [])):
+        where = ("fieldStatements", index, "path")
+        if statement["path"] in seen_paths:
+            err(where, f"duplicate statement for {statement['path']}")
+        seen_paths.add(statement["path"])
+        if not _resolves(doc, statement["path"]):
+            err(where, f"{statement['path']} does not resolve in this document")
+
     if doc_type == "CandidateProfile" and doc.get("profileView") == "PUBLIC_MINIMAL":
         for path, node in _walk(doc):
             if isinstance(node, dict) and "latitude" in node and node.get("precisionKm", 0) < 10:
@@ -179,6 +189,19 @@ def _semantic_issues(doc: dict, doc_type: str) -> list[Issue]:
                 err(path + ("postalCode",), "PUBLIC_MINIMAL must not contain postal codes")
 
     return issues
+
+
+def _resolves(doc: Any, pointer: str) -> bool:
+    node = doc
+    for token in pointer.split("/")[1:]:
+        token = token.replace("~1", "/").replace("~0", "~")
+        if isinstance(node, dict) and token in node:
+            node = node[token]
+        elif isinstance(node, list) and token.isdigit() and int(token) < len(node):
+            node = node[int(token)]
+        else:
+            return False
+    return True
 
 
 def validate_document(doc: Any, doc_type: str | None = None) -> list[Issue]:

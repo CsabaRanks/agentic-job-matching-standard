@@ -14,8 +14,9 @@
 | Matching demonstration (Hiring-Fit, Career-Fit) | **implemented as a demonstration**; weights uncalibrated |
 | Hosting, access control, transport, retrieval protocol | **proposed** (illustrative flow only); outside AJMS |
 | DIDs, Verifiable Credentials, DIDComm, zero-knowledge proofs | **named as possible future extensions**; nothing specified |
-| Vocabulary namespace dereferencing (`ajms:` IRIs) | **not yet**: the IRIs are identifiers only |
-| Schema `$id` resolution | IDs become resolvable once tag `v0.1.0` is pushed |
+| Schema IDs, JSON-LD context, vocabulary namespace | **published** via GitHub Pages; checked with `tools/check_published_urls.py` |
+| Import adapters (BA profile text, LinkedIn data export CSV, JSON Resume, German job ad text) | **implemented**, tested with synthetic fixtures; see [import-adapters.md](import-adapters.md) |
+| Automatic retrieval from platforms | **out of scope** (separate function) |
 
 ## Known limitations
 
@@ -27,7 +28,8 @@
 6. **Anonymity is not provided.** Reduced views lower disclosure; they do not prevent re-identification, and recipients can keep copies.
 7. **Content digest is not a signature** and its canonicalisation is not RFC 8785.
 8. **Bias.** Structured criteria can encode discriminatory preferences or requirements (e.g. via domain criteria). AJMS has no fields for protected characteristics, but it cannot prevent misuse of free text or extensions. Deployers are responsible for fair use.
-9. **Unit codes** (`KMT`, `SMI`, `MIN`, `HUR`, `WEE`, `MON`) follow UN/CEFACT Recommendation 20 as commonly published; the code list was not re-checked in this work.
+9. **Import adapters are rule-based and narrow.** They support exactly the layouts in [import-adapters.md](import-adapters.md). Mappings between rating scales (BA, LinkedIn, JSON Resume → CEFR / AJMS proficiency) have no official equivalence and are marked lossy. The LinkedIn CSV columns were not verified against a current export. Archetype identifiers from different sources match only when their derived identifiers or occupation codes coincide.
+10. **Unit codes** (`KMT`, `SMI`, `MIN`, `HUR`, `WEE`, `MON`) follow UN/CEFACT Recommendation 20 as commonly published; the code list was not re-checked in this work.
 
 ## Open questions
 
@@ -47,7 +49,7 @@
 
 | Version | Content |
 |---|---|
-| v0.1.x | publish tag `v0.1.0` so schema IDs and context resolve; enable GitHub Pages for the `ajms:` namespace and a human-readable vocabulary page; community feedback |
-| v0.2 | decisions on Q1–Q6; JSON Resume importer (`basics`, `work`, `education`, `skills` → capabilities/history); taxonomy guidance; field-level comparison with HR-JSON after reviewing the specifications |
+| v0.1.x | community feedback; verify the LinkedIn export columns against a current export; further BA layout variants |
+| v0.2 | decisions on Q1–Q6; adapters for XING and Stepstone exports (if obtainable) and HR-JSON after reviewing the specifications; OCR route for image-based PDFs; taxonomy guidance (ESCO / KldB / ISCO cross-walks) |
 | v0.3 | optional evidence extension referencing W3C Verifiable Credentials (no mandatory envelope); interoperability tests with a second, independent implementation |
 | later | consider a retrieval profile on top of an existing protocol; calibration methodology for match policies with published evaluation data |

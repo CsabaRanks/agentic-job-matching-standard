@@ -75,6 +75,6 @@ AJMS does **not** claim support by schema.org, Google or any ATS vendor. The map
 
 | Format | Relation |
 |---|---|
-| **JSON Resume** v1.7.0 (Draft-07 JSON Schema, MIT) | Covers CV content (`basics`, `work`, `education`, `skills`, `languages`, `certificates`). It has no job-search preferences, hard conditions, provenance or job side. An importer from JSON Resume into `capabilities`/`experienceHistory` is on the roadmap. |
+| **JSON Resume** v1.7.0 (Draft-07 JSON Schema, MIT) | Covers CV content (`basics`, `work`, `education`, `skills`, `languages`, `certificates`). It has no job-search preferences, hard conditions, provenance or job side. The adapter `json-resume-1` converts it into a CandidateProfile ([import-adapters.md](import-adapters.md)). |
 | **HR Open Standards** (HR-JSON; Recruiting workgroup with `Candidate` and `PositionOpening`) | The specifications are offered for download after accepting the HR Open IP agreement. They were **not downloaded or inspected in detail** for this draft, so no field-level mapping is claimed. A comparison is an open task. |
 | **Bundesagentur für Arbeit** profile | Uses its own occupation taxonomy (KldB 2010); AJMS supports `KLDB-2010` as a classification scheme. |

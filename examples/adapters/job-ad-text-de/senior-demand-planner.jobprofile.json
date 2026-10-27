@@ -1,0 +1,414 @@
+{
+  "@context": "https://csabaranks.github.io/agentic-job-matching-standard/context/v0.1/ajms.context.jsonld",
+  "@type": "JobProfile",
+  "profileId": "urn:uuid:5d2671cc-7e2b-5f18-8444-4ff63d11b269",
+  "schemaVersion": "0.1.0",
+  "updatedAt": "2026-10-27T10:15:00+01:00",
+  "profileView": "FULL_PRIVATE",
+  "defaultLanguage": "de",
+  "title": {
+    "text": "Senior Demand Planner (m/w/d)",
+    "language": "de"
+  },
+  "archetype": {
+    "archetypeId": "demand-planner",
+    "label": {
+      "text": "Demand Planner",
+      "language": "en"
+    }
+  },
+  "careerLevel": "SENIOR",
+  "hiringOrganization": {
+    "name": "Nordlicht Getränke GmbH (synthetisches Beispiel)"
+  },
+  "tasks": [
+    {
+      "taskId": "task-1",
+      "label": {
+        "text": "Erstellung statistischer Absatzprognosen für das Kernsortiment",
+        "language": "de"
+      }
+    },
+    {
+      "taskId": "task-2",
+      "label": {
+        "text": "Moderation des monatlichen Consensus-Meetings mit Vertrieb und Produktion",
+        "language": "de"
+      }
+    },
+    {
+      "taskId": "task-3",
+      "label": {
+        "text": "Weiterentwicklung unserer Planungsprozesse",
+        "language": "de"
+      }
+    }
+  ],
+  "requirements": {
+    "domainExperience": [
+      {
+        "domainId": "supply-chain-planning",
+        "label": {
+          "text": "Supply-Chain-Planung",
+          "language": "de"
+        },
+        "minimumMonths": 36,
+        "requirementLevel": "REQUIRED"
+      }
+    ],
+    "competencies": [
+      {
+        "competencyId": "sql",
+        "label": {
+          "text": "SQL",
+          "language": "de"
+        },
+        "minimumProficiency": "ADVANCED",
+        "requirementLevel": "REQUIRED"
+      },
+      {
+        "competencyId": "python",
+        "label": {
+          "text": "Python",
+          "language": "de"
+        },
+        "minimumProficiency": "INTERMEDIATE",
+        "requirementLevel": "PREFERRED"
+      }
+    ],
+    "languages": [
+      {
+        "languageCode": "de",
+        "minimumCefrLevel": "C1",
+        "requirementLevel": "REQUIRED"
+      },
+      {
+        "languageCode": "en",
+        "minimumCefrLevel": "B2",
+        "requirementLevel": "REQUIRED"
+      }
+    ]
+  },
+  "offer": {
+    "locations": [
+      {
+        "countryCode": "DE",
+        "geo": {
+          "latitude": 53.55,
+          "longitude": 9.99,
+          "precisionKm": 10
+        },
+        "locality": "Hamburg"
+      }
+    ],
+    "contract": {
+      "contractType": "PERMANENT_EMPLOYMENT"
+    },
+    "workingTime": {
+      "schedule": "FULL_TIME",
+      "weeklyHours": {
+        "min": 38,
+        "max": 38
+      }
+    },
+    "workModel": {
+      "arrangement": "HYBRID"
+    },
+    "compensation": [
+      {
+        "component": "BASE_SALARY",
+        "currency": "EUR",
+        "period": "YEAR",
+        "grossOrNet": "GROSS",
+        "min": 64000,
+        "max": 72000,
+        "informationKind": "STATED",
+        "hoursPerWeekBasis": 38
+      }
+    ],
+    "benefits": [
+      {
+        "text": "Jobticket und betriebliche Altersvorsorge",
+        "language": "de"
+      }
+    ]
+  },
+  "provenance": {
+    "basis": "DERIVED",
+    "note": "Imported from a published job ad by a search agent; not confirmed by the employer.",
+    "sourceUrl": "https://jobs.example.com/ads/senior-demand-planner-4711"
+  },
+  "source": {
+    "sourceUrl": "https://jobs.example.com/ads/senior-demand-planner-4711",
+    "sourceFileName": "senior-demand-planner.ad.de.txt",
+    "retrievedAt": "2026-10-27T10:15:00+01:00",
+    "sourceKind": "JOB_AD_WEB_PAGE",
+    "sourceFormat": "job-ad-text-de",
+    "inputKind": "TEXT",
+    "textDigest": {
+      "algorithm": "SHA-256",
+      "value": "b5e18264f6c681f58387396e2d90c7bc116a153a33a9c2a01a646b4017481a4d"
+    },
+    "importedBy": {
+      "tool": "ajms-adapters",
+      "toolVersion": "job-ad-de-1"
+    },
+    "extractionQuality": {
+      "status": "REVIEW",
+      "recognizedShare": 0.941,
+      "uninterpretedLines": 1,
+      "checks": [
+        "88 tokens (minimum 30)",
+        "readable word share 99% (minimum 60%)",
+        "layout anchors present",
+        "every source excerpt found verbatim in the input",
+        "16 of 17 non-empty lines recognized, 1 not interpreted"
+      ]
+    },
+    "unmapped": [
+      {
+        "sourceField": "line 14",
+        "reason": "NOT_INTERPRETED",
+        "note": "no rule of job-ad-de-1 applies"
+      }
+    ]
+  },
+  "fieldStatements": [
+    {
+      "path": "/archetype",
+      "statementKind": "DERIVED",
+      "sourceExcerpt": "Demand Planner",
+      "method": "title-keyword-archetype"
+    },
+    {
+      "path": "/careerLevel",
+      "statementKind": "DERIVED",
+      "sourceExcerpt": "Senior",
+      "method": "title-keyword-career-level"
+    },
+    {
+      "path": "/hiringOrganization/name",
+      "statementKind": "EXPLICIT",
+      "sourceExcerpt": "Nordlicht Getränke GmbH (synthetisches Beispiel)"
+    },
+    {
+      "path": "/offer/benefits/0",
+      "statementKind": "EXPLICIT",
+      "sourceExcerpt": "Jobticket und betriebliche Altersvorsorge",
+      "note": "offer bullet not matched by any rule; kept verbatim as a benefit"
+    },
+    {
+      "path": "/offer/compensation/0/component",
+      "statementKind": "DERIVED",
+      "sourceExcerpt": "Jahresgehalt",
+      "method": "salary-word-is-base-salary",
+      "note": "'Jahresgehalt' is read as fixed base salary; it may include variable pay"
+    },
+    {
+      "path": "/offer/compensation/0/currency",
+      "statementKind": "NORMALIZED",
+      "sourceExcerpt": "€",
+      "method": "currency-symbol-to-iso4217"
+    },
+    {
+      "path": "/offer/compensation/0/grossOrNet",
+      "statementKind": "NORMALIZED",
+      "sourceExcerpt": "brutto",
+      "method": "gross-net-words-de"
+    },
+    {
+      "path": "/offer/compensation/0/hoursPerWeekBasis",
+      "statementKind": "DERIVED",
+      "sourceExcerpt": "38 Stunden/Woche",
+      "method": "salary-hours-from-working-time",
+      "note": "assumes the salary refers to the stated contractual weekly hours"
+    },
+    {
+      "path": "/offer/compensation/0/max",
+      "statementKind": "NORMALIZED",
+      "sourceExcerpt": "72.000",
+      "method": "german-number-format"
+    },
+    {
+      "path": "/offer/compensation/0/min",
+      "statementKind": "NORMALIZED",
+      "sourceExcerpt": "64.000",
+      "method": "german-number-format"
+    },
+    {
+      "path": "/offer/compensation/0/period",
+      "statementKind": "NORMALIZED",
+      "sourceExcerpt": "Jahresgehalt",
+      "method": "period-words-de"
+    },
+    {
+      "path": "/offer/contract/contractType",
+      "statementKind": "NORMALIZED",
+      "sourceExcerpt": "Unbefristete",
+      "method": "contract-words-de"
+    },
+    {
+      "path": "/offer/locations/0/countryCode",
+      "statementKind": "DERIVED",
+      "sourceExcerpt": "Hamburg",
+      "method": "gazetteer-city-country"
+    },
+    {
+      "path": "/offer/locations/0/geo",
+      "statementKind": "DERIVED",
+      "sourceExcerpt": "Hamburg",
+      "method": "gazetteer-city-centroid",
+      "note": "city centroid, precision 10 km"
+    },
+    {
+      "path": "/offer/locations/0/locality",
+      "statementKind": "EXPLICIT",
+      "sourceExcerpt": "Hamburg"
+    },
+    {
+      "path": "/offer/workModel/arrangement",
+      "statementKind": "NORMALIZED",
+      "sourceExcerpt": "Hybrides",
+      "method": "work-model-words-de"
+    },
+    {
+      "path": "/offer/workingTime/schedule",
+      "statementKind": "NORMALIZED",
+      "sourceExcerpt": "Vollzeit",
+      "method": "schedule-words-de"
+    },
+    {
+      "path": "/offer/workingTime/weeklyHours",
+      "statementKind": "NORMALIZED",
+      "sourceExcerpt": "38 Stunden/Woche",
+      "method": "hours-per-week"
+    },
+    {
+      "path": "/requirements/competencies/0/competencyId",
+      "statementKind": "DERIVED",
+      "sourceExcerpt": "SQL",
+      "method": "competency-keyword-table"
+    },
+    {
+      "path": "/requirements/competencies/0/label",
+      "statementKind": "EXPLICIT",
+      "sourceExcerpt": "SQL"
+    },
+    {
+      "path": "/requirements/competencies/0/minimumProficiency",
+      "statementKind": "NORMALIZED",
+      "sourceExcerpt": "Sehr gute",
+      "method": "proficiency-words-de",
+      "lossy": true,
+      "note": "German grading words mapped onto four AJMS levels"
+    },
+    {
+      "path": "/requirements/competencies/0/requirementLevel",
+      "statementKind": "DERIVED",
+      "method": "profile-section-default-required",
+      "note": "listed under the profile section without a 'preferred' marker"
+    },
+    {
+      "path": "/requirements/competencies/1/competencyId",
+      "statementKind": "DERIVED",
+      "sourceExcerpt": "Python",
+      "method": "competency-keyword-table"
+    },
+    {
+      "path": "/requirements/competencies/1/label",
+      "statementKind": "EXPLICIT",
+      "sourceExcerpt": "Python"
+    },
+    {
+      "path": "/requirements/competencies/1/minimumProficiency",
+      "statementKind": "NORMALIZED",
+      "sourceExcerpt": "Gute",
+      "method": "proficiency-words-de",
+      "lossy": true,
+      "note": "German grading words mapped onto four AJMS levels"
+    },
+    {
+      "path": "/requirements/competencies/1/requirementLevel",
+      "statementKind": "NORMALIZED",
+      "sourceExcerpt": "von Vorteil",
+      "method": "preferred-marker-de"
+    },
+    {
+      "path": "/requirements/domainExperience/0/domainId",
+      "statementKind": "DERIVED",
+      "sourceExcerpt": "Supply-Chain-Planung",
+      "method": "domain-keyword-table"
+    },
+    {
+      "path": "/requirements/domainExperience/0/label",
+      "statementKind": "EXPLICIT",
+      "sourceExcerpt": "Supply-Chain-Planung"
+    },
+    {
+      "path": "/requirements/domainExperience/0/minimumMonths",
+      "statementKind": "NORMALIZED",
+      "sourceExcerpt": "Mindestens 3 Jahre",
+      "method": "years-to-months"
+    },
+    {
+      "path": "/requirements/domainExperience/0/requirementLevel",
+      "statementKind": "DERIVED",
+      "method": "profile-section-default-required",
+      "note": "listed under the profile section without a 'preferred' marker"
+    },
+    {
+      "path": "/requirements/languages/0/languageCode",
+      "statementKind": "NORMALIZED",
+      "sourceExcerpt": "Deutsch",
+      "method": "language-name-de-to-bcp47"
+    },
+    {
+      "path": "/requirements/languages/0/minimumCefrLevel",
+      "statementKind": "EXPLICIT",
+      "sourceExcerpt": "C1"
+    },
+    {
+      "path": "/requirements/languages/0/requirementLevel",
+      "statementKind": "DERIVED",
+      "method": "profile-section-default-required",
+      "note": "listed under the profile section without a 'preferred' marker"
+    },
+    {
+      "path": "/requirements/languages/1/languageCode",
+      "statementKind": "NORMALIZED",
+      "sourceExcerpt": "Englisch",
+      "method": "language-name-de-to-bcp47"
+    },
+    {
+      "path": "/requirements/languages/1/minimumCefrLevel",
+      "statementKind": "EXPLICIT",
+      "sourceExcerpt": "B2"
+    },
+    {
+      "path": "/requirements/languages/1/requirementLevel",
+      "statementKind": "DERIVED",
+      "method": "profile-section-default-required",
+      "note": "listed under the profile section without a 'preferred' marker"
+    },
+    {
+      "path": "/tasks/0/label",
+      "statementKind": "EXPLICIT",
+      "sourceExcerpt": "Erstellung statistischer Absatzprognosen für das Kernsortiment"
+    },
+    {
+      "path": "/tasks/1/label",
+      "statementKind": "EXPLICIT",
+      "sourceExcerpt": "Moderation des monatlichen Consensus-Meetings mit Vertrieb und Produktion"
+    },
+    {
+      "path": "/tasks/2/label",
+      "statementKind": "EXPLICIT",
+      "sourceExcerpt": "Weiterentwicklung unserer Planungsprozesse"
+    },
+    {
+      "path": "/title",
+      "statementKind": "EXPLICIT",
+      "sourceExcerpt": "Senior Demand Planner (m/w/d)"
+    }
+  ]
+}

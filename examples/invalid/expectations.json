@@ -106,5 +106,17 @@
     "path": "/capabilities/competencies/1/competencyId",
     "contains": "duplicate competencyId",
     "why": "Local identifiers must be unique."
+  },
+  "invalid/imported-normalized-without-method.json": {
+    "kind": "schema",
+    "path": "/fieldStatements/5",
+    "contains": "'method' is a required property",
+    "why": "A normalized value must name the rule that converted it."
+  },
+  "invalid-semantic/imported-statement-points-nowhere.json": {
+    "kind": "semantic",
+    "path": "/fieldStatements/0/path",
+    "contains": "/offer/remoteShare does not resolve",
+    "why": "A field statement must refer to a field that exists."
   }
 }

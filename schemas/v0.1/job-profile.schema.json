@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://raw.githubusercontent.com/CsabaRanks/agentic-job-matching-standard/v0.1.0/schemas/v0.1/job-profile.schema.json",
+  "$id": "https://csabaranks.github.io/agentic-job-matching-standard/schemas/v0.1/job-profile.schema.json",
   "title": "AJMS JobProfile v0.1",
   "description": "A job: what it requires from a candidate (requirements, input to Hiring-Fit) and what it offers (offer, input to Career-Fit). Uses the same shared definitions as CandidateProfile. Community Draft - not an adopted standard.",
   "type": "object",
@@ -36,8 +36,18 @@
     "provenance": {
       "description": "Who stated the job data: ORGANIZATION_STATED for employer-published data, DERIVED for data extracted by a third party or agent.",
       "$ref": "common.schema.json#/$defs/Provenance"
+    },
+    "source": {
+      "description": "For imported job profiles: source reference, retrieval date and digest of the original text.",
+      "$ref": "common.schema.json#/$defs/SourceRecord"
+    },
+    "fieldStatements": {
+      "description": "For imported job profiles: per-field statement kind (explicit, normalized, derived).",
+      "type": "array",
+      "items": { "$ref": "common.schema.json#/$defs/FieldStatement" }
     }
   },
+  "dependentRequired": { "fieldStatements": [ "source" ] },
   "required": [ "@context", "@type", "profileId", "schemaVersion", "updatedAt", "profileView", "title" ],
   "additionalProperties": false,
   "$defs": {

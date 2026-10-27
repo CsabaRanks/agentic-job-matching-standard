@@ -1,42 +1,104 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://raw.githubusercontent.com/CsabaRanks/agentic-job-matching-standard/v0.1.0/schemas/v0.1/candidate-profile.schema.json",
+  "$id": "https://csabaranks.github.io/agentic-job-matching-standard/schemas/v0.1/candidate-profile.schema.json",
   "title": "AJMS CandidateProfile v0.1",
   "description": "A candidate's profile: capabilities (facts and self-reports with provenance), job preferences (hard conditions separated from wishes) and availability. Contains no weights and no match results. Community Draft - not an adopted standard.",
   "type": "object",
   "properties": {
-    "@context": { "$ref": "common.schema.json#/$defs/JsonLdContext" },
-    "@type": { "const": "CandidateProfile" },
-    "profileId": { "$ref": "common.schema.json#/$defs/ProfileId" },
-    "schemaVersion": { "$ref": "common.schema.json#/$defs/SchemaVersion" },
-    "updatedAt": { "$ref": "common.schema.json#/$defs/DateTime" },
+    "@context": {
+      "$ref": "common.schema.json#/$defs/JsonLdContext"
+    },
+    "@type": {
+      "const": "CandidateProfile"
+    },
+    "profileId": {
+      "$ref": "common.schema.json#/$defs/ProfileId"
+    },
+    "schemaVersion": {
+      "$ref": "common.schema.json#/$defs/SchemaVersion"
+    },
+    "updatedAt": {
+      "$ref": "common.schema.json#/$defs/DateTime"
+    },
     "profileView": {
       "description": "FULL_PRIVATE: owner's complete profile. SHARED_VIEW: a selection shared with a named recipient. PUBLIC_MINIMAL: optional coarse public representation without identity.",
-      "enum": [ "FULL_PRIVATE", "SHARED_VIEW", "PUBLIC_MINIMAL" ]
+      "enum": [
+        "FULL_PRIVATE",
+        "SHARED_VIEW",
+        "PUBLIC_MINIMAL"
+      ]
     },
-    "defaultLanguage": { "$ref": "common.schema.json#/$defs/LanguageCode" },
-    "identity": { "$ref": "#/$defs/Identity" },
-    "headline": { "$ref": "common.schema.json#/$defs/Text" },
-    "summary": { "$ref": "common.schema.json#/$defs/Text" },
-    "capabilities": { "$ref": "#/$defs/Capabilities" },
+    "defaultLanguage": {
+      "$ref": "common.schema.json#/$defs/LanguageCode"
+    },
+    "identity": {
+      "$ref": "#/$defs/Identity"
+    },
+    "headline": {
+      "$ref": "common.schema.json#/$defs/Text"
+    },
+    "summary": {
+      "$ref": "common.schema.json#/$defs/Text"
+    },
+    "capabilities": {
+      "$ref": "#/$defs/Capabilities"
+    },
     "experienceHistory": {
       "type": "array",
-      "items": { "$ref": "#/$defs/ExperienceEntry" }
+      "items": {
+        "$ref": "#/$defs/ExperienceEntry"
+      }
     },
     "evidence": {
       "type": "array",
-      "items": { "$ref": "common.schema.json#/$defs/Evidence" }
+      "items": {
+        "$ref": "common.schema.json#/$defs/Evidence"
+      }
     },
-    "jobPreferences": { "$ref": "#/$defs/JobPreferences" },
-    "availability": { "$ref": "common.schema.json#/$defs/StartTiming" },
-    "searchStatus": { "enum": [ "ACTIVELY_SEEKING", "OPEN_TO_OFFERS", "NOT_SEEKING" ] }
+    "jobPreferences": {
+      "$ref": "#/$defs/JobPreferences"
+    },
+    "availability": {
+      "$ref": "common.schema.json#/$defs/StartTiming"
+    },
+    "searchStatus": {
+      "enum": [
+        "ACTIVELY_SEEKING",
+        "OPEN_TO_OFFERS",
+        "NOT_SEEKING"
+      ]
+    },
+    "source": {
+      "description": "For imported candidate profiles: source reference, retrieval date, format, extraction quality, unmapped content.",
+      "$ref": "common.schema.json#/$defs/SourceRecord"
+    },
+    "fieldStatements": {
+      "description": "For imported candidate profiles: per-field statement kind (explicit, normalized, derived) and loss of meaning.",
+      "type": "array",
+      "items": {
+        "$ref": "common.schema.json#/$defs/FieldStatement"
+      }
+    }
   },
-  "required": [ "@context", "@type", "profileId", "schemaVersion", "updatedAt", "profileView" ],
+  "required": [
+    "@context",
+    "@type",
+    "profileId",
+    "schemaVersion",
+    "updatedAt",
+    "profileView"
+  ],
   "additionalProperties": false,
   "allOf": [
     {
       "$comment": "A public minimal representation carries no identity, no employment history and no evidence documents.",
-      "if": { "properties": { "profileView": { "const": "PUBLIC_MINIMAL" } } },
+      "if": {
+        "properties": {
+          "profileView": {
+            "const": "PUBLIC_MINIMAL"
+          }
+        }
+      },
       "then": {
         "properties": {
           "identity": false,
@@ -51,60 +113,100 @@
       "description": "Directly identifying data. Belongs in FULL_PRIVATE; in a SHARED_VIEW only after the candidate decided to disclose it.",
       "type": "object",
       "properties": {
-        "displayName": { "type": "string", "minLength": 1 },
+        "displayName": {
+          "type": "string",
+          "minLength": 1
+        },
         "contactPoints": {
           "type": "array",
           "items": {
             "type": "object",
             "properties": {
-              "contactType": { "enum": [ "EMAIL", "PHONE", "URL" ] },
-              "contactValue": { "type": "string", "minLength": 1 }
+              "contactType": {
+                "enum": [
+                  "EMAIL",
+                  "PHONE",
+                  "URL"
+                ]
+              },
+              "contactValue": {
+                "type": "string",
+                "minLength": 1
+              }
             },
-            "required": [ "contactType", "contactValue" ],
+            "required": [
+              "contactType",
+              "contactValue"
+            ],
             "additionalProperties": false
           }
         },
-        "residence": { "$ref": "common.schema.json#/$defs/Place" }
+        "residence": {
+          "$ref": "common.schema.json#/$defs/Place"
+        }
       },
-      "required": [ "displayName" ],
+      "required": [
+        "displayName"
+      ],
       "additionalProperties": false
     },
     "Capabilities": {
       "description": "What the candidate brings. Every item may carry provenance (self-reported vs. evidenced).",
       "type": "object",
       "properties": {
-        "currentCareerLevel": { "$ref": "common.schema.json#/$defs/CareerLevel" },
+        "currentCareerLevel": {
+          "$ref": "common.schema.json#/$defs/CareerLevel"
+        },
         "archetypes": {
           "description": "Job archetypes the candidate has practised.",
           "type": "array",
-          "items": { "$ref": "common.schema.json#/$defs/JobArchetype" }
+          "items": {
+            "$ref": "common.schema.json#/$defs/JobArchetype"
+          }
         },
         "competencies": {
           "type": "array",
-          "items": { "$ref": "common.schema.json#/$defs/Competency" }
+          "items": {
+            "$ref": "common.schema.json#/$defs/Competency"
+          }
         },
         "languages": {
           "type": "array",
-          "items": { "$ref": "common.schema.json#/$defs/LanguageSkill" }
+          "items": {
+            "$ref": "common.schema.json#/$defs/LanguageSkill"
+          }
         },
         "qualifications": {
           "type": "array",
-          "items": { "$ref": "common.schema.json#/$defs/Qualification" }
+          "items": {
+            "$ref": "common.schema.json#/$defs/Qualification"
+          }
         },
         "domainExperience": {
           "type": "array",
-          "items": { "$ref": "common.schema.json#/$defs/DomainExperience" }
+          "items": {
+            "$ref": "common.schema.json#/$defs/DomainExperience"
+          }
         },
-        "totalExperienceMonths": { "type": "integer", "minimum": 0 },
-        "leadershipExperience": { "$ref": "common.schema.json#/$defs/Leadership" },
+        "totalExperienceMonths": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "leadershipExperience": {
+          "$ref": "common.schema.json#/$defs/Leadership"
+        },
         "workAuthorizations": {
           "type": "array",
-          "items": { "$ref": "common.schema.json#/$defs/WorkAuthorization" }
+          "items": {
+            "$ref": "common.schema.json#/$defs/WorkAuthorization"
+          }
         },
         "domainCriteria": {
           "description": "Domain-specific facts about the candidate (comparator not used).",
           "type": "array",
-          "items": { "$ref": "common.schema.json#/$defs/DomainCriterion" }
+          "items": {
+            "$ref": "common.schema.json#/$defs/DomainCriterion"
+          }
         }
       },
       "additionalProperties": false
@@ -112,29 +214,65 @@
     "ExperienceEntry": {
       "type": "object",
       "properties": {
-        "experienceId": { "$ref": "common.schema.json#/$defs/Identifier" },
-        "roleTitle": { "$ref": "common.schema.json#/$defs/Text" },
-        "organization": { "$ref": "common.schema.json#/$defs/Organization" },
-        "archetype": { "$ref": "common.schema.json#/$defs/JobArchetype" },
-        "careerLevel": { "$ref": "common.schema.json#/$defs/CareerLevel" },
-        "leadership": { "$ref": "common.schema.json#/$defs/Leadership" },
-        "startMonth": { "$ref": "common.schema.json#/$defs/YearMonth" },
-        "endMonth": { "$ref": "common.schema.json#/$defs/YearMonth" },
-        "ongoing": { "type": "boolean" },
+        "experienceId": {
+          "$ref": "common.schema.json#/$defs/Identifier"
+        },
+        "roleTitle": {
+          "$ref": "common.schema.json#/$defs/Text"
+        },
+        "organization": {
+          "$ref": "common.schema.json#/$defs/Organization"
+        },
+        "archetype": {
+          "$ref": "common.schema.json#/$defs/JobArchetype"
+        },
+        "careerLevel": {
+          "$ref": "common.schema.json#/$defs/CareerLevel"
+        },
+        "leadership": {
+          "$ref": "common.schema.json#/$defs/Leadership"
+        },
+        "startMonth": {
+          "$ref": "common.schema.json#/$defs/YearMonth"
+        },
+        "endMonth": {
+          "$ref": "common.schema.json#/$defs/YearMonth"
+        },
+        "ongoing": {
+          "type": "boolean"
+        },
         "tasks": {
           "type": "array",
-          "items": { "$ref": "common.schema.json#/$defs/Task" }
+          "items": {
+            "$ref": "common.schema.json#/$defs/Task"
+          }
         },
-        "provenance": { "$ref": "common.schema.json#/$defs/Provenance" }
+        "provenance": {
+          "$ref": "common.schema.json#/$defs/Provenance"
+        }
       },
-      "required": [ "experienceId", "roleTitle", "startMonth" ],
+      "required": [
+        "experienceId",
+        "roleTitle",
+        "startMonth"
+      ],
       "additionalProperties": false
     },
     "ArchetypeSet": {
       "type": "object",
       "properties": {
-        "include": { "type": "array", "items": { "$ref": "common.schema.json#/$defs/JobArchetype" } },
-        "exclude": { "type": "array", "items": { "$ref": "common.schema.json#/$defs/JobArchetype" } }
+        "include": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/JobArchetype"
+          }
+        },
+        "exclude": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/JobArchetype"
+          }
+        }
       },
       "minProperties": 1,
       "additionalProperties": false
@@ -142,8 +280,20 @@
     "CareerLevelSet": {
       "type": "object",
       "properties": {
-        "include": { "type": "array", "items": { "$ref": "common.schema.json#/$defs/CareerLevel" }, "uniqueItems": true },
-        "exclude": { "type": "array", "items": { "$ref": "common.schema.json#/$defs/CareerLevel" }, "uniqueItems": true }
+        "include": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/CareerLevel"
+          },
+          "uniqueItems": true
+        },
+        "exclude": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/CareerLevel"
+          },
+          "uniqueItems": true
+        }
       },
       "minProperties": 1,
       "additionalProperties": false
@@ -151,8 +301,18 @@
     "IndustrySet": {
       "type": "object",
       "properties": {
-        "include": { "type": "array", "items": { "$ref": "common.schema.json#/$defs/ClassificationCode" } },
-        "exclude": { "type": "array", "items": { "$ref": "common.schema.json#/$defs/ClassificationCode" } }
+        "include": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/ClassificationCode"
+          }
+        },
+        "exclude": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/ClassificationCode"
+          }
+        }
       },
       "minProperties": 1,
       "additionalProperties": false
@@ -160,8 +320,18 @@
     "TaskSet": {
       "type": "object",
       "properties": {
-        "include": { "type": "array", "items": { "$ref": "common.schema.json#/$defs/Task" } },
-        "exclude": { "type": "array", "items": { "$ref": "common.schema.json#/$defs/Task" } }
+        "include": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/Task"
+          }
+        },
+        "exclude": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/Task"
+          }
+        }
       },
       "minProperties": 1,
       "additionalProperties": false
@@ -172,8 +342,20 @@
         "organizationTypes": {
           "type": "object",
           "properties": {
-            "include": { "type": "array", "items": { "$ref": "common.schema.json#/$defs/OrganizationType" }, "uniqueItems": true },
-            "exclude": { "type": "array", "items": { "$ref": "common.schema.json#/$defs/OrganizationType" }, "uniqueItems": true }
+            "include": {
+              "type": "array",
+              "items": {
+                "$ref": "common.schema.json#/$defs/OrganizationType"
+              },
+              "uniqueItems": true
+            },
+            "exclude": {
+              "type": "array",
+              "items": {
+                "$ref": "common.schema.json#/$defs/OrganizationType"
+              },
+              "uniqueItems": true
+            }
           },
           "minProperties": 1,
           "additionalProperties": false
@@ -181,8 +363,20 @@
         "sizeClasses": {
           "type": "object",
           "properties": {
-            "include": { "type": "array", "items": { "$ref": "common.schema.json#/$defs/SizeClass" }, "uniqueItems": true },
-            "exclude": { "type": "array", "items": { "$ref": "common.schema.json#/$defs/SizeClass" }, "uniqueItems": true }
+            "include": {
+              "type": "array",
+              "items": {
+                "$ref": "common.schema.json#/$defs/SizeClass"
+              },
+              "uniqueItems": true
+            },
+            "exclude": {
+              "type": "array",
+              "items": {
+                "$ref": "common.schema.json#/$defs/SizeClass"
+              },
+              "uniqueItems": true
+            }
           },
           "minProperties": 1,
           "additionalProperties": false
@@ -195,16 +389,27 @@
       "description": "atLeast: the job's figure for the same component must reach this amount.",
       "type": "object",
       "properties": {
-        "atLeast": { "$ref": "common.schema.json#/$defs/CompensationAmount" }
+        "atLeast": {
+          "$ref": "common.schema.json#/$defs/CompensationAmount"
+        }
       },
-      "required": [ "atLeast" ],
+      "required": [
+        "atLeast"
+      ],
       "additionalProperties": false
     },
     "LocationConstraint": {
       "type": "object",
       "properties": {
-        "commute": { "$ref": "common.schema.json#/$defs/CommuteConditions" },
-        "places": { "type": "array", "items": { "$ref": "common.schema.json#/$defs/Place" } }
+        "commute": {
+          "$ref": "common.schema.json#/$defs/CommuteConditions"
+        },
+        "places": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/Place"
+          }
+        }
       },
       "minProperties": 1,
       "additionalProperties": false
@@ -215,14 +420,30 @@
         "arrangements": {
           "type": "object",
           "properties": {
-            "include": { "type": "array", "items": { "$ref": "common.schema.json#/$defs/WorkArrangement" }, "uniqueItems": true },
-            "exclude": { "type": "array", "items": { "$ref": "common.schema.json#/$defs/WorkArrangement" }, "uniqueItems": true }
+            "include": {
+              "type": "array",
+              "items": {
+                "$ref": "common.schema.json#/$defs/WorkArrangement"
+              },
+              "uniqueItems": true
+            },
+            "exclude": {
+              "type": "array",
+              "items": {
+                "$ref": "common.schema.json#/$defs/WorkArrangement"
+              },
+              "uniqueItems": true
+            }
           },
           "minProperties": 1,
           "additionalProperties": false
         },
-        "remoteShareAtLeast": { "$ref": "#/$defs/ShareThreshold" },
-        "travelShareAtMost": { "$ref": "#/$defs/ShareThreshold" }
+        "remoteShareAtLeast": {
+          "$ref": "#/$defs/ShareThreshold"
+        },
+        "travelShareAtMost": {
+          "$ref": "#/$defs/ShareThreshold"
+        }
       },
       "minProperties": 1,
       "additionalProperties": false
@@ -231,10 +452,19 @@
       "description": "A single percentage threshold with its reference period.",
       "type": "object",
       "properties": {
-        "percent": { "type": "number", "minimum": 0, "maximum": 100 },
-        "referencePeriod": { "$ref": "common.schema.json#/$defs/ReferencePeriod" }
+        "percent": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "referencePeriod": {
+          "$ref": "common.schema.json#/$defs/ReferencePeriod"
+        }
       },
-      "required": [ "percent", "referencePeriod" ],
+      "required": [
+        "percent",
+        "referencePeriod"
+      ],
       "additionalProperties": false
     },
     "WorkingTimeConstraint": {
@@ -243,15 +473,33 @@
         "schedules": {
           "type": "object",
           "properties": {
-            "include": { "type": "array", "items": { "$ref": "common.schema.json#/$defs/Schedule" }, "uniqueItems": true },
-            "exclude": { "type": "array", "items": { "$ref": "common.schema.json#/$defs/Schedule" }, "uniqueItems": true }
+            "include": {
+              "type": "array",
+              "items": {
+                "$ref": "common.schema.json#/$defs/Schedule"
+              },
+              "uniqueItems": true
+            },
+            "exclude": {
+              "type": "array",
+              "items": {
+                "$ref": "common.schema.json#/$defs/Schedule"
+              },
+              "uniqueItems": true
+            }
           },
           "minProperties": 1,
           "additionalProperties": false
         },
-        "weeklyHours": { "$ref": "common.schema.json#/$defs/NumberRange" },
-        "shiftWorkAcceptable": { "type": "boolean" },
-        "onCallDutyAcceptable": { "type": "boolean" }
+        "weeklyHours": {
+          "$ref": "common.schema.json#/$defs/NumberRange"
+        },
+        "shiftWorkAcceptable": {
+          "type": "boolean"
+        },
+        "onCallDutyAcceptable": {
+          "type": "boolean"
+        }
       },
       "minProperties": 1,
       "additionalProperties": false
@@ -262,13 +510,28 @@
         "contractTypes": {
           "type": "object",
           "properties": {
-            "include": { "type": "array", "items": { "$ref": "common.schema.json#/$defs/ContractType" }, "uniqueItems": true },
-            "exclude": { "type": "array", "items": { "$ref": "common.schema.json#/$defs/ContractType" }, "uniqueItems": true }
+            "include": {
+              "type": "array",
+              "items": {
+                "$ref": "common.schema.json#/$defs/ContractType"
+              },
+              "uniqueItems": true
+            },
+            "exclude": {
+              "type": "array",
+              "items": {
+                "$ref": "common.schema.json#/$defs/ContractType"
+              },
+              "uniqueItems": true
+            }
           },
           "minProperties": 1,
           "additionalProperties": false
         },
-        "fixedTermMonthsAtLeast": { "type": "number", "exclusiveMinimum": 0 }
+        "fixedTermMonthsAtLeast": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        }
       },
       "minProperties": 1,
       "additionalProperties": false
@@ -279,92 +542,309 @@
         "paths": {
           "type": "object",
           "properties": {
-            "include": { "type": "array", "items": { "$ref": "common.schema.json#/$defs/DevelopmentPath" }, "uniqueItems": true },
-            "exclude": { "type": "array", "items": { "$ref": "common.schema.json#/$defs/DevelopmentPath" }, "uniqueItems": true }
+            "include": {
+              "type": "array",
+              "items": {
+                "$ref": "common.schema.json#/$defs/DevelopmentPath"
+              },
+              "uniqueItems": true
+            },
+            "exclude": {
+              "type": "array",
+              "items": {
+                "$ref": "common.schema.json#/$defs/DevelopmentPath"
+              },
+              "uniqueItems": true
+            }
           },
           "minProperties": 1,
           "additionalProperties": false
         }
       },
-      "required": [ "paths" ],
+      "required": [
+        "paths"
+      ],
       "additionalProperties": false
     },
     "DomainCriterionCondition": {
       "description": "A domain criterion used as a condition: comparator is required.",
-      "allOf": [ { "$ref": "common.schema.json#/$defs/DomainCriterion" } ],
-      "required": [ "comparator" ]
+      "allOf": [
+        {
+          "$ref": "common.schema.json#/$defs/DomainCriterion"
+        }
+      ],
+      "required": [
+        "comparator"
+      ]
     },
     "ArchetypePreference": {
       "oneOf": [
-        { "type": "object", "properties": { "hardCondition": { "$ref": "#/$defs/ArchetypeSet" }, "wish": { "$ref": "#/$defs/ArchetypeSet" }, "note": { "type": "string" } }, "minProperties": 1, "additionalProperties": false },
-        { "$ref": "common.schema.json#/$defs/StatedAbsence" }
+        {
+          "type": "object",
+          "properties": {
+            "hardCondition": {
+              "$ref": "#/$defs/ArchetypeSet"
+            },
+            "wish": {
+              "$ref": "#/$defs/ArchetypeSet"
+            },
+            "note": {
+              "type": "string"
+            }
+          },
+          "minProperties": 1,
+          "additionalProperties": false
+        },
+        {
+          "$ref": "common.schema.json#/$defs/StatedAbsence"
+        }
       ]
     },
     "CareerLevelPreference": {
       "oneOf": [
-        { "type": "object", "properties": { "hardCondition": { "$ref": "#/$defs/CareerLevelSet" }, "wish": { "$ref": "#/$defs/CareerLevelSet" }, "note": { "type": "string" } }, "minProperties": 1, "additionalProperties": false },
-        { "$ref": "common.schema.json#/$defs/StatedAbsence" }
+        {
+          "type": "object",
+          "properties": {
+            "hardCondition": {
+              "$ref": "#/$defs/CareerLevelSet"
+            },
+            "wish": {
+              "$ref": "#/$defs/CareerLevelSet"
+            },
+            "note": {
+              "type": "string"
+            }
+          },
+          "minProperties": 1,
+          "additionalProperties": false
+        },
+        {
+          "$ref": "common.schema.json#/$defs/StatedAbsence"
+        }
       ]
     },
     "IndustryPreference": {
       "oneOf": [
-        { "type": "object", "properties": { "hardCondition": { "$ref": "#/$defs/IndustrySet" }, "wish": { "$ref": "#/$defs/IndustrySet" }, "note": { "type": "string" } }, "minProperties": 1, "additionalProperties": false },
-        { "$ref": "common.schema.json#/$defs/StatedAbsence" }
+        {
+          "type": "object",
+          "properties": {
+            "hardCondition": {
+              "$ref": "#/$defs/IndustrySet"
+            },
+            "wish": {
+              "$ref": "#/$defs/IndustrySet"
+            },
+            "note": {
+              "type": "string"
+            }
+          },
+          "minProperties": 1,
+          "additionalProperties": false
+        },
+        {
+          "$ref": "common.schema.json#/$defs/StatedAbsence"
+        }
       ]
     },
     "OrganizationPreference": {
       "oneOf": [
-        { "type": "object", "properties": { "hardCondition": { "$ref": "#/$defs/OrganizationConstraint" }, "wish": { "$ref": "#/$defs/OrganizationConstraint" }, "note": { "type": "string" } }, "minProperties": 1, "additionalProperties": false },
-        { "$ref": "common.schema.json#/$defs/StatedAbsence" }
+        {
+          "type": "object",
+          "properties": {
+            "hardCondition": {
+              "$ref": "#/$defs/OrganizationConstraint"
+            },
+            "wish": {
+              "$ref": "#/$defs/OrganizationConstraint"
+            },
+            "note": {
+              "type": "string"
+            }
+          },
+          "minProperties": 1,
+          "additionalProperties": false
+        },
+        {
+          "$ref": "common.schema.json#/$defs/StatedAbsence"
+        }
       ]
     },
     "TaskPreference": {
       "oneOf": [
-        { "type": "object", "properties": { "hardCondition": { "$ref": "#/$defs/TaskSet" }, "wish": { "$ref": "#/$defs/TaskSet" }, "note": { "type": "string" } }, "minProperties": 1, "additionalProperties": false },
-        { "$ref": "common.schema.json#/$defs/StatedAbsence" }
+        {
+          "type": "object",
+          "properties": {
+            "hardCondition": {
+              "$ref": "#/$defs/TaskSet"
+            },
+            "wish": {
+              "$ref": "#/$defs/TaskSet"
+            },
+            "note": {
+              "type": "string"
+            }
+          },
+          "minProperties": 1,
+          "additionalProperties": false
+        },
+        {
+          "$ref": "common.schema.json#/$defs/StatedAbsence"
+        }
       ]
     },
     "CompensationPreference": {
       "oneOf": [
-        { "type": "object", "properties": { "hardCondition": { "$ref": "#/$defs/CompensationConstraint" }, "wish": { "$ref": "#/$defs/CompensationConstraint" }, "note": { "type": "string" } }, "minProperties": 1, "additionalProperties": false },
-        { "$ref": "common.schema.json#/$defs/StatedAbsence" }
+        {
+          "type": "object",
+          "properties": {
+            "hardCondition": {
+              "$ref": "#/$defs/CompensationConstraint"
+            },
+            "wish": {
+              "$ref": "#/$defs/CompensationConstraint"
+            },
+            "note": {
+              "type": "string"
+            }
+          },
+          "minProperties": 1,
+          "additionalProperties": false
+        },
+        {
+          "$ref": "common.schema.json#/$defs/StatedAbsence"
+        }
       ]
     },
     "LocationPreference": {
       "oneOf": [
-        { "type": "object", "properties": { "hardCondition": { "$ref": "#/$defs/LocationConstraint" }, "wish": { "$ref": "#/$defs/LocationConstraint" }, "note": { "type": "string" } }, "minProperties": 1, "additionalProperties": false },
-        { "$ref": "common.schema.json#/$defs/StatedAbsence" }
+        {
+          "type": "object",
+          "properties": {
+            "hardCondition": {
+              "$ref": "#/$defs/LocationConstraint"
+            },
+            "wish": {
+              "$ref": "#/$defs/LocationConstraint"
+            },
+            "note": {
+              "type": "string"
+            }
+          },
+          "minProperties": 1,
+          "additionalProperties": false
+        },
+        {
+          "$ref": "common.schema.json#/$defs/StatedAbsence"
+        }
       ]
     },
     "WorkModelPreference": {
       "oneOf": [
-        { "type": "object", "properties": { "hardCondition": { "$ref": "#/$defs/WorkModelConstraint" }, "wish": { "$ref": "#/$defs/WorkModelConstraint" }, "note": { "type": "string" } }, "minProperties": 1, "additionalProperties": false },
-        { "$ref": "common.schema.json#/$defs/StatedAbsence" }
+        {
+          "type": "object",
+          "properties": {
+            "hardCondition": {
+              "$ref": "#/$defs/WorkModelConstraint"
+            },
+            "wish": {
+              "$ref": "#/$defs/WorkModelConstraint"
+            },
+            "note": {
+              "type": "string"
+            }
+          },
+          "minProperties": 1,
+          "additionalProperties": false
+        },
+        {
+          "$ref": "common.schema.json#/$defs/StatedAbsence"
+        }
       ]
     },
     "WorkingTimePreference": {
       "oneOf": [
-        { "type": "object", "properties": { "hardCondition": { "$ref": "#/$defs/WorkingTimeConstraint" }, "wish": { "$ref": "#/$defs/WorkingTimeConstraint" }, "note": { "type": "string" } }, "minProperties": 1, "additionalProperties": false },
-        { "$ref": "common.schema.json#/$defs/StatedAbsence" }
+        {
+          "type": "object",
+          "properties": {
+            "hardCondition": {
+              "$ref": "#/$defs/WorkingTimeConstraint"
+            },
+            "wish": {
+              "$ref": "#/$defs/WorkingTimeConstraint"
+            },
+            "note": {
+              "type": "string"
+            }
+          },
+          "minProperties": 1,
+          "additionalProperties": false
+        },
+        {
+          "$ref": "common.schema.json#/$defs/StatedAbsence"
+        }
       ]
     },
     "ContractPreference": {
       "oneOf": [
-        { "type": "object", "properties": { "hardCondition": { "$ref": "#/$defs/ContractConstraint" }, "wish": { "$ref": "#/$defs/ContractConstraint" }, "note": { "type": "string" } }, "minProperties": 1, "additionalProperties": false },
-        { "$ref": "common.schema.json#/$defs/StatedAbsence" }
+        {
+          "type": "object",
+          "properties": {
+            "hardCondition": {
+              "$ref": "#/$defs/ContractConstraint"
+            },
+            "wish": {
+              "$ref": "#/$defs/ContractConstraint"
+            },
+            "note": {
+              "type": "string"
+            }
+          },
+          "minProperties": 1,
+          "additionalProperties": false
+        },
+        {
+          "$ref": "common.schema.json#/$defs/StatedAbsence"
+        }
       ]
     },
     "DevelopmentPreference": {
       "oneOf": [
-        { "type": "object", "properties": { "hardCondition": { "$ref": "#/$defs/DevelopmentConstraint" }, "wish": { "$ref": "#/$defs/DevelopmentConstraint" }, "note": { "type": "string" } }, "minProperties": 1, "additionalProperties": false },
-        { "$ref": "common.schema.json#/$defs/StatedAbsence" }
+        {
+          "type": "object",
+          "properties": {
+            "hardCondition": {
+              "$ref": "#/$defs/DevelopmentConstraint"
+            },
+            "wish": {
+              "$ref": "#/$defs/DevelopmentConstraint"
+            },
+            "note": {
+              "type": "string"
+            }
+          },
+          "minProperties": 1,
+          "additionalProperties": false
+        },
+        {
+          "$ref": "common.schema.json#/$defs/StatedAbsence"
+        }
       ]
     },
     "DomainCriteriaPreference": {
       "type": "object",
       "properties": {
-        "hardCondition": { "type": "array", "items": { "$ref": "#/$defs/DomainCriterionCondition" } },
-        "wish": { "type": "array", "items": { "$ref": "#/$defs/DomainCriterionCondition" } }
+        "hardCondition": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/DomainCriterionCondition"
+          }
+        },
+        "wish": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/DomainCriterionCondition"
+          }
+        }
       },
       "minProperties": 1,
       "additionalProperties": false
@@ -373,20 +853,49 @@
       "description": "What the candidate looks for. hardCondition: a job outside it is not acceptable. wish: desired, not decisive. An omitted block is UNKNOWN; StatedAbsence marks NOT_APPLICABLE or NOT_DISCLOSED.",
       "type": "object",
       "properties": {
-        "archetypes": { "$ref": "#/$defs/ArchetypePreference" },
-        "careerLevel": { "$ref": "#/$defs/CareerLevelPreference" },
-        "industries": { "$ref": "#/$defs/IndustryPreference" },
-        "organization": { "$ref": "#/$defs/OrganizationPreference" },
-        "tasks": { "$ref": "#/$defs/TaskPreference" },
-        "compensation": { "$ref": "#/$defs/CompensationPreference" },
-        "location": { "$ref": "#/$defs/LocationPreference" },
-        "workModel": { "$ref": "#/$defs/WorkModelPreference" },
-        "workingTime": { "$ref": "#/$defs/WorkingTimePreference" },
-        "contract": { "$ref": "#/$defs/ContractPreference" },
-        "development": { "$ref": "#/$defs/DevelopmentPreference" },
-        "domainCriteria": { "$ref": "#/$defs/DomainCriteriaPreference" }
+        "archetypes": {
+          "$ref": "#/$defs/ArchetypePreference"
+        },
+        "careerLevel": {
+          "$ref": "#/$defs/CareerLevelPreference"
+        },
+        "industries": {
+          "$ref": "#/$defs/IndustryPreference"
+        },
+        "organization": {
+          "$ref": "#/$defs/OrganizationPreference"
+        },
+        "tasks": {
+          "$ref": "#/$defs/TaskPreference"
+        },
+        "compensation": {
+          "$ref": "#/$defs/CompensationPreference"
+        },
+        "location": {
+          "$ref": "#/$defs/LocationPreference"
+        },
+        "workModel": {
+          "$ref": "#/$defs/WorkModelPreference"
+        },
+        "workingTime": {
+          "$ref": "#/$defs/WorkingTimePreference"
+        },
+        "contract": {
+          "$ref": "#/$defs/ContractPreference"
+        },
+        "development": {
+          "$ref": "#/$defs/DevelopmentPreference"
+        },
+        "domainCriteria": {
+          "$ref": "#/$defs/DomainCriteriaPreference"
+        }
       },
       "additionalProperties": false
     }
+  },
+  "dependentRequired": {
+    "fieldStatements": [
+      "source"
+    ]
   }
 }

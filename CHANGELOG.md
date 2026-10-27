@@ -15,5 +15,9 @@ First Community Draft. Not an adopted standard.
 - Explicit `NOT_APPLICABLE` and `NOT_DISCLOSED`; absence means UNKNOWN.
 - Candidate views `FULL_PRIVATE`, `SHARED_VIEW`, `PUBLIC_MINIMAL` and the `ProfileReference` exchange convention.
 - Reference implementation (`src/ajms`): validation (schema + semantic), JSON-LD check, deterministic Markdown rendering (EN/DE), view derivation, ProfileReference with SHA-256 digest, schema.org JobPosting export, demo matcher with separate Hiring-Fit and Career-Fit and uncalibrated weights.
-- Synthetic examples (7 valid, 18 negative with expected errors), generated outputs, pytest suite, GitHub Actions workflow.
+- Import adapters for provided data (no platform retrieval): Bundesagentur für Arbeit candidate profile as text (`ba-bewerberprofil-text`, PDF via `pdftotext`), LinkedIn data export CSV (`linkedin-data-export-csv`), JSON Resume (`json-resume-1`), German job ad text (`job-ad-text-de`); `ajms convert` with conversion report (source data → field mapping → conversion → validation → readable output, optional matching).
+- Field-level provenance for imported profiles: `source` (reference, retrieval date, format, input kind, digest, extraction quality, unmapped fields without values) and `fieldStatements` (EXPLICIT / NORMALIZED / DERIVED, `lossy`).
+- Extraction-quality gate for text inputs (token count, readable word share, layout anchors, verbatim excerpts); verified against the project's original reference files (BA, LinkedIn, XING PDF exports rejected; transcribed BA profile converted completely).
+- Schema IDs, JSON-LD context and vocabulary namespace hosted on GitHub Pages; generated vocabulary page; `tools/check_published_urls.py`.
+- Synthetic examples (7 valid, 20 negative with expected errors), generated outputs, pytest suite, GitHub Actions workflow.
 - Documentation: specification, field catalog, generated property index, success factors, schema.org mapping, privacy and exchange, architecture, source inventory, prior work and deviations, sources, limitations and roadmap.

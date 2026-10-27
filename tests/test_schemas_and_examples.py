@@ -20,7 +20,7 @@ def test_schema_is_valid_draft_2020_12_with_versioned_id(path):
     schema = json.loads(path.read_text(encoding="utf-8"))
     assert schema["$schema"] == "https://json-schema.org/draft/2020-12/schema"
     assert schema["$id"] == SCHEMA_ID_BASE + path.name
-    assert re.search(r"/v\d+\.\d+\.\d+/schemas/v\d+\.\d+/", schema["$id"])
+    assert re.fullmatch(r"https://csabaranks\.github\.io/agentic-job-matching-standard/schemas/v\d+\.\d+/[a-z-]+\.schema\.json", schema["$id"])
     Draft202012Validator.check_schema(schema)
 
 

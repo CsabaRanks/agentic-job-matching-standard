@@ -5,7 +5,7 @@ import subprocess
 
 from conftest import ROOT
 
-TEXT_SUFFIXES = {".md", ".json", ".jsonld", ".py", ".toml", ".yml", ".yaml", ".txt", ".cff", ""}
+TEXT_SUFFIXES = {".md", ".json", ".jsonld", ".py", ".toml", ".yml", ".yaml", ".txt", ".cff", ".html", ""}
 BINARY_SOURCE_SUFFIXES = {".pdf", ".png", ".jpg", ".jpeg", ".docx", ".doc", ".xlsx", ".pptx", ".zip"}
 EMAIL = re.compile(r"[A-Za-z0-9._%+-]+@([A-Za-z0-9-]+\.)+[A-Za-z]{2,}")
 ALLOWED_EMAIL_DOMAINS = ("example.org", "example.com", "example.net", "users.noreply.github.com")

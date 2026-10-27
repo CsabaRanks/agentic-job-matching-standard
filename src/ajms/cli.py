@@ -8,8 +8,10 @@ import sys
 from pathlib import Path
 
 from . import REPO_ROOT, __version__
-from .catalog import property_index
+from .catalog import property_index, vocabulary_html
 from .exchange import make_reference
+from .adapters import FORMATS, ConversionRejected, convert_path
+from .adapters.report import render_conversion_report
 from .jsonld_check import check_jsonld
 from .match import match
 from .render import render
@@ -26,6 +28,17 @@ MATCH_PAIRS = [
     ("candidate-icu-nurse.shared-view", "job-icu-nurse.public"),
 ]
 DERIVED_SOURCE = "candidate-supply-chain-analyst.full-private"
+ADAPTER_EXAMPLES = [
+    {"format": "ba-bewerberprofil-text", "input": "synthetic-demand-planner.ba.txt", "stem": "synthetic-demand-planner",
+     "retrieved_at": "2026-10-27T11:00:00+01:00", "source_url": None, "lang": "de"},
+    {"format": "linkedin-data-export-csv", "input": "export", "stem": "synthetic-supply-chain-analyst",
+     "retrieved_at": "2026-10-27T11:05:00+01:00", "source_url": None, "lang": "en"},
+    {"format": "json-resume-1", "input": "synthetic-icu-nurse.resume.json", "stem": "synthetic-icu-nurse",
+     "retrieved_at": "2026-10-27T11:10:00+01:00", "source_url": None, "lang": "en"},
+    {"format": "job-ad-text-de", "input": "senior-demand-planner.ad.de.txt", "stem": "senior-demand-planner",
+     "retrieved_at": "2026-10-27T10:15:00+01:00", "source_url": "https://jobs.example.com/ads/senior-demand-planner-4711",
+     "lang": "de", "match": True},
+]
 
 
 def dump(doc: dict) -> str:
@@ -70,9 +83,26 @@ def generated_files() -> dict[Path, str]:
         document = doc(name)
         files[out / "render" / f"{name}.en.md"] = render(document, "en")
         files[out / "render" / f"{name}.de.md"] = render(document, "de")
-        if document["@type"] == "JobProfile" and document["profileView"] == "PUBLIC":
+        if document["@type"] == "JobProfile" and document["profileView"] == "PUBLIC" \
+                and document.get("provenance", {}).get("basis") != "DERIVED":
             files[out / "schemaorg" / f"{name}.jobposting.jsonld"] = dump(to_job_posting(document))
     files[REPO_ROOT / "docs" / "property-index.md"] = property_index()
+    files[REPO_ROOT / "ns" / "v0.1" / "index.html"] = vocabulary_html()
+
+    # Import adapters: source data -> mapping -> conversion -> validation -> readable output.
+    converted = {}
+    for ex in ADAPTER_EXAMPLES:
+        folder = EXAMPLES / "adapters" / ex["format"]
+        conv = convert_path(ex["format"], folder / ex["input"], retrieved_at=ex["retrieved_at"], source_url=ex["source_url"])
+        converted[ex["format"]] = conv.profile
+        name = f"{ex['stem']}.{conv.profile['@type'].lower()}.json"
+        files[folder / name] = dump(conv.profile)
+        files[folder / f"{ex['stem']}.conversion-report.md"] = render_conversion_report(
+            conv, name, lang=ex["lang"], candidate=shared if ex.get("match") else None,
+            hiring_policy=hiring, career_policy=career)
+    combined = match(converted["ba-bewerberprofil-text"], converted["job-ad-text-de"], hiring, career)
+    files[out / "match" / "ba-candidate__imported-job-ad.match.json"] = dump(combined)
+    files[out / "match" / "ba-candidate__imported-job-ad.match.en.md"] = render(combined, "en")
     return files
 
 
@@ -123,6 +153,25 @@ def cmd_reference(args) -> int:
     return 0
 
 
+def cmd_convert(args) -> int:
+    try:
+        conv = convert_path(args.format, args.input, retrieved_at=args.retrieved_at, source_url=args.source_url)
+    except ConversionRejected as exc:
+        print(f"REJECTED ({exc.source_format}): no profile produced", file=sys.stderr)
+        for check in exc.checks:
+            print(f"  - {check}", file=sys.stderr)
+        return 2
+    if args.report:
+        candidate = load_json(args.candidate) if args.candidate else None
+        hiring = load_json(EXAMPLES / "policies" / "demo-hiring-fit.policy.json")
+        career = load_json(EXAMPLES / "policies" / "demo-career-fit.policy.json")
+        sys.stdout.write(render_conversion_report(conv, "(stdout)", lang=args.lang, candidate=candidate,
+                                                  hiring_policy=hiring, career_policy=career))
+    else:
+        sys.stdout.write(dump(conv.profile))
+    return 0
+
+
 def cmd_build_examples(args) -> int:
     for path, content in sorted(generated_files().items()):
         path.parent.mkdir(parents=True, exist_ok=True)
@@ -135,7 +184,8 @@ def cmd_check(args) -> int:
     """Validate every example and verify that generated files are up to date."""
     problems: list[str] = []
     for path in sorted((EXAMPLES / "valid").glob("*.json")) + sorted((EXAMPLES / "exchange").glob("*.json")) \
-            + sorted((EXAMPLES / "policies").glob("*.json")) + sorted((EXAMPLES / "output" / "match").glob("*.json")):
+            + sorted((EXAMPLES / "policies").glob("*.json")) + sorted((EXAMPLES / "output" / "match").glob("*.json")) \
+            + sorted((EXAMPLES / "adapters").glob("*/*.*profile.json")):
         doc = load_json(path)
         issues = validate_document(doc)
         if has_errors(issues):
@@ -203,6 +253,16 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--url", required=True)
     p.add_argument("--access", choices=("PUBLIC", "ACCESS_CONTROLLED", "ON_REQUEST"), required=True)
     p.set_defaults(func=cmd_reference)
+
+    p = sub.add_parser("convert", help="import adapter: provided source data -> AJMS profile with field-level provenance")
+    p.add_argument("input", help="file, or directory for linkedin-data-export-csv")
+    p.add_argument("--format", required=True, choices=sorted(FORMATS))
+    p.add_argument("--retrieved-at", required=True, help="when the data was retrieved or provided (RFC 3339 with offset)")
+    p.add_argument("--source-url", help="where the data came from; default urn:sha256:<digest>")
+    p.add_argument("--report", action="store_true", help="print the conversion report (Markdown) instead of the profile")
+    p.add_argument("--lang", choices=("en", "de"), default="en")
+    p.add_argument("--candidate", help="for job profiles: candidate profile to match against in the report")
+    p.set_defaults(func=cmd_convert)
 
     p = sub.add_parser("build-examples", help="regenerate derived examples and outputs")
     p.set_defaults(func=cmd_build_examples)

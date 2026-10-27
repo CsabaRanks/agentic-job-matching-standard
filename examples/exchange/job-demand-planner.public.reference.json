@@ -1,5 +1,5 @@
 {
-  "@context": "https://raw.githubusercontent.com/CsabaRanks/agentic-job-matching-standard/v0.1.0/context/v0.1/ajms.context.jsonld",
+  "@context": "https://csabaranks.github.io/agentic-job-matching-standard/context/v0.1/ajms.context.jsonld",
   "@type": "ProfileReference",
   "profileId": "urn:uuid:9b2e4d71-0c3a-4f5e-8d6b-1a2b3c4d5e6f",
   "profileType": "JobProfile",
@@ -12,6 +12,6 @@
   "contentDigest": {
     "algorithm": "SHA-256",
     "canonicalization": "AJMS-JSON-SORTED-KEYS-V1",
-    "value": "2c16ba645c3c34e09a0315ce8cb87d09fe396f089c2824c072cad9206db95d5e"
+    "value": "6b8f6725e4975a344f2769f5fc9a197121e00e151648c507c060322eb31bb7e6"
   }
 }

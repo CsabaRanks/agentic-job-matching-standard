@@ -248,6 +248,9 @@ def render_candidate(p: dict, lang: str = "en") -> str:
     d.bullet(L["updated"], p["updatedAt"])
     d.bullet(L["schema"], p["schemaVersion"])
     d.bullet(L["status"], p.get("searchStatus", L["unknown"]))
+    if "source" in p:
+        src = p["source"]
+        d.bullet("Source", f"{src.get('sourceFormat', src['sourceKind'])}, {src['sourceUrl']}, retrieved {src['retrievedAt']}")
     if "identity" in p:
         d.h(2, L["identity"])
         d.bullet(L["name"], p["identity"]["displayName"])
@@ -362,6 +365,13 @@ def render_job(j: dict, lang: str = "en") -> str:
     d.bullet(L["posted"], j.get("datePosted", L["unknown"]))
     d.bullet(L["valid"], j.get("validThrough", L["unknown"]))
     d.bullet(L["provenance"], _prov(j) if "provenance" in j else L["unknown"])
+    if "source" in j:
+        src = j["source"]
+        d.bullet("Source", f"{src['sourceUrl']} ({src['sourceKind']}), retrieved {src['retrievedAt']}")
+        counts = {}
+        for statement in j.get("fieldStatements", []):
+            counts[statement["statementKind"]] = counts.get(statement["statementKind"], 0) + 1
+        d.bullet("Field statements", ", ".join(f"{k} {counts[k]}" for k in ("EXPLICIT", "NORMALIZED", "DERIVED") if k in counts) or "–")
 
     d.h(2, L["tasks"])
     if j.get("tasks"):

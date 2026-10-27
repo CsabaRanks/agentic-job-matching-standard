@@ -1,5 +1,5 @@
 {
-  "@context": "https://raw.githubusercontent.com/CsabaRanks/agentic-job-matching-standard/v0.1.0/context/v0.1/ajms.context.jsonld",
+  "@context": "https://csabaranks.github.io/agentic-job-matching-standard/context/v0.1/ajms.context.jsonld",
   "@type": "CandidateProfile",
   "profileId": "urn:uuid:b5fd5d50-a858-5411-ba0e-c7dc0e39ef41",
   "schemaVersion": "0.1.0",

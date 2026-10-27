@@ -2,6 +2,8 @@
 
 Inventory of the input material reviewed on 2026-10-27. The material itself is **not** part of this repository. Several items contain personal data. This document records only fields, formats and observations, no personal content.
 
+**Adapter status:** formats 8 (BA) and 5 (LinkedIn, via its data export) have import adapters; see [import-adapters.md](import-adapters.md) for the exact supported inputs and the results on these reference cases.
+
 **Coverage is incomplete.** Only the listed sources were reviewed. Large job boards and agencies that are not listed (for example Indeed, Monster, Hays, Randstad, Manpower, company ATS portals) were not examined. Where a form was only partly visible, this is marked.
 
 ## 1. Inventory

@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://raw.githubusercontent.com/CsabaRanks/agentic-job-matching-standard/v0.1.0/schemas/v0.1/match-result.schema.json",
+  "$id": "https://csabaranks.github.io/agentic-job-matching-standard/schemas/v0.1/match-result.schema.json",
   "title": "AJMS MatchResult v0.1",
   "description": "Output of a bidirectional comparison. Hiring-Fit (does the candidate meet the job's requirements?) and Career-Fit (does the job meet the candidate's conditions and wishes?) are reported separately and never merged into one number. Community Draft - not an adopted standard.",
   "type": "object",

@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://raw.githubusercontent.com/CsabaRanks/agentic-job-matching-standard/v0.1.0/schemas/v0.1/match-policy.schema.json",
+  "$id": "https://csabaranks.github.io/agentic-job-matching-standard/schemas/v0.1/match-policy.schema.json",
   "title": "AJMS MatchPolicy v0.1",
   "description": "Evaluation weights for one matching perspective, kept separate from profile data. Weights only rank WISH / PREFERRED criteria; hard conditions are never weighted. Community Draft - not an adopted standard.",
   "type": "object",

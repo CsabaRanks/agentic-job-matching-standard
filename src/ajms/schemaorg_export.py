@@ -52,6 +52,9 @@ def to_job_posting(job: dict) -> dict:
         raise ValueError("only a JobProfile can be exported as schema.org JobPosting")
     if job.get("profileView") != "PUBLIC":
         raise ValueError("only PUBLIC job profiles describe advertised vacancies")
+    if job.get("provenance", {}).get("basis") == "DERIVED" or "source" in job:
+        raise ValueError("an imported (DERIVED) job profile must not be republished as JobPosting markup; "
+                         "only the publisher of the vacancy should do that")
     offer, req = job.get("offer", {}), job.get("requirements", {})
     posting: dict = {"@context": "https://schema.org", "@type": "JobPosting", "title": _txt(job["title"])}
 

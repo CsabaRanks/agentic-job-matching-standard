@@ -10,7 +10,7 @@ from __future__ import annotations
 import copy
 import uuid
 
-SHARED_DROP = ("identity",)
+SHARED_DROP = ("identity", "source", "fieldStatements")
 PUBLIC_KEEP_TOP = (
     "@context", "@type", "profileId", "schemaVersion", "updatedAt", "profileView", "defaultLanguage",
     "headline", "capabilities", "jobPreferences", "availability", "searchStatus",

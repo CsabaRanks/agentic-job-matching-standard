@@ -30,6 +30,9 @@ jobs:
           ajms match examples/valid/candidate-supply-chain-analyst.shared-view.json examples/valid/job-supply-planner-agency.public.json > /dev/null
           ajms derive-view examples/valid/candidate-supply-chain-analyst.full-private.json --view PUBLIC_MINIMAL > /dev/null
           ajms export-schemaorg examples/valid/job-demand-planner.public.json > /dev/null
+          ajms convert --format job-ad-text-de examples/adapters/job-ad-text-de/senior-demand-planner.ad.de.txt --retrieved-at 2026-10-27T10:15:00+01:00 --report > /dev/null
+          ajms convert --format linkedin-data-export-csv examples/adapters/linkedin-data-export-csv/export --retrieved-at 2026-10-27T11:05:00+01:00 > /dev/null
+          if ajms convert --format ba-bewerberprofil-text README.md --retrieved-at 2026-10-27T11:00:00+01:00 > /dev/null 2>&1; then echo 'expected rejection'; exit 1; fi
           python tools/make_invalid_examples.py
           git diff --exit-code
       - name: Tests

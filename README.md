@@ -3,6 +3,8 @@
 **Maintain your candidate profile once. Share it selectively.
 Enable agents to compare opportunities in both directions.**
 
+[![CI](https://github.com/CsabaRanks/agentic-job-matching-standard/actions/workflows/ci.yml/badge.svg)](https://github.com/CsabaRanks/agentic-job-matching-standard/actions/workflows/ci.yml)
+
 > **Status: Community Draft v0.1.** This is a proposal, not an adopted standard. It is not endorsed by schema.org, Google, any ATS vendor or any standards body.
 
 AJMS defines two independent, machine-readable profiles: a **CandidateProfile** and a **JobProfile**. They are built from the same definitions for compensation, location and commute, remote share, working time, contract, career level, tasks, competencies, development and start date. As a result, an agent can answer two separate questions:
@@ -58,7 +60,11 @@ ajms reference examples/valid/job-demand-planner.public.json --url https://examp
 # 5. Export a public JobProfile as schema.org JobPosting
 ajms export-schemaorg examples/valid/job-demand-planner.public.json
 
-# 6. Run every check and the test suite
+# 6. Convert a provided job ad (text) into a JobProfile, with a conversion report
+ajms convert --format job-ad-text-de examples/adapters/job-ad-text-de/senior-demand-planner.ad.de.txt \
+             --retrieved-at 2026-10-27T10:15:00+01:00 --report
+
+# 7. Run every check and the test suite
 ajms check
 pytest
 ```
@@ -81,11 +87,40 @@ Excerpt from step 3. The agency job is not a hard "no" because of unknown data; 
 
 Generated outputs for all examples are in [`examples/output/`](examples/output/).
 
+## Converting existing formats
+
+A search agent can use AJMS as its internal format by converting what it is given. Adapters process **provided** data; retrieving data from platforms is a separate function.
+
+| `--format` | Input | Kind |
+|---|---|---|
+| `ba-bewerberprofil-text` | Bundesagentur für Arbeit candidate profile as text (PDF via `pdftotext` if the text layer is usable) | text, quality-gated |
+| `linkedin-data-export-csv` | LinkedIn data export CSV files | structured |
+| `json-resume-1` | JSON Resume document | structured |
+| `job-ad-text-de` | German job ad as plain text | text, quality-gated |
+
+```bash
+ajms convert --format job-ad-text-de examples/adapters/job-ad-text-de/senior-demand-planner.ad.de.txt \
+  --retrieved-at 2026-10-27T10:15:00+01:00 --source-url https://jobs.example.com/ads/senior-demand-planner-4711 \
+  --report --candidate examples/valid/candidate-supply-chain-analyst.shared-view.json
+```
+
+The report runs original text → field mapping → conversion → validation → matching → human-readable output. Every field is marked:
+- **explicit** (stated verbatim),
+- **normalized** (converted into AJMS units or codes), or
+- **derived** (inferred by a named rule; for example, the salary's hours basis comes from the stated 38-hour week).
+
+The report also shows:
+- what stays **unknown**: the ad states no remote share and no start date;
+- what was **not mapped**;
+- which mappings **lose meaning**.
+
+Example: [conversion report](examples/adapters/job-ad-text-de/senior-demand-planner.conversion-report.md). All formats and limits are in [docs/import-adapters.md](docs/import-adapters.md).
+
 ## A minimal job profile
 
 ```json
 {
-  "@context": "https://raw.githubusercontent.com/CsabaRanks/agentic-job-matching-standard/v0.1.0/context/v0.1/ajms.context.jsonld",
+  "@context": "https://csabaranks.github.io/agentic-job-matching-standard/context/v0.1/ajms.context.jsonld",
   "@type": "JobProfile",
   "profileId": "urn:uuid:9b2e4d71-0c3a-4f5e-8d6b-1a2b3c4d5e6f",
   "schemaVersion": "0.1.0",
@@ -110,8 +145,9 @@ Everything not stated (location, contract, requirements …) is UNKNOWN.
 | Implemented and tested | Proposed / out of scope |
 |---|---|
 | JSON Schemas (Draft 2020-12) for CandidateProfile, JobProfile, ProfileReference, MatchPolicy, MatchResult | hosting, authentication, authorization, transport |
-| JSON-LD context and a check that is separate from schema validation | dereferenceable vocabulary namespace (planned via GitHub Pages) |
-| semantic validation, 7 valid and 18 negative examples with expected errors | DIDs, Verifiable Credentials, DIDComm, zero-knowledge proofs (possible future extensions, nothing specified) |
+| JSON-LD context and a check that is separate from schema validation; schema IDs, context and namespace published via GitHub Pages | |
+| import adapters for BA candidate profiles (text), LinkedIn data exports (CSV), JSON Resume and German job ad text, with field-level provenance | automatic retrieval from platforms; other formats (see [import adapters](docs/import-adapters.md)) |
+| semantic validation, 7 valid and 20 negative examples with expected errors | DIDs, Verifiable Credentials, DIDComm, zero-knowledge proofs (possible future extensions, nothing specified) |
 | deterministic Markdown rendering (EN/DE) | LLM-generated prose (optional for implementers, must not add facts) |
 | view derivation, ProfileReference with SHA-256 digest | signatures; anonymity guarantees (not achievable by a format) |
 | schema.org JobPosting export for public jobs | any claim of search-engine or ATS support |
@@ -124,6 +160,7 @@ Details: [limitations and roadmap](docs/limitations-and-roadmap.md).
 | Document | Content |
 |---|---|
 | [Specification](docs/specification.md) | conformance, documents, rules, views, versioning |
+| [Import adapters](docs/import-adapters.md) | supported input formats, pipeline, extraction quality, losses of meaning |
 | [Field catalog](docs/field-catalog.md) | shared criteria, units, unknown-semantics, domain extensions |
 | [Property index](docs/property-index.md) | every property and type (generated from the schemas) |
 | [Success factors](docs/success-factors.md) | the shared criteria and what they mean to candidate and employer |
@@ -152,5 +189,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) and [CHANGELOG.md](CHANGELOG.md). License
 - **Career-Fit:** Erfüllt die Stelle die Bedingungen und Wünsche des Kandidaten?
 
 Harte Bedingungen und Wünsche sind getrennt. Gewichte stehen nicht im Profil, sondern in einer separaten MatchPolicy. Fehlende Angaben gelten als **unbekannt**, nicht als „nein“. Einheiten sind eindeutig: Gehalt mit Währung, Zeitraum, Bestandteil, brutto/netto und Stundenbasis; Remote-Anteil mit Bezugszeitraum; Pendelentfernung und Pendelzeit getrennt. Domänenspezifische Zusatzkriterien haben stabile Bezeichner.
+
+Importadapter konvertieren bereitgestellte Daten aus Bundesagentur-Bewerberprofilen (Text), LinkedIn-Datenexporten (CSV), JSON Resume und deutschen Stellenanzeigen (Text) in AJMS. Explizite, normalisierte und abgeleitete Angaben werden je Feld gekennzeichnet, nicht abbildbare Inhalte und Bedeutungsverluste ausgewiesen. Texteingaben durchlaufen eine Prüfung der Extraktionsqualität. Der automatische Abruf von Plattformen ist nicht Teil von AJMS.
 
 Die Referenzimplementierung validiert Profile (JSON Schema, semantische Regeln, JSON-LD), erzeugt deterministische Markdown-Darstellungen auf Deutsch und Englisch, leitet reduzierte Ansichten ab und zeigt ein Demo-Matching mit unkalibrierten Gewichten. Sie läuft lokal, ohne LLM, Cloud-API oder API-Schlüssel. Zugriffskontrolle ist Aufgabe der Hosting- bzw. Transportlösung. Entfernte Namen allein machen ein Profil nicht anonym. AJMS gibt keine DSGVO- oder AI-Act-Konformitätsversprechen ab.

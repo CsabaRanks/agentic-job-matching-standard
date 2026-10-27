@@ -1,0 +1,44 @@
+{
+  "basics": {
+    "name": "Sam Example",
+    "label": "Intensive care nurse",
+    "email": "sam.example@example.org",
+    "url": "https://example.org/sam",
+    "summary": "Synthetic example resume. Eight years in intensive care with ventilation experience.",
+    "location": { "address": "Beispielweg 2", "postalCode": "04109", "city": "Leipzig", "countryCode": "DE", "region": "Sachsen" },
+    "profiles": [ { "network": "ExampleNet", "username": "sam", "url": "https://example.org/net/sam" } ]
+  },
+  "work": [
+    {
+      "name": "Example Hospital",
+      "position": "Intensive care nurse",
+      "startDate": "2018-04-01",
+      "summary": "Care of ventilated patients in a surgical ICU",
+      "highlights": [ "Practical instructor for new colleagues" ]
+    },
+    {
+      "name": "Example Clinic",
+      "position": "Nurse",
+      "startDate": "2015-10",
+      "endDate": "2018-03",
+      "location": "Leipzig"
+    }
+  ],
+  "education": [
+    { "institution": "Example Nursing School", "area": "Nursing", "studyType": "Vocational training", "startDate": "2012-10", "endDate": "2015-09" }
+  ],
+  "certificates": [
+    { "name": "Specialist training in intensive care and anaesthesia nursing", "date": "2020-06-30", "issuer": "Example Academy", "url": "https://example.org/certificates/icu" }
+  ],
+  "skills": [
+    { "name": "Ventilation care", "level": "Advanced", "keywords": [ "invasive ventilation", "weaning" ] },
+    { "name": "Patient monitoring", "level": "Expert" }
+  ],
+  "languages": [
+    { "language": "German", "fluency": "Native speaker" },
+    { "language": "English", "fluency": "Conversational" }
+  ],
+  "interests": [ { "name": "Hiking" } ],
+  "references": [ { "name": "A colleague", "reference": "Synthetic reference text." } ],
+  "meta": { "version": "v1.0.0" }
+}

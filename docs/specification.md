@@ -26,17 +26,17 @@ Both use the same shared definitions ([common.schema.json](../schemas/v0.1/commo
 
 | Document | Schema `$id` |
 |---|---|
-| CandidateProfile | `https://raw.githubusercontent.com/CsabaRanks/agentic-job-matching-standard/v0.1.0/schemas/v0.1/candidate-profile.schema.json` |
+| CandidateProfile | `https://csabaranks.github.io/agentic-job-matching-standard/schemas/v0.1/candidate-profile.schema.json` |
 | JobProfile | `…/schemas/v0.1/job-profile.schema.json` |
 | ProfileReference | `…/schemas/v0.1/profile-reference.schema.json` |
 | MatchPolicy | `…/schemas/v0.1/match-policy.schema.json` |
 | MatchResult | `…/schemas/v0.1/match-result.schema.json` |
 | shared definitions | `…/schemas/v0.1/common.schema.json` |
 
-All schemas use JSON Schema Draft 2020-12 (`"$schema": "https://json-schema.org/draft/2020-12/schema"`). The `$id` values include the release tag (`v0.1.0`) and the schema line (`v0.1`). They become resolvable once the tag `v0.1.0` is published. Validators SHOULD resolve them from a local copy and MUST NOT depend on network access.
+All schemas use JSON Schema Draft 2020-12 (`"$schema": "https://json-schema.org/draft/2020-12/schema"`). The `$id` values contain the schema line (`v0.1`) and are served by GitHub Pages from this repository with a JSON content type. Files of a published schema line are never changed (section 10); the release tag `v0.1.0` contains the same bytes. Validators SHOULD resolve the IDs from a local copy and MUST NOT depend on network access.
 
-JSON-LD context: `https://raw.githubusercontent.com/CsabaRanks/agentic-job-matching-standard/v0.1.0/context/v0.1/ajms.context.jsonld`.
-Vocabulary namespace for AJMS-specific terms: `https://csabaranks.github.io/agentic-job-matching-standard/ns/v0.1#` (prefix `ajms:`). In v0.1 this namespace IRI is an identifier only and is **not yet dereferenceable** (see [roadmap](limitations-and-roadmap.md)).
+JSON-LD context: `https://csabaranks.github.io/agentic-job-matching-standard/context/v0.1/ajms.context.jsonld`.
+Vocabulary namespace for AJMS-specific terms: `https://csabaranks.github.io/agentic-job-matching-standard/ns/v0.1#` (prefix `ajms:`). The namespace IRI resolves to a generated vocabulary page with one anchor per term. `tools/check_published_urls.py` verifies after each deployment that schemas, context and namespace are reachable and byte-identical to the repository.
 
 ## 3. Conformance
 
@@ -108,7 +108,19 @@ A conforming renderer SHOULD be deterministic (same input, same output), show ev
 
 The minimal exchange object is a **ProfileReference**: `profileId`, `profileType`, `schemaVersion`, `updatedAt`, `profileView`, `profileUrl`, `accessMethod`, optional `contentDigest`, `expiresAt`, `accessRequestUrl`. Details are in [privacy-and-exchange.md](privacy-and-exchange.md).
 
-## 10. Versioning
+## 10. Import and field-level provenance
+
+Profiles converted from other formats (see [import-adapters.md](import-adapters.md)) MUST carry `source` (source reference, `retrievedAt`, `sourceFormat`, `inputKind`, digest, `extractionQuality`, `unmapped`) and SHOULD carry `fieldStatements`:
+
+| `statementKind` | Meaning | Required |
+|---|---|---|
+| `EXPLICIT` | the value is stated verbatim in the source | `sourceExcerpt` |
+| `NORMALIZED` | stated in the source, converted into AJMS units, codes or enumerations | `sourceExcerpt`, `method` |
+| `DERIVED` | not stated; inferred by a named rule | `method` |
+
+`lossy: true` (with a `note`) marks a loss of meaning. Absent fields remain UNKNOWN. `source.unmapped` lists source fields that were not carried, with a reason, and MUST NOT contain their values. Every `fieldStatements` path MUST resolve in the document. Text inputs MUST pass an extraction-quality check before a profile is produced.
+
+## 11. Versioning
 
 - `schemaVersion` follows semantic versioning. v0.x releases MAY contain breaking changes between minor versions.
 - Published schema files are immutable: a change produces a new schema line (`schemas/v0.2/`) and a new tag.

@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://raw.githubusercontent.com/CsabaRanks/agentic-job-matching-standard/v0.1.0/schemas/v0.1/common.schema.json",
+  "$id": "https://csabaranks.github.io/agentic-job-matching-standard/schemas/v0.1/common.schema.json",
   "title": "AJMS v0.1 shared definitions",
   "description": "Reusable definitions shared by CandidateProfile and JobProfile. A field that is absent means UNKNOWN. An explicit StatedAbsence object distinguishes NOT_APPLICABLE and NOT_DISCLOSED from UNKNOWN. Community Draft - not an adopted standard.",
   "$defs": {
@@ -11,16 +11,22 @@
     },
     "ContextUrl": {
       "type": "string",
-      "const": "https://raw.githubusercontent.com/CsabaRanks/agentic-job-matching-standard/v0.1.0/context/v0.1/ajms.context.jsonld"
+      "const": "https://csabaranks.github.io/agentic-job-matching-standard/context/v0.1/ajms.context.jsonld"
     },
     "JsonLdContext": {
       "description": "Either the AJMS context URL or an array that contains it (additional contexts may follow).",
       "anyOf": [
-        { "$ref": "#/$defs/ContextUrl" },
+        {
+          "$ref": "#/$defs/ContextUrl"
+        },
         {
           "type": "array",
           "minItems": 1,
-          "prefixItems": [ { "$ref": "#/$defs/ContextUrl" } ]
+          "prefixItems": [
+            {
+              "$ref": "#/$defs/ContextUrl"
+            }
+          ]
         }
       ]
     },
@@ -70,20 +76,37 @@
       "description": "Free text with its language. Translations are separate renderings and never replace the original.",
       "type": "object",
       "properties": {
-        "text": { "type": "string", "minLength": 1 },
-        "language": { "$ref": "#/$defs/LanguageCode" }
+        "text": {
+          "type": "string",
+          "minLength": 1
+        },
+        "language": {
+          "$ref": "#/$defs/LanguageCode"
+        }
       },
-      "required": [ "text", "language" ],
+      "required": [
+        "text",
+        "language"
+      ],
       "additionalProperties": false
     },
     "StatedAbsence": {
       "description": "Explicit statement that a criterion block has no value. NOT_APPLICABLE: the criterion does not apply. NOT_DISCLOSED: a value exists but is deliberately withheld. Omitting the block entirely means UNKNOWN.",
       "type": "object",
       "properties": {
-        "state": { "enum": [ "NOT_APPLICABLE", "NOT_DISCLOSED" ] },
-        "note": { "type": "string" }
+        "state": {
+          "enum": [
+            "NOT_APPLICABLE",
+            "NOT_DISCLOSED"
+          ]
+        },
+        "note": {
+          "type": "string"
+        }
       },
-      "required": [ "state" ],
+      "required": [
+        "state"
+      ],
       "additionalProperties": false
     },
     "ClassificationCode": {
@@ -91,19 +114,53 @@
       "type": "object",
       "properties": {
         "scheme": {
-          "enum": [ "ISCO-08", "ESCO", "KLDB-2010", "ONET-SOC", "NACE-REV2", "WZ-2008", "ISIC-REV4", "NAICS", "ISCED-2011", "EQF", "CUSTOM" ]
+          "enum": [
+            "ISCO-08",
+            "ESCO",
+            "KLDB-2010",
+            "ONET-SOC",
+            "NACE-REV2",
+            "WZ-2008",
+            "ISIC-REV4",
+            "NAICS",
+            "ISCED-2011",
+            "EQF",
+            "CUSTOM"
+          ]
         },
-        "code": { "type": "string", "minLength": 1 },
-        "uri": { "$ref": "#/$defs/Uri" },
-        "schemeUri": { "$ref": "#/$defs/Uri" },
-        "label": { "$ref": "#/$defs/Text" }
+        "code": {
+          "type": "string",
+          "minLength": 1
+        },
+        "uri": {
+          "$ref": "#/$defs/Uri"
+        },
+        "schemeUri": {
+          "$ref": "#/$defs/Uri"
+        },
+        "label": {
+          "$ref": "#/$defs/Text"
+        }
       },
-      "required": [ "scheme", "code" ],
+      "required": [
+        "scheme",
+        "code"
+      ],
       "additionalProperties": false,
       "allOf": [
         {
-          "if": { "properties": { "scheme": { "const": "CUSTOM" } } },
-          "then": { "required": [ "schemeUri" ] }
+          "if": {
+            "properties": {
+              "scheme": {
+                "const": "CUSTOM"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "schemeUri"
+            ]
+          }
         }
       ]
     },
@@ -112,27 +169,57 @@
       "type": "object",
       "properties": {
         "basis": {
-          "enum": [ "SELF_REPORTED", "DOCUMENT_EVIDENCED", "THIRD_PARTY_CONFIRMED", "ORGANIZATION_STATED", "ESTIMATED", "DERIVED" ]
+          "enum": [
+            "SELF_REPORTED",
+            "DOCUMENT_EVIDENCED",
+            "THIRD_PARTY_CONFIRMED",
+            "ORGANIZATION_STATED",
+            "ESTIMATED",
+            "DERIVED"
+          ]
         },
         "evidenceRefs": {
           "type": "array",
-          "items": { "$ref": "#/$defs/Identifier" },
+          "items": {
+            "$ref": "#/$defs/Identifier"
+          },
           "uniqueItems": true
         },
-        "sourceUrl": { "$ref": "#/$defs/Uri" },
-        "assertedOn": { "$ref": "#/$defs/Date" },
-        "note": { "type": "string" }
+        "sourceUrl": {
+          "$ref": "#/$defs/Uri"
+        },
+        "assertedOn": {
+          "$ref": "#/$defs/Date"
+        },
+        "note": {
+          "type": "string"
+        }
       },
-      "required": [ "basis" ],
+      "required": [
+        "basis"
+      ],
       "additionalProperties": false,
       "allOf": [
         {
           "if": {
-            "properties": { "basis": { "enum": [ "DOCUMENT_EVIDENCED", "THIRD_PARTY_CONFIRMED" ] } }
+            "properties": {
+              "basis": {
+                "enum": [
+                  "DOCUMENT_EVIDENCED",
+                  "THIRD_PARTY_CONFIRMED"
+                ]
+              }
+            }
           },
           "then": {
-            "required": [ "evidenceRefs" ],
-            "properties": { "evidenceRefs": { "minItems": 1 } }
+            "required": [
+              "evidenceRefs"
+            ],
+            "properties": {
+              "evidenceRefs": {
+                "minItems": 1
+              }
+            }
           }
         }
       ]
@@ -141,25 +228,71 @@
       "description": "A reference to supporting material (certificate, reference letter, credential). verificationStatus states whether anyone outside the profile owner has checked it.",
       "type": "object",
       "properties": {
-        "evidenceId": { "$ref": "#/$defs/Identifier" },
-        "evidenceKind": {
-          "enum": [ "DEGREE_CERTIFICATE", "CERTIFICATION", "LICENSE", "EMPLOYMENT_REFERENCE", "WORK_SAMPLE", "PUBLIC_RECORD", "VERIFIABLE_CREDENTIAL", "OTHER" ]
+        "evidenceId": {
+          "$ref": "#/$defs/Identifier"
         },
-        "label": { "$ref": "#/$defs/Text" },
-        "issuerName": { "type": "string" },
-        "issuedOn": { "$ref": "#/$defs/Date" },
-        "validUntil": { "$ref": "#/$defs/Date" },
-        "documentUrl": { "$ref": "#/$defs/Uri" },
-        "verificationStatus": { "enum": [ "UNVERIFIED", "VERIFIED_BY_THIRD_PARTY" ] },
-        "verifiedBy": { "type": "string" },
-        "verifiedOn": { "$ref": "#/$defs/Date" }
+        "evidenceKind": {
+          "enum": [
+            "DEGREE_CERTIFICATE",
+            "CERTIFICATION",
+            "LICENSE",
+            "EMPLOYMENT_REFERENCE",
+            "WORK_SAMPLE",
+            "PUBLIC_RECORD",
+            "VERIFIABLE_CREDENTIAL",
+            "OTHER"
+          ]
+        },
+        "label": {
+          "$ref": "#/$defs/Text"
+        },
+        "issuerName": {
+          "type": "string"
+        },
+        "issuedOn": {
+          "$ref": "#/$defs/Date"
+        },
+        "validUntil": {
+          "$ref": "#/$defs/Date"
+        },
+        "documentUrl": {
+          "$ref": "#/$defs/Uri"
+        },
+        "verificationStatus": {
+          "enum": [
+            "UNVERIFIED",
+            "VERIFIED_BY_THIRD_PARTY"
+          ]
+        },
+        "verifiedBy": {
+          "type": "string"
+        },
+        "verifiedOn": {
+          "$ref": "#/$defs/Date"
+        }
       },
-      "required": [ "evidenceId", "evidenceKind", "label", "verificationStatus" ],
+      "required": [
+        "evidenceId",
+        "evidenceKind",
+        "label",
+        "verificationStatus"
+      ],
       "additionalProperties": false,
       "allOf": [
         {
-          "if": { "properties": { "verificationStatus": { "const": "VERIFIED_BY_THIRD_PARTY" } } },
-          "then": { "required": [ "verifiedBy", "verifiedOn" ] }
+          "if": {
+            "properties": {
+              "verificationStatus": {
+                "const": "VERIFIED_BY_THIRD_PARTY"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "verifiedBy",
+              "verifiedOn"
+            ]
+          }
         }
       ]
     },
@@ -167,8 +300,14 @@
       "description": "Closed interval. One bound may be omitted (open-ended). min <= max is checked semantically.",
       "type": "object",
       "properties": {
-        "min": { "type": "number", "minimum": 0 },
-        "max": { "type": "number", "minimum": 0 }
+        "min": {
+          "type": "number",
+          "minimum": 0
+        },
+        "max": {
+          "type": "number",
+          "minimum": 0
+        }
       },
       "minProperties": 1,
       "additionalProperties": false
@@ -176,34 +315,60 @@
     "PercentRange": {
       "type": "object",
       "properties": {
-        "min": { "type": "number", "minimum": 0, "maximum": 100 },
-        "max": { "type": "number", "minimum": 0, "maximum": 100 }
+        "min": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "max": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        }
       },
       "minProperties": 1,
       "additionalProperties": false
     },
     "ReferencePeriod": {
       "description": "Period a share or count refers to.",
-      "enum": [ "WEEK", "MONTH", "YEAR" ]
+      "enum": [
+        "WEEK",
+        "MONTH",
+        "YEAR"
+      ]
     },
     "ShareOfTime": {
       "description": "Share of contractual working time, in percent, averaged over referencePeriod.",
       "type": "object",
       "properties": {
-        "percent": { "$ref": "#/$defs/PercentRange" },
-        "referencePeriod": { "$ref": "#/$defs/ReferencePeriod" }
+        "percent": {
+          "$ref": "#/$defs/PercentRange"
+        },
+        "referencePeriod": {
+          "$ref": "#/$defs/ReferencePeriod"
+        }
       },
-      "required": [ "percent", "referencePeriod" ],
+      "required": [
+        "percent",
+        "referencePeriod"
+      ],
       "additionalProperties": false
     },
     "DaysCount": {
       "description": "Number of days (e.g. on-site days) within referencePeriod.",
       "type": "object",
       "properties": {
-        "days": { "$ref": "#/$defs/NumberRange" },
-        "referencePeriod": { "$ref": "#/$defs/ReferencePeriod" }
+        "days": {
+          "$ref": "#/$defs/NumberRange"
+        },
+        "referencePeriod": {
+          "$ref": "#/$defs/ReferencePeriod"
+        }
       },
-      "required": [ "days", "referencePeriod" ],
+      "required": [
+        "days",
+        "referencePeriod"
+      ],
       "additionalProperties": false
     },
     "CompensationAmount": {
@@ -211,14 +376,45 @@
       "type": "object",
       "properties": {
         "component": {
-          "enum": [ "BASE_SALARY", "VARIABLE_TARGET", "TOTAL_TARGET_CASH", "ALLOWANCE", "EQUITY_TARGET", "OTHER" ]
+          "enum": [
+            "BASE_SALARY",
+            "VARIABLE_TARGET",
+            "TOTAL_TARGET_CASH",
+            "ALLOWANCE",
+            "EQUITY_TARGET",
+            "OTHER"
+          ]
         },
-        "currency": { "$ref": "#/$defs/CurrencyCode" },
-        "period": { "enum": [ "HOUR", "DAY", "WEEK", "MONTH", "YEAR" ] },
-        "grossOrNet": { "enum": [ "GROSS", "NET" ] },
-        "value": { "type": "number", "minimum": 0 },
-        "min": { "type": "number", "minimum": 0 },
-        "max": { "type": "number", "minimum": 0 },
+        "currency": {
+          "$ref": "#/$defs/CurrencyCode"
+        },
+        "period": {
+          "enum": [
+            "HOUR",
+            "DAY",
+            "WEEK",
+            "MONTH",
+            "YEAR"
+          ]
+        },
+        "grossOrNet": {
+          "enum": [
+            "GROSS",
+            "NET"
+          ]
+        },
+        "value": {
+          "type": "number",
+          "minimum": 0
+        },
+        "min": {
+          "type": "number",
+          "minimum": 0
+        },
+        "max": {
+          "type": "number",
+          "minimum": 0
+        },
         "hoursPerWeekBasis": {
           "description": "Contractual weekly hours the figure refers to. Absent means the hours basis is unknown.",
           "type": "number",
@@ -231,22 +427,112 @@
           "minimum": 1,
           "maximum": 24
         },
-        "informationKind": { "enum": [ "STATED", "ESTIMATED" ] },
-        "provenance": { "$ref": "#/$defs/Provenance" },
-        "note": { "type": "string" }
+        "informationKind": {
+          "enum": [
+            "STATED",
+            "ESTIMATED"
+          ]
+        },
+        "provenance": {
+          "$ref": "#/$defs/Provenance"
+        },
+        "note": {
+          "type": "string"
+        }
       },
-      "required": [ "component", "currency", "period", "grossOrNet", "informationKind" ],
+      "required": [
+        "component",
+        "currency",
+        "period",
+        "grossOrNet",
+        "informationKind"
+      ],
       "additionalProperties": false,
       "oneOf": [
-        { "required": [ "value" ], "not": { "anyOf": [ { "required": [ "min" ] }, { "required": [ "max" ] } ] } },
-        { "required": [ "min", "max" ], "not": { "required": [ "value" ] } },
-        { "required": [ "min" ], "not": { "anyOf": [ { "required": [ "max" ] }, { "required": [ "value" ] } ] } },
-        { "required": [ "max" ], "not": { "anyOf": [ { "required": [ "min" ] }, { "required": [ "value" ] } ] } }
+        {
+          "required": [
+            "value"
+          ],
+          "not": {
+            "anyOf": [
+              {
+                "required": [
+                  "min"
+                ]
+              },
+              {
+                "required": [
+                  "max"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "required": [
+            "min",
+            "max"
+          ],
+          "not": {
+            "required": [
+              "value"
+            ]
+          }
+        },
+        {
+          "required": [
+            "min"
+          ],
+          "not": {
+            "anyOf": [
+              {
+                "required": [
+                  "max"
+                ]
+              },
+              {
+                "required": [
+                  "value"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "required": [
+            "max"
+          ],
+          "not": {
+            "anyOf": [
+              {
+                "required": [
+                  "min"
+                ]
+              },
+              {
+                "required": [
+                  "value"
+                ]
+              }
+            ]
+          }
+        }
       ],
       "allOf": [
         {
-          "if": { "properties": { "informationKind": { "const": "ESTIMATED" } } },
-          "then": { "required": [ "min", "max" ] }
+          "if": {
+            "properties": {
+              "informationKind": {
+                "const": "ESTIMATED"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "min",
+              "max"
+            ]
+          }
         }
       ]
     },
@@ -254,159 +540,347 @@
       "description": "A distance. unitCode is UN/CEFACT Common Code: KMT kilometre, SMI statute mile. measurement says how it is measured.",
       "type": "object",
       "properties": {
-        "value": { "type": "number", "minimum": 0 },
-        "unitCode": { "enum": [ "KMT", "SMI" ] },
-        "measurement": { "enum": [ "STRAIGHT_LINE", "ROUTE" ] }
+        "value": {
+          "type": "number",
+          "minimum": 0
+        },
+        "unitCode": {
+          "enum": [
+            "KMT",
+            "SMI"
+          ]
+        },
+        "measurement": {
+          "enum": [
+            "STRAIGHT_LINE",
+            "ROUTE"
+          ]
+        }
       },
-      "required": [ "value", "unitCode", "measurement" ],
+      "required": [
+        "value",
+        "unitCode",
+        "measurement"
+      ],
       "additionalProperties": false
     },
     "Duration": {
       "description": "A duration. unitCode is UN/CEFACT Common Code: MIN minute, HUR hour.",
       "type": "object",
       "properties": {
-        "value": { "type": "number", "minimum": 0 },
-        "unitCode": { "enum": [ "MIN", "HUR" ] }
+        "value": {
+          "type": "number",
+          "minimum": 0
+        },
+        "unitCode": {
+          "enum": [
+            "MIN",
+            "HUR"
+          ]
+        }
       },
-      "required": [ "value", "unitCode" ],
+      "required": [
+        "value",
+        "unitCode"
+      ],
       "additionalProperties": false
     },
     "GeoPoint": {
       "description": "Coordinates. precisionKm states how coarse the point deliberately is (e.g. 10 for a regional centroid).",
       "type": "object",
       "properties": {
-        "latitude": { "type": "number", "minimum": -90, "maximum": 90 },
-        "longitude": { "type": "number", "minimum": -180, "maximum": 180 },
-        "precisionKm": { "type": "number", "minimum": 0 }
+        "latitude": {
+          "type": "number",
+          "minimum": -90,
+          "maximum": 90
+        },
+        "longitude": {
+          "type": "number",
+          "minimum": -180,
+          "maximum": 180
+        },
+        "precisionKm": {
+          "type": "number",
+          "minimum": 0
+        }
       },
-      "required": [ "latitude", "longitude", "precisionKm" ],
+      "required": [
+        "latitude",
+        "longitude",
+        "precisionKm"
+      ],
       "additionalProperties": false
     },
     "Place": {
       "type": "object",
       "properties": {
-        "countryCode": { "$ref": "#/$defs/CountryCode" },
-        "region": { "type": "string" },
-        "locality": { "type": "string" },
-        "postalCode": { "type": "string" },
-        "geo": { "$ref": "#/$defs/GeoPoint" }
+        "countryCode": {
+          "$ref": "#/$defs/CountryCode"
+        },
+        "region": {
+          "type": "string"
+        },
+        "locality": {
+          "type": "string"
+        },
+        "postalCode": {
+          "type": "string"
+        },
+        "geo": {
+          "$ref": "#/$defs/GeoPoint"
+        }
       },
-      "required": [ "countryCode" ],
+      "required": [
+        "countryCode"
+      ],
       "additionalProperties": false
     },
     "CommuteConditions": {
       "description": "Commute limits from an origin. Distance and travel time are separate limits; either may be given.",
       "type": "object",
       "properties": {
-        "origin": { "$ref": "#/$defs/Place" },
-        "maxOneWayDistance": { "$ref": "#/$defs/Distance" },
-        "maxOneWayDuration": { "$ref": "#/$defs/Duration" },
+        "origin": {
+          "$ref": "#/$defs/Place"
+        },
+        "maxOneWayDistance": {
+          "$ref": "#/$defs/Distance"
+        },
+        "maxOneWayDuration": {
+          "$ref": "#/$defs/Duration"
+        },
         "transportModes": {
           "type": "array",
-          "items": { "enum": [ "CAR", "PUBLIC_TRANSPORT", "BICYCLE", "WALK" ] },
+          "items": {
+            "enum": [
+              "CAR",
+              "PUBLIC_TRANSPORT",
+              "BICYCLE",
+              "WALK"
+            ]
+          },
           "uniqueItems": true
         },
-        "relocationPossible": { "type": "boolean" }
+        "relocationPossible": {
+          "type": "boolean"
+        }
       },
-      "required": [ "origin" ],
+      "required": [
+        "origin"
+      ],
       "anyOf": [
-        { "required": [ "maxOneWayDistance" ] },
-        { "required": [ "maxOneWayDuration" ] },
-        { "required": [ "relocationPossible" ] }
+        {
+          "required": [
+            "maxOneWayDistance"
+          ]
+        },
+        {
+          "required": [
+            "maxOneWayDuration"
+          ]
+        },
+        {
+          "required": [
+            "relocationPossible"
+          ]
+        }
       ],
       "additionalProperties": false
     },
-    "WorkArrangement": { "enum": [ "ONSITE", "HYBRID", "REMOTE" ] },
+    "WorkArrangement": {
+      "enum": [
+        "ONSITE",
+        "HYBRID",
+        "REMOTE"
+      ]
+    },
     "WorkModel": {
       "description": "Where work happens. remoteShare and onsiteDays carry their reference period. HYBRID without remoteShare or onsiteDays leaves the share UNKNOWN.",
       "type": "object",
       "properties": {
-        "arrangement": { "$ref": "#/$defs/WorkArrangement" },
-        "remoteShare": { "$ref": "#/$defs/ShareOfTime" },
-        "onsiteDays": { "$ref": "#/$defs/DaysCount" },
-        "travelShare": { "$ref": "#/$defs/ShareOfTime" },
+        "arrangement": {
+          "$ref": "#/$defs/WorkArrangement"
+        },
+        "remoteShare": {
+          "$ref": "#/$defs/ShareOfTime"
+        },
+        "onsiteDays": {
+          "$ref": "#/$defs/DaysCount"
+        },
+        "travelShare": {
+          "$ref": "#/$defs/ShareOfTime"
+        },
         "remoteCountries": {
           "type": "array",
-          "items": { "$ref": "#/$defs/CountryCode" },
+          "items": {
+            "$ref": "#/$defs/CountryCode"
+          },
           "uniqueItems": true
         }
       },
-      "required": [ "arrangement" ],
+      "required": [
+        "arrangement"
+      ],
       "additionalProperties": false
     },
-    "Schedule": { "enum": [ "FULL_TIME", "PART_TIME" ] },
+    "Schedule": {
+      "enum": [
+        "FULL_TIME",
+        "PART_TIME"
+      ]
+    },
     "WorkingTime": {
       "description": "Contractual working time. weeklyHours is in hours per week.",
       "type": "object",
       "properties": {
-        "schedule": { "$ref": "#/$defs/Schedule" },
-        "weeklyHours": { "$ref": "#/$defs/NumberRange" },
-        "shiftWork": { "type": "boolean" },
-        "onCallDuty": { "type": "boolean" },
-        "flexibleHours": { "type": "boolean" }
+        "schedule": {
+          "$ref": "#/$defs/Schedule"
+        },
+        "weeklyHours": {
+          "$ref": "#/$defs/NumberRange"
+        },
+        "shiftWork": {
+          "type": "boolean"
+        },
+        "onCallDuty": {
+          "type": "boolean"
+        },
+        "flexibleHours": {
+          "type": "boolean"
+        }
       },
       "minProperties": 1,
       "additionalProperties": false
     },
     "ContractType": {
-      "enum": [ "PERMANENT_EMPLOYMENT", "FIXED_TERM_EMPLOYMENT", "TEMPORARY_AGENCY_WORK", "FREELANCE", "INTERNSHIP", "APPRENTICESHIP", "WORKING_STUDENT" ]
+      "enum": [
+        "PERMANENT_EMPLOYMENT",
+        "FIXED_TERM_EMPLOYMENT",
+        "TEMPORARY_AGENCY_WORK",
+        "FREELANCE",
+        "INTERNSHIP",
+        "APPRENTICESHIP",
+        "WORKING_STUDENT"
+      ]
     },
     "Contract": {
       "type": "object",
       "properties": {
-        "contractType": { "$ref": "#/$defs/ContractType" },
-        "fixedTermMonths": { "type": "number", "exclusiveMinimum": 0 },
-        "permanentConversionPossible": { "type": "boolean" },
-        "probationMonths": { "type": "number", "minimum": 0 }
+        "contractType": {
+          "$ref": "#/$defs/ContractType"
+        },
+        "fixedTermMonths": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "permanentConversionPossible": {
+          "type": "boolean"
+        },
+        "probationMonths": {
+          "type": "number",
+          "minimum": 0
+        }
       },
-      "required": [ "contractType" ],
+      "required": [
+        "contractType"
+      ],
       "additionalProperties": false
     },
     "CareerLevel": {
       "description": "Ordered career levels: ENTRY < JUNIOR < PROFESSIONAL < SENIOR < LEAD < HEAD < DIRECTOR < EXECUTIVE.",
-      "enum": [ "ENTRY", "JUNIOR", "PROFESSIONAL", "SENIOR", "LEAD", "HEAD", "DIRECTOR", "EXECUTIVE" ]
+      "enum": [
+        "ENTRY",
+        "JUNIOR",
+        "PROFESSIONAL",
+        "SENIOR",
+        "LEAD",
+        "HEAD",
+        "DIRECTOR",
+        "EXECUTIVE"
+      ]
     },
     "Leadership": {
       "type": "object",
       "properties": {
-        "leadershipType": { "enum": [ "NONE", "FUNCTIONAL", "DISCIPLINARY" ] },
-        "directReports": { "$ref": "#/$defs/NumberRange" }
+        "leadershipType": {
+          "enum": [
+            "NONE",
+            "FUNCTIONAL",
+            "DISCIPLINARY"
+          ]
+        },
+        "directReports": {
+          "$ref": "#/$defs/NumberRange"
+        }
       },
-      "required": [ "leadershipType" ],
+      "required": [
+        "leadershipType"
+      ],
       "additionalProperties": false
     },
     "JobArchetype": {
       "description": "A recurring kind of job. archetypeId is a stable identifier; occupationCodes link it to official classifications.",
       "type": "object",
       "properties": {
-        "archetypeId": { "$ref": "#/$defs/Identifier" },
-        "label": { "$ref": "#/$defs/Text" },
+        "archetypeId": {
+          "$ref": "#/$defs/Identifier"
+        },
+        "label": {
+          "$ref": "#/$defs/Text"
+        },
         "occupationCodes": {
           "type": "array",
-          "items": { "$ref": "#/$defs/ClassificationCode" }
+          "items": {
+            "$ref": "#/$defs/ClassificationCode"
+          }
         }
       },
-      "required": [ "archetypeId", "label" ],
+      "required": [
+        "archetypeId",
+        "label"
+      ],
       "additionalProperties": false
     },
     "OrganizationType": {
-      "enum": [ "EMPLOYER", "STAFFING_AGENCY", "RECRUITMENT_CONSULTANCY", "PUBLIC_EMPLOYMENT_SERVICE", "OTHER" ]
+      "enum": [
+        "EMPLOYER",
+        "STAFFING_AGENCY",
+        "RECRUITMENT_CONSULTANCY",
+        "PUBLIC_EMPLOYMENT_SERVICE",
+        "OTHER"
+      ]
     },
     "SizeClass": {
       "description": "Headcount classes.",
-      "enum": [ "EMPLOYEES_1_9", "EMPLOYEES_10_49", "EMPLOYEES_50_249", "EMPLOYEES_250_999", "EMPLOYEES_1000_PLUS" ]
+      "enum": [
+        "EMPLOYEES_1_9",
+        "EMPLOYEES_10_49",
+        "EMPLOYEES_50_249",
+        "EMPLOYEES_250_999",
+        "EMPLOYEES_1000_PLUS"
+      ]
     },
     "Organization": {
       "type": "object",
       "properties": {
-        "name": { "type": "string", "minLength": 1 },
-        "organizationType": { "$ref": "#/$defs/OrganizationType" },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "organizationType": {
+          "$ref": "#/$defs/OrganizationType"
+        },
         "industries": {
           "type": "array",
-          "items": { "$ref": "#/$defs/ClassificationCode" }
+          "items": {
+            "$ref": "#/$defs/ClassificationCode"
+          }
         },
-        "sizeClass": { "$ref": "#/$defs/SizeClass" },
-        "url": { "$ref": "#/$defs/Uri" }
+        "sizeClass": {
+          "$ref": "#/$defs/SizeClass"
+        },
+        "url": {
+          "$ref": "#/$defs/Uri"
+        }
       },
       "minProperties": 1,
       "additionalProperties": false
@@ -414,91 +888,204 @@
     "Task": {
       "type": "object",
       "properties": {
-        "taskId": { "$ref": "#/$defs/Identifier" },
-        "label": { "$ref": "#/$defs/Text" },
-        "category": { "$ref": "#/$defs/ClassificationCode" },
-        "shareOfTimePercent": { "type": "number", "minimum": 0, "maximum": 100 }
+        "taskId": {
+          "$ref": "#/$defs/Identifier"
+        },
+        "label": {
+          "$ref": "#/$defs/Text"
+        },
+        "category": {
+          "$ref": "#/$defs/ClassificationCode"
+        },
+        "shareOfTimePercent": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        }
       },
-      "required": [ "taskId", "label" ],
+      "required": [
+        "taskId",
+        "label"
+      ],
       "additionalProperties": false
     },
     "Proficiency": {
       "description": "Ordered: BASIC < INTERMEDIATE < ADVANCED < EXPERT.",
-      "enum": [ "BASIC", "INTERMEDIATE", "ADVANCED", "EXPERT" ]
+      "enum": [
+        "BASIC",
+        "INTERMEDIATE",
+        "ADVANCED",
+        "EXPERT"
+      ]
     },
     "CefrLevel": {
       "description": "Ordered CEFR levels; NATIVE ranks above C2.",
-      "enum": [ "A1", "A2", "B1", "B2", "C1", "C2", "NATIVE" ]
+      "enum": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1",
+        "C2",
+        "NATIVE"
+      ]
     },
     "Competency": {
       "type": "object",
       "properties": {
-        "competencyId": { "$ref": "#/$defs/Identifier" },
-        "label": { "$ref": "#/$defs/Text" },
-        "code": { "$ref": "#/$defs/ClassificationCode" },
-        "proficiency": { "$ref": "#/$defs/Proficiency" },
-        "yearsOfPractice": { "type": "number", "minimum": 0 },
-        "lastUsedYear": { "type": "integer", "minimum": 1900, "maximum": 2100 },
-        "provenance": { "$ref": "#/$defs/Provenance" }
+        "competencyId": {
+          "$ref": "#/$defs/Identifier"
+        },
+        "label": {
+          "$ref": "#/$defs/Text"
+        },
+        "code": {
+          "$ref": "#/$defs/ClassificationCode"
+        },
+        "proficiency": {
+          "$ref": "#/$defs/Proficiency"
+        },
+        "yearsOfPractice": {
+          "type": "number",
+          "minimum": 0
+        },
+        "lastUsedYear": {
+          "type": "integer",
+          "minimum": 1900,
+          "maximum": 2100
+        },
+        "provenance": {
+          "$ref": "#/$defs/Provenance"
+        }
       },
-      "required": [ "competencyId", "label" ],
+      "required": [
+        "competencyId",
+        "label"
+      ],
       "additionalProperties": false
     },
     "LanguageSkill": {
       "type": "object",
       "properties": {
-        "languageCode": { "$ref": "#/$defs/LanguageCode" },
-        "cefrLevel": { "$ref": "#/$defs/CefrLevel" },
-        "provenance": { "$ref": "#/$defs/Provenance" }
+        "languageCode": {
+          "$ref": "#/$defs/LanguageCode"
+        },
+        "cefrLevel": {
+          "$ref": "#/$defs/CefrLevel"
+        },
+        "provenance": {
+          "$ref": "#/$defs/Provenance"
+        }
       },
-      "required": [ "languageCode", "cefrLevel" ],
+      "required": [
+        "languageCode",
+        "cefrLevel"
+      ],
       "additionalProperties": false
     },
     "QualificationType": {
-      "enum": [ "DEGREE", "VOCATIONAL_QUALIFICATION", "CERTIFICATION", "LICENSE", "OTHER" ]
+      "enum": [
+        "DEGREE",
+        "VOCATIONAL_QUALIFICATION",
+        "CERTIFICATION",
+        "LICENSE",
+        "OTHER"
+      ]
     },
     "Qualification": {
       "type": "object",
       "properties": {
-        "qualificationId": { "$ref": "#/$defs/Identifier" },
-        "qualificationType": { "$ref": "#/$defs/QualificationType" },
-        "label": { "$ref": "#/$defs/Text" },
-        "eqfLevel": { "type": "integer", "minimum": 1, "maximum": 8 },
-        "fieldOfStudy": { "$ref": "#/$defs/Text" },
-        "issuerName": { "type": "string" },
-        "completedOn": { "$ref": "#/$defs/YearMonth" },
-        "validUntil": { "$ref": "#/$defs/Date" },
-        "provenance": { "$ref": "#/$defs/Provenance" }
+        "qualificationId": {
+          "$ref": "#/$defs/Identifier"
+        },
+        "qualificationType": {
+          "$ref": "#/$defs/QualificationType"
+        },
+        "label": {
+          "$ref": "#/$defs/Text"
+        },
+        "eqfLevel": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 8
+        },
+        "fieldOfStudy": {
+          "$ref": "#/$defs/Text"
+        },
+        "issuerName": {
+          "type": "string"
+        },
+        "completedOn": {
+          "$ref": "#/$defs/YearMonth"
+        },
+        "validUntil": {
+          "$ref": "#/$defs/Date"
+        },
+        "provenance": {
+          "$ref": "#/$defs/Provenance"
+        }
       },
-      "required": [ "qualificationId", "qualificationType", "label" ],
+      "required": [
+        "qualificationId",
+        "qualificationType",
+        "label"
+      ],
       "additionalProperties": false
     },
     "DomainExperience": {
       "description": "Months of experience in a domain (function, industry or occupation).",
       "type": "object",
       "properties": {
-        "domainId": { "$ref": "#/$defs/Identifier" },
-        "label": { "$ref": "#/$defs/Text" },
-        "code": { "$ref": "#/$defs/ClassificationCode" },
-        "months": { "type": "integer", "minimum": 0 },
-        "provenance": { "$ref": "#/$defs/Provenance" }
+        "domainId": {
+          "$ref": "#/$defs/Identifier"
+        },
+        "label": {
+          "$ref": "#/$defs/Text"
+        },
+        "code": {
+          "$ref": "#/$defs/ClassificationCode"
+        },
+        "months": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "provenance": {
+          "$ref": "#/$defs/Provenance"
+        }
       },
-      "required": [ "domainId", "label", "months" ],
+      "required": [
+        "domainId",
+        "label",
+        "months"
+      ],
       "additionalProperties": false
     },
     "DevelopmentPath": {
-      "enum": [ "LEADERSHIP", "EXPERT", "PROJECT", "INTERNATIONAL", "CROSS_FUNCTIONAL", "FURTHER_EDUCATION" ]
+      "enum": [
+        "LEADERSHIP",
+        "EXPERT",
+        "PROJECT",
+        "INTERNATIONAL",
+        "CROSS_FUNCTIONAL",
+        "FURTHER_EDUCATION"
+      ]
     },
     "Development": {
       "type": "object",
       "properties": {
         "paths": {
           "type": "array",
-          "items": { "$ref": "#/$defs/DevelopmentPath" },
+          "items": {
+            "$ref": "#/$defs/DevelopmentPath"
+          },
           "uniqueItems": true
         },
-        "trainingDaysPerYear": { "$ref": "#/$defs/NumberRange" },
-        "description": { "$ref": "#/$defs/Text" }
+        "trainingDaysPerYear": {
+          "$ref": "#/$defs/NumberRange"
+        },
+        "description": {
+          "$ref": "#/$defs/Text"
+        }
       },
       "minProperties": 1,
       "additionalProperties": false
@@ -507,16 +1094,33 @@
       "description": "Start window. For a candidate: earliest possible start and notice period. For a job: desired start window.",
       "type": "object",
       "properties": {
-        "immediate": { "type": "boolean" },
-        "earliestStartDate": { "$ref": "#/$defs/Date" },
-        "latestStartDate": { "$ref": "#/$defs/Date" },
+        "immediate": {
+          "type": "boolean"
+        },
+        "earliestStartDate": {
+          "$ref": "#/$defs/Date"
+        },
+        "latestStartDate": {
+          "$ref": "#/$defs/Date"
+        },
         "noticePeriod": {
           "type": "object",
           "properties": {
-            "value": { "type": "number", "minimum": 0 },
-            "unitCode": { "enum": [ "WEE", "MON" ] }
+            "value": {
+              "type": "number",
+              "minimum": 0
+            },
+            "unitCode": {
+              "enum": [
+                "WEE",
+                "MON"
+              ]
+            }
           },
-          "required": [ "value", "unitCode" ],
+          "required": [
+            "value",
+            "unitCode"
+          ],
           "additionalProperties": false
         }
       },
@@ -526,11 +1130,23 @@
     "WorkAuthorization": {
       "type": "object",
       "properties": {
-        "countryCode": { "$ref": "#/$defs/CountryCode" },
-        "status": { "enum": [ "AUTHORIZED", "REQUIRES_SPONSORSHIP" ] },
-        "provenance": { "$ref": "#/$defs/Provenance" }
+        "countryCode": {
+          "$ref": "#/$defs/CountryCode"
+        },
+        "status": {
+          "enum": [
+            "AUTHORIZED",
+            "REQUIRES_SPONSORSHIP"
+          ]
+        },
+        "provenance": {
+          "$ref": "#/$defs/Provenance"
+        }
       },
-      "required": [ "countryCode", "status" ],
+      "required": [
+        "countryCode",
+        "status"
+      ],
       "additionalProperties": false
     },
     "DomainCriterionId": {
@@ -542,29 +1158,439 @@
       "description": "Optional domain-specific criterion. dataType fixes the type of value; unitCode (UN/CEFACT) is used for quantities. comparator is only meaningful on requirement and condition sides.",
       "type": "object",
       "properties": {
-        "criterionId": { "$ref": "#/$defs/DomainCriterionId" },
-        "label": { "$ref": "#/$defs/Text" },
-        "definitionUrl": { "$ref": "#/$defs/Uri" },
-        "dataType": { "enum": [ "BOOLEAN", "INTEGER", "NUMBER", "TEXT", "CODE", "CODE_LIST" ] },
-        "unitCode": { "type": "string", "pattern": "^[A-Z0-9]{2,3}$" },
+        "criterionId": {
+          "$ref": "#/$defs/DomainCriterionId"
+        },
+        "label": {
+          "$ref": "#/$defs/Text"
+        },
+        "definitionUrl": {
+          "$ref": "#/$defs/Uri"
+        },
+        "dataType": {
+          "enum": [
+            "BOOLEAN",
+            "INTEGER",
+            "NUMBER",
+            "TEXT",
+            "CODE",
+            "CODE_LIST"
+          ]
+        },
+        "unitCode": {
+          "type": "string",
+          "pattern": "^[A-Z0-9]{2,3}$"
+        },
         "value": {},
-        "comparator": { "enum": [ "EQUALS", "AT_LEAST", "AT_MOST", "ANY_OF", "ALL_OF" ] },
-        "provenance": { "$ref": "#/$defs/Provenance" }
+        "comparator": {
+          "enum": [
+            "EQUALS",
+            "AT_LEAST",
+            "AT_MOST",
+            "ANY_OF",
+            "ALL_OF"
+          ]
+        },
+        "provenance": {
+          "$ref": "#/$defs/Provenance"
+        }
       },
-      "required": [ "criterionId", "label", "dataType", "value" ],
+      "required": [
+        "criterionId",
+        "label",
+        "dataType",
+        "value"
+      ],
       "additionalProperties": false,
       "allOf": [
-        { "if": { "properties": { "dataType": { "const": "BOOLEAN" } } }, "then": { "properties": { "value": { "type": "boolean" }, "comparator": { "const": "EQUALS" } } } },
-        { "if": { "properties": { "dataType": { "const": "INTEGER" } } }, "then": { "properties": { "value": { "type": "integer" }, "comparator": { "enum": [ "EQUALS", "AT_LEAST", "AT_MOST" ] } } } },
-        { "if": { "properties": { "dataType": { "const": "NUMBER" } } }, "then": { "properties": { "value": { "type": "number" }, "comparator": { "enum": [ "EQUALS", "AT_LEAST", "AT_MOST" ] } } } },
-        { "if": { "properties": { "dataType": { "const": "TEXT" } } }, "then": { "properties": { "value": { "type": "string", "minLength": 1 }, "comparator": { "const": "EQUALS" } } } },
-        { "if": { "properties": { "dataType": { "const": "CODE" } } }, "then": { "properties": { "value": { "type": "string", "pattern": "^[A-Za-z0-9._:-]+$" }, "comparator": { "enum": [ "EQUALS", "ANY_OF" ] } } } },
-        { "if": { "properties": { "dataType": { "const": "CODE_LIST" } } }, "then": { "properties": { "value": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "type": "string", "pattern": "^[A-Za-z0-9._:-]+$" } }, "comparator": { "enum": [ "ANY_OF", "ALL_OF" ] } } } }
+        {
+          "if": {
+            "properties": {
+              "dataType": {
+                "const": "BOOLEAN"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "value": {
+                "type": "boolean"
+              },
+              "comparator": {
+                "const": "EQUALS"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "dataType": {
+                "const": "INTEGER"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "value": {
+                "type": "integer"
+              },
+              "comparator": {
+                "enum": [
+                  "EQUALS",
+                  "AT_LEAST",
+                  "AT_MOST"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "dataType": {
+                "const": "NUMBER"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "value": {
+                "type": "number"
+              },
+              "comparator": {
+                "enum": [
+                  "EQUALS",
+                  "AT_LEAST",
+                  "AT_MOST"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "dataType": {
+                "const": "TEXT"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "value": {
+                "type": "string",
+                "minLength": 1
+              },
+              "comparator": {
+                "const": "EQUALS"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "dataType": {
+                "const": "CODE"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "value": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9._:-]+$"
+              },
+              "comparator": {
+                "enum": [
+                  "EQUALS",
+                  "ANY_OF"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "dataType": {
+                "const": "CODE_LIST"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "value": {
+                "type": "array",
+                "minItems": 1,
+                "uniqueItems": true,
+                "items": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9._:-]+$"
+                }
+              },
+              "comparator": {
+                "enum": [
+                  "ANY_OF",
+                  "ALL_OF"
+                ]
+              }
+            }
+          }
+        }
+      ]
+    },
+    "SourceRecord": {
+      "description": "Where an imported profile comes from: source reference, retrieval date, digest of the original data, source format, input kind, extraction quality and source content that could not be mapped. Keeps the reference to the original material without copying it. Values of unmapped content are never stored.",
+      "type": "object",
+      "properties": {
+        "sourceUrl": {
+          "$ref": "#/$defs/Uri",
+          "description": "URL of the source, or urn:sha256:<digest> when the data was provided as a file without URL."
+        },
+        "sourceFileName": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sourceRecordId": {
+          "description": "Identifier of the record in the source system (e.g. a reference number).",
+          "type": "string",
+          "minLength": 1
+        },
+        "retrievedAt": {
+          "$ref": "#/$defs/DateTime"
+        },
+        "sourceKind": {
+          "enum": [
+            "JOB_AD_WEB_PAGE",
+            "JOB_BOARD_LISTING",
+            "EMAIL_ALERT",
+            "ATS_API",
+            "PLATFORM_EXPORT",
+            "PORTAL_PROFILE",
+            "DOCUMENT",
+            "MANUAL_ENTRY",
+            "OTHER"
+          ]
+        },
+        "sourceFormat": {
+          "description": "Adapter format identifier, e.g. ba-bewerberprofil-text, linkedin-data-export-csv, json-resume-1, job-ad-text-de.",
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9.-]*$"
+        },
+        "inputKind": {
+          "description": "STRUCTURED: fields mapped directly. TEXT: values extracted from free text or a PDF text layer; see extractionQuality.",
+          "enum": [
+            "STRUCTURED",
+            "TEXT"
+          ]
+        },
+        "textDigest": {
+          "description": "SHA-256 of the original text (UTF-8) the profile was derived from.",
+          "type": "object",
+          "properties": {
+            "algorithm": {
+              "const": "SHA-256"
+            },
+            "value": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            }
+          },
+          "required": [
+            "algorithm",
+            "value"
+          ],
+          "additionalProperties": false
+        },
+        "importedBy": {
+          "type": "object",
+          "properties": {
+            "tool": {
+              "type": "string",
+              "minLength": 1
+            },
+            "toolVersion": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "tool",
+            "toolVersion"
+          ],
+          "additionalProperties": false
+        },
+        "extractionQuality": {
+          "description": "Result of the adapter's input checks. PASSED: all content recognized. REVIEW: profile produced, but some content was not interpreted or a check needs a human. REJECTED inputs produce no profile.",
+          "type": "object",
+          "properties": {
+            "status": {
+              "enum": [
+                "PASSED",
+                "REVIEW"
+              ]
+            },
+            "recognizedShare": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "uninterpretedLines": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "checks": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "required": [
+            "status",
+            "checks"
+          ],
+          "additionalProperties": false
+        },
+        "unmapped": {
+          "description": "Source fields or content not carried into the profile, with the reason. Only field names are recorded, never their values.",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "sourceField": {
+                "type": "string",
+                "minLength": 1
+              },
+              "reason": {
+                "enum": [
+                  "NO_AJMS_FIELD",
+                  "PROTECTED_CHARACTERISTIC_NOT_MAPPED",
+                  "DATA_MINIMISATION",
+                  "INTERMEDIARY_CONTACT",
+                  "AMBIGUOUS",
+                  "REDUNDANT",
+                  "MISSING_REQUIRED_DETAIL",
+                  "NOT_INTERPRETED"
+                ]
+              },
+              "note": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "sourceField",
+              "reason"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "sourceUrl",
+        "retrievedAt",
+        "sourceKind"
+      ],
+      "additionalProperties": false
+    },
+    "FieldStatement": {
+      "description": "How one field of an imported profile relates to the source. EXPLICIT: stated verbatim. NORMALIZED: stated, converted into AJMS units, codes or enumerations. DERIVED: not stated, inferred by a named method. lossy marks a loss of meaning. A field without a statement in an imported profile is not covered by the source record; an absent field is UNKNOWN.",
+      "type": "object",
+      "properties": {
+        "path": {
+          "description": "JSON Pointer (RFC 6901) to the field in this document.",
+          "type": "string",
+          "pattern": "^(/[A-Za-z0-9@_.-]+)+$"
+        },
+        "statementKind": {
+          "enum": [
+            "EXPLICIT",
+            "NORMALIZED",
+            "DERIVED"
+          ]
+        },
+        "sourceExcerpt": {
+          "type": "string",
+          "minLength": 1
+        },
+        "method": {
+          "$ref": "#/$defs/Identifier"
+        },
+        "note": {
+          "type": "string"
+        },
+        "lossy": {
+          "description": "true when the conversion loses meaning (e.g. a coarser scale, a dropped detail); the note says what is lost.",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "path",
+        "statementKind"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "statementKind": {
+                "enum": [
+                  "EXPLICIT",
+                  "NORMALIZED"
+                ]
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "sourceExcerpt"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "statementKind": {
+                "enum": [
+                  "NORMALIZED",
+                  "DERIVED"
+                ]
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "method"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "lossy": {
+                "const": true
+              }
+            },
+            "required": [
+              "lossy"
+            ]
+          },
+          "then": {
+            "required": [
+              "note"
+            ]
+          }
+        }
       ]
     },
     "RequirementLevel": {
       "description": "REQUIRED: hard requirement. PREFERRED: desirable, not decisive on its own.",
-      "enum": [ "REQUIRED", "PREFERRED" ]
+      "enum": [
+        "REQUIRED",
+        "PREFERRED"
+      ]
     }
   }
 }

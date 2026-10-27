@@ -37,6 +37,11 @@ case("invalid-semantic","job-start-window-reversed.json",J,lambda d:d["requireme
 case("invalid-semantic","candidate-ongoing-with-end-month.json",C,lambda d:d["experienceHistory"][0].__setitem__("endMonth","2025-12"),"semantic","/experienceHistory/0","an ongoing entry must not have endMonth","Contradictory employment period.")
 case("invalid-semantic","candidate-duplicate-competency-id.json",C,lambda d:d["capabilities"]["competencies"][1].__setitem__("competencyId","demand-forecasting"),"semantic","/capabilities/competencies/1/competencyId","duplicate competencyId","Local identifiers must be unique.")
 
+IMP = json.load(open("examples/adapters/job-ad-text-de/senior-demand-planner.jobprofile.json"))
+N_IDX = next(i for i, st in enumerate(IMP["fieldStatements"]) if st["statementKind"] == "NORMALIZED")
+case("invalid","imported-normalized-without-method.json",IMP,lambda d:d["fieldStatements"][N_IDX].pop("method"),"schema",f"/fieldStatements/{N_IDX}","'method' is a required property","A normalized value must name the rule that converted it.")
+case("invalid-semantic","imported-statement-points-nowhere.json",IMP,lambda d:d["fieldStatements"][0].__setitem__("path","/offer/remoteShare"),"semantic","/fieldStatements/0/path","/offer/remoteShare does not resolve","A field statement must refer to a field that exists.")
+
 expectations = {}
 ok = True
 for key,(doc,exp) in cases.items():

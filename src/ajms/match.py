@@ -536,7 +536,10 @@ def _tasks_check(constraint: dict, tasks: list) -> tuple[str, str]:
     if not include:
         return MET, "no excluded task present"
     found = hits(include)
-    outcome = MET if len(found) == len(include) else PARTIAL if found else NOT_MET
+    if not found:
+        # Tasks are compared literally (id, code or label); no literal match is not evidence of absence.
+        return UNKNOWN, f"none of {len(include)} desired tasks matched literally (tasks may be worded differently)"
+    outcome = MET if len(found) == len(include) else PARTIAL
     return outcome, f"{len(found)} of {len(include)} desired tasks present"
 
 

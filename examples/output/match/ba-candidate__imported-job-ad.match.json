@@ -1,0 +1,110 @@
+{
+  "@type": "MatchResult",
+  "schemaVersion": "0.1.0",
+  "candidateProfileId": "urn:uuid:8f73559a-b25b-56dd-a91d-cf81a2926480",
+  "candidateUpdatedAt": "2026-10-27T11:00:00+01:00",
+  "jobProfileId": "urn:uuid:5d2671cc-7e2b-5f18-8444-4ff63d11b269",
+  "jobUpdatedAt": "2026-10-27T10:15:00+01:00",
+  "hiringFit": {
+    "perspective": "HIRING_FIT",
+    "policyId": "demo-hiring-fit-v0.1",
+    "calibrationStatus": "UNCALIBRATED",
+    "hardConditionStatus": "UNRESOLVED",
+    "indicativeScore": 1.0,
+    "knownWeightCoverage": 0.75,
+    "outcomeCounts": {
+      "MET": 4,
+      "PARTIALLY_MET": 0,
+      "NOT_MET": 0,
+      "UNKNOWN": 2,
+      "NOT_APPLICABLE": 0
+    },
+    "criteria": [
+      {
+        "criterionKey": "competencies/sql",
+        "group": "competencies",
+        "strength": "HARD",
+        "outcome": "MET",
+        "explanation": "SQL: proficiency ADVANCED vs required ADVANCED (basis not stated)"
+      },
+      {
+        "criterionKey": "competencies/python",
+        "group": "competencies",
+        "strength": "SOFT",
+        "outcome": "MET",
+        "explanation": "Python: proficiency ADVANCED vs required INTERMEDIATE (basis not stated)"
+      },
+      {
+        "criterionKey": "languages/de",
+        "group": "languages",
+        "strength": "HARD",
+        "outcome": "MET",
+        "explanation": "de: NATIVE vs required C1"
+      },
+      {
+        "criterionKey": "languages/en",
+        "group": "languages",
+        "strength": "HARD",
+        "outcome": "MET",
+        "explanation": "en: C1 vs required B2"
+      },
+      {
+        "criterionKey": "domainExperience/supply-chain-planning",
+        "group": "domainExperience",
+        "strength": "HARD",
+        "outcome": "UNKNOWN",
+        "explanation": "Supply-Chain-Planung: not stated"
+      },
+      {
+        "criterionKey": "careerLevel",
+        "group": "careerLevel",
+        "strength": "SOFT",
+        "outcome": "UNKNOWN",
+        "explanation": "candidate's current career level not stated"
+      }
+    ]
+  },
+  "careerFit": {
+    "perspective": "CAREER_FIT",
+    "policyId": "demo-career-fit-v0.1",
+    "calibrationStatus": "UNCALIBRATED",
+    "hardConditionStatus": "NONE_DEFINED",
+    "indicativeScore": 1.0,
+    "knownWeightCoverage": 1.0,
+    "outcomeCounts": {
+      "MET": 3,
+      "PARTIALLY_MET": 0,
+      "NOT_MET": 0,
+      "UNKNOWN": 0,
+      "NOT_APPLICABLE": 0
+    },
+    "criteria": [
+      {
+        "criterionKey": "archetypes/wish",
+        "group": "archetypes",
+        "strength": "SOFT",
+        "outcome": "MET",
+        "explanation": "job archetype demand-planner: the job has an included value"
+      },
+      {
+        "criterionKey": "location/wish",
+        "group": "location",
+        "strength": "SOFT",
+        "outcome": "MET",
+        "explanation": "Hamburg: 0.0 km straight line (+/-20.0 km) vs max 40.0 km"
+      },
+      {
+        "criterionKey": "workingTime/wish",
+        "group": "workingTime",
+        "strength": "SOFT",
+        "outcome": "MET",
+        "explanation": "schedule FULL_TIME"
+      }
+    ]
+  },
+  "generatedBy": {
+    "tool": "ajms-reference",
+    "toolVersion": "0.1.0"
+  },
+  "disclaimer": "Demonstration output. Weights are UNCALIBRATED and illustrative. UNKNOWN means information is missing or not comparable; it is not a negative result. Not suitable for automated decisions about people."
+}

@@ -28,6 +28,8 @@ A candidate's profile: capabilities (facts and self-reports with provenance), jo
 | `jobPreferences` |  | [JobPreferences](#candidate-profile-jobpreferences) |  |
 | `availability` |  | [StartTiming](#common-starttiming) |  |
 | `searchStatus` |  | enum: `ACTIVELY_SEEKING`, `OPEN_TO_OFFERS`, `NOT_SEEKING` |  |
+| `source` |  | [SourceRecord](#common-sourcerecord) | For imported candidate profiles: source reference, retrieval date, format, extraction quality, unmapped content. |
+| `fieldStatements` |  | array of [FieldStatement](#common-fieldstatement) | For imported candidate profiles: per-field statement kind (explicit, normalized, derived) and loss of meaning. |
 
 <a id="candidate-profile-identity"></a>
 ### Identity
@@ -295,6 +297,8 @@ A job: what it requires from a candidate (requirements, input to Hiring-Fit) and
 | `validThrough` |  | [Date](#common-date) |  |
 | `postingUrl` |  | [Uri](#common-uri) |  |
 | `provenance` |  | [Provenance](#common-provenance) | Who stated the job data: ORGANIZATION_STATED for employer-published data, DERIVED for data extracted by a third party or agent. |
+| `source` |  | [SourceRecord](#common-sourcerecord) | For imported job profiles: source reference, retrieval date and digest of the original text. |
+| `fieldStatements` |  | array of [FieldStatement](#common-fieldstatement) | For imported job profiles: per-field statement kind (explicit, normalized, derived). |
 
 <a id="job-profile-competencyrequirement"></a>
 ### CompetencyRequirement
@@ -394,7 +398,7 @@ Type: const `0.1.0`
 <a id="common-contexturl"></a>
 ### ContextUrl
 
-Type: const `https://raw.githubusercontent.com/CsabaRanks/agentic-job-matching-standard/v0.1.0/context/v0.1/ajms.context.jsonld`
+Type: const `https://csabaranks.github.io/agentic-job-matching-standard/context/v0.1/ajms.context.jsonld`
 
 <a id="common-jsonldcontext"></a>
 ### JsonLdContext
@@ -881,6 +885,39 @@ Optional domain-specific criterion. dataType fixes the type of value; unitCode (
 | `value` | yes | any |  |
 | `comparator` |  | enum: `EQUALS`, `AT_LEAST`, `AT_MOST`, `ANY_OF`, `ALL_OF` |  |
 | `provenance` |  | [Provenance](#common-provenance) |  |
+
+<a id="common-sourcerecord"></a>
+### SourceRecord
+
+Where an imported profile comes from: source reference, retrieval date, digest of the original data, source format, input kind, extraction quality and source content that could not be mapped. Keeps the reference to the original material without copying it. Values of unmapped content are never stored.
+
+| Property | Required | Type | Description |
+|---|---|---|---|
+| `sourceUrl` | yes | [Uri](#common-uri) | URL of the source, or urn:sha256:<digest> when the data was provided as a file without URL. |
+| `sourceFileName` |  | string (minLength 1) |  |
+| `sourceRecordId` |  | string (minLength 1) | Identifier of the record in the source system (e.g. a reference number). |
+| `retrievedAt` | yes | [DateTime](#common-datetime) |  |
+| `sourceKind` | yes | enum: `JOB_AD_WEB_PAGE`, `JOB_BOARD_LISTING`, `EMAIL_ALERT`, `ATS_API`, `PLATFORM_EXPORT`, `PORTAL_PROFILE`, `DOCUMENT`, `MANUAL_ENTRY`, `OTHER` |  |
+| `sourceFormat` |  | string (pattern `^[a-z0-9][a-z0-9.-]*$`) | Adapter format identifier, e.g. ba-bewerberprofil-text, linkedin-data-export-csv, json-resume-1, job-ad-text-de. |
+| `inputKind` |  | enum: `STRUCTURED`, `TEXT` | STRUCTURED: fields mapped directly. TEXT: values extracted from free text or a PDF text layer; see extractionQuality. |
+| `textDigest` |  | object | SHA-256 of the original text (UTF-8) the profile was derived from. |
+| `importedBy` |  | object |  |
+| `extractionQuality` |  | object | Result of the adapter's input checks. PASSED: all content recognized. REVIEW: profile produced, but some content was not interpreted or a check needs a human. REJECTED inputs produce no profile. |
+| `unmapped` |  | array of object | Source fields or content not carried into the profile, with the reason. Only field names are recorded, never their values. |
+
+<a id="common-fieldstatement"></a>
+### FieldStatement
+
+How one field of an imported profile relates to the source. EXPLICIT: stated verbatim. NORMALIZED: stated, converted into AJMS units, codes or enumerations. DERIVED: not stated, inferred by a named method. lossy marks a loss of meaning. A field without a statement in an imported profile is not covered by the source record; an absent field is UNKNOWN.
+
+| Property | Required | Type | Description |
+|---|---|---|---|
+| `path` | yes | string (pattern `^(/[A-Za-z0-9@_.-]+)+$`) | JSON Pointer (RFC 6901) to the field in this document. |
+| `statementKind` | yes | enum: `EXPLICIT`, `NORMALIZED`, `DERIVED` |  |
+| `sourceExcerpt` |  | string (minLength 1) |  |
+| `method` |  | [Identifier](#common-identifier) |  |
+| `note` |  | string |  |
+| `lossy` |  | boolean | true when the conversion loses meaning (e.g. a coarser scale, a dropped detail); the note says what is lost. |
 
 <a id="common-requirementlevel"></a>
 ### RequirementLevel

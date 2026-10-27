@@ -1,0 +1,451 @@
+{
+  "@context": "https://csabaranks.github.io/agentic-job-matching-standard/context/v0.1/ajms.context.jsonld",
+  "@type": "CandidateProfile",
+  "profileId": "urn:uuid:0354d7b2-8e52-5f23-8488-b26a606ca143",
+  "schemaVersion": "0.1.0",
+  "updatedAt": "2026-10-27T11:10:00+01:00",
+  "profileView": "FULL_PRIVATE",
+  "defaultLanguage": "en",
+  "identity": {
+    "displayName": "Sam Example",
+    "contactPoints": [
+      {
+        "contactType": "EMAIL",
+        "contactValue": "sam.example@example.org"
+      },
+      {
+        "contactType": "URL",
+        "contactValue": "https://example.org/sam"
+      }
+    ],
+    "residence": {
+      "countryCode": "DE",
+      "geo": {
+        "latitude": 51.34,
+        "longitude": 12.37,
+        "precisionKm": 10
+      },
+      "locality": "Leipzig",
+      "region": "Sachsen",
+      "postalCode": "04109"
+    }
+  },
+  "headline": {
+    "text": "Intensive care nurse",
+    "language": "en"
+  },
+  "summary": {
+    "text": "Synthetic example resume. Eight years in intensive care with ventilation experience.",
+    "language": "en"
+  },
+  "experienceHistory": [
+    {
+      "experienceId": "exp-1",
+      "roleTitle": {
+        "text": "Intensive care nurse",
+        "language": "en"
+      },
+      "startMonth": "2018-04",
+      "organization": {
+        "name": "Example Hospital"
+      },
+      "ongoing": true,
+      "tasks": [
+        {
+          "taskId": "task-1",
+          "label": {
+            "text": "Care of ventilated patients in a surgical ICU",
+            "language": "en"
+          }
+        },
+        {
+          "taskId": "task-2",
+          "label": {
+            "text": "Practical instructor for new colleagues",
+            "language": "en"
+          }
+        }
+      ]
+    },
+    {
+      "experienceId": "exp-2",
+      "roleTitle": {
+        "text": "Nurse",
+        "language": "en"
+      },
+      "startMonth": "2015-10",
+      "organization": {
+        "name": "Example Clinic"
+      },
+      "endMonth": "2018-03"
+    }
+  ],
+  "evidence": [
+    {
+      "evidenceId": "ev-cert-1",
+      "evidenceKind": "CERTIFICATION",
+      "label": {
+        "text": "Specialist training in intensive care and anaesthesia nursing",
+        "language": "en"
+      },
+      "documentUrl": "https://example.org/certificates/icu",
+      "verificationStatus": "UNVERIFIED"
+    }
+  ],
+  "capabilities": {
+    "qualifications": [
+      {
+        "qualificationId": "edu-1",
+        "label": {
+          "text": "Vocational training, Nursing",
+          "language": "en"
+        },
+        "qualificationType": "VOCATIONAL_QUALIFICATION",
+        "fieldOfStudy": {
+          "text": "Nursing",
+          "language": "en"
+        },
+        "issuerName": "Example Nursing School",
+        "completedOn": "2015-09"
+      },
+      {
+        "qualificationId": "cert-1",
+        "qualificationType": "CERTIFICATION",
+        "label": {
+          "text": "Specialist training in intensive care and anaesthesia nursing",
+          "language": "en"
+        },
+        "issuerName": "Example Academy",
+        "completedOn": "2020-06",
+        "provenance": {
+          "basis": "DOCUMENT_EVIDENCED",
+          "evidenceRefs": [
+            "ev-cert-1"
+          ]
+        }
+      }
+    ],
+    "competencies": [
+      {
+        "competencyId": "ventilation-care",
+        "label": {
+          "text": "Ventilation care",
+          "language": "en"
+        },
+        "proficiency": "ADVANCED"
+      },
+      {
+        "competencyId": "patient-monitoring",
+        "label": {
+          "text": "Patient monitoring",
+          "language": "en"
+        },
+        "proficiency": "EXPERT"
+      }
+    ],
+    "languages": [
+      {
+        "languageCode": "de",
+        "cefrLevel": "NATIVE"
+      },
+      {
+        "languageCode": "en",
+        "cefrLevel": "B1"
+      }
+    ]
+  },
+  "source": {
+    "sourceUrl": "urn:sha256:25e8efa2154c6dc368f360e80e87e5dd59f11b74c4aace37cc36e8d200d336fa",
+    "sourceFileName": "synthetic-icu-nurse.resume.json",
+    "retrievedAt": "2026-10-27T11:10:00+01:00",
+    "sourceKind": "DOCUMENT",
+    "sourceFormat": "json-resume-1",
+    "inputKind": "STRUCTURED",
+    "textDigest": {
+      "algorithm": "SHA-256",
+      "value": "25e8efa2154c6dc368f360e80e87e5dd59f11b74c4aace37cc36e8d200d336fa"
+    },
+    "importedBy": {
+      "tool": "ajms-adapters",
+      "toolVersion": "json-resume-1"
+    },
+    "extractionQuality": {
+      "status": "PASSED",
+      "checks": [
+        "valid JSON object; known sections have the expected JSON types",
+        "not validated against the official JSON Resume schema"
+      ]
+    },
+    "unmapped": [
+      {
+        "sourceField": "interests",
+        "reason": "NO_AJMS_FIELD",
+        "note": "private interests are not matching criteria"
+      },
+      {
+        "sourceField": "references",
+        "reason": "DATA_MINIMISATION",
+        "note": "statements by third parties; never imported"
+      },
+      {
+        "sourceField": "meta",
+        "reason": "REDUNDANT",
+        "note": "metadata of the resume document"
+      },
+      {
+        "sourceField": "basics.location.address",
+        "reason": "DATA_MINIMISATION",
+        "note": "a street address is not needed for matching"
+      },
+      {
+        "sourceField": "basics.profiles",
+        "reason": "NO_AJMS_FIELD",
+        "note": "social network profile links"
+      },
+      {
+        "sourceField": "work[1].location",
+        "reason": "NO_AJMS_FIELD"
+      },
+      {
+        "sourceField": "skills[0].keywords",
+        "reason": "NO_AJMS_FIELD",
+        "note": "sub-skill keywords are not mapped as separate competencies"
+      }
+    ]
+  },
+  "fieldStatements": [
+    {
+      "path": "/capabilities/competencies/0/competencyId",
+      "statementKind": "DERIVED",
+      "sourceExcerpt": "Ventilation care",
+      "method": "slug-of-label"
+    },
+    {
+      "path": "/capabilities/competencies/0/label",
+      "statementKind": "EXPLICIT",
+      "sourceExcerpt": "Ventilation care"
+    },
+    {
+      "path": "/capabilities/competencies/0/proficiency",
+      "statementKind": "NORMALIZED",
+      "sourceExcerpt": "Advanced",
+      "method": "json-resume-level-words"
+    },
+    {
+      "path": "/capabilities/competencies/1/competencyId",
+      "statementKind": "DERIVED",
+      "sourceExcerpt": "Patient monitoring",
+      "method": "slug-of-label"
+    },
+    {
+      "path": "/capabilities/competencies/1/label",
+      "statementKind": "EXPLICIT",
+      "sourceExcerpt": "Patient monitoring"
+    },
+    {
+      "path": "/capabilities/competencies/1/proficiency",
+      "statementKind": "NORMALIZED",
+      "sourceExcerpt": "Expert",
+      "method": "json-resume-level-words"
+    },
+    {
+      "path": "/capabilities/languages/0/cefrLevel",
+      "statementKind": "DERIVED",
+      "sourceExcerpt": "Native speaker",
+      "method": "json-resume-fluency-to-cefr"
+    },
+    {
+      "path": "/capabilities/languages/0/languageCode",
+      "statementKind": "NORMALIZED",
+      "sourceExcerpt": "German",
+      "method": "language-name-en-to-bcp47"
+    },
+    {
+      "path": "/capabilities/languages/1/cefrLevel",
+      "statementKind": "DERIVED",
+      "sourceExcerpt": "Conversational",
+      "method": "json-resume-fluency-to-cefr",
+      "lossy": true,
+      "note": "free-text fluency 'Conversational' has no official CEFR equivalence"
+    },
+    {
+      "path": "/capabilities/languages/1/languageCode",
+      "statementKind": "NORMALIZED",
+      "sourceExcerpt": "English",
+      "method": "language-name-en-to-bcp47"
+    },
+    {
+      "path": "/capabilities/qualifications/0/completedOn",
+      "statementKind": "NORMALIZED",
+      "sourceExcerpt": "2015-09",
+      "method": "iso-date-to-month"
+    },
+    {
+      "path": "/capabilities/qualifications/0/fieldOfStudy",
+      "statementKind": "EXPLICIT",
+      "sourceExcerpt": "Nursing"
+    },
+    {
+      "path": "/capabilities/qualifications/0/issuerName",
+      "statementKind": "EXPLICIT",
+      "sourceExcerpt": "Example Nursing School"
+    },
+    {
+      "path": "/capabilities/qualifications/0/label",
+      "statementKind": "NORMALIZED",
+      "sourceExcerpt": "Vocational training",
+      "method": "join-study-type-and-area"
+    },
+    {
+      "path": "/capabilities/qualifications/0/qualificationType",
+      "statementKind": "DERIVED",
+      "sourceExcerpt": "Vocational training",
+      "method": "study-type-keyword"
+    },
+    {
+      "path": "/capabilities/qualifications/1/completedOn",
+      "statementKind": "NORMALIZED",
+      "sourceExcerpt": "2020-06-30",
+      "method": "iso-date-to-month",
+      "lossy": true,
+      "note": "day of month dropped"
+    },
+    {
+      "path": "/capabilities/qualifications/1/issuerName",
+      "statementKind": "EXPLICIT",
+      "sourceExcerpt": "Example Academy"
+    },
+    {
+      "path": "/capabilities/qualifications/1/label",
+      "statementKind": "EXPLICIT",
+      "sourceExcerpt": "Specialist training in intensive care and anaesthesia nursing"
+    },
+    {
+      "path": "/capabilities/qualifications/1/provenance",
+      "statementKind": "DERIVED",
+      "method": "certificate-url-is-evidence-reference"
+    },
+    {
+      "path": "/capabilities/qualifications/1/qualificationType",
+      "statementKind": "DERIVED",
+      "method": "certificates-section"
+    },
+    {
+      "path": "/evidence/0/documentUrl",
+      "statementKind": "EXPLICIT",
+      "sourceExcerpt": "https://example.org/certificates/icu"
+    },
+    {
+      "path": "/evidence/0/verificationStatus",
+      "statementKind": "DERIVED",
+      "method": "nothing-verified-on-import"
+    },
+    {
+      "path": "/experienceHistory/0/ongoing",
+      "statementKind": "DERIVED",
+      "method": "missing-end-date-means-current"
+    },
+    {
+      "path": "/experienceHistory/0/organization/name",
+      "statementKind": "EXPLICIT",
+      "sourceExcerpt": "Example Hospital"
+    },
+    {
+      "path": "/experienceHistory/0/roleTitle",
+      "statementKind": "EXPLICIT",
+      "sourceExcerpt": "Intensive care nurse"
+    },
+    {
+      "path": "/experienceHistory/0/startMonth",
+      "statementKind": "NORMALIZED",
+      "sourceExcerpt": "2018-04-01",
+      "method": "iso-date-to-month",
+      "lossy": true,
+      "note": "day of month dropped"
+    },
+    {
+      "path": "/experienceHistory/0/tasks/0/label",
+      "statementKind": "EXPLICIT",
+      "sourceExcerpt": "Care of ventilated patients in a surgical ICU"
+    },
+    {
+      "path": "/experienceHistory/0/tasks/1/label",
+      "statementKind": "EXPLICIT",
+      "sourceExcerpt": "Practical instructor for new colleagues"
+    },
+    {
+      "path": "/experienceHistory/1/endMonth",
+      "statementKind": "NORMALIZED",
+      "sourceExcerpt": "2018-03",
+      "method": "iso-date-to-month"
+    },
+    {
+      "path": "/experienceHistory/1/organization/name",
+      "statementKind": "EXPLICIT",
+      "sourceExcerpt": "Example Clinic"
+    },
+    {
+      "path": "/experienceHistory/1/roleTitle",
+      "statementKind": "EXPLICIT",
+      "sourceExcerpt": "Nurse"
+    },
+    {
+      "path": "/experienceHistory/1/startMonth",
+      "statementKind": "NORMALIZED",
+      "sourceExcerpt": "2015-10",
+      "method": "iso-date-to-month"
+    },
+    {
+      "path": "/headline",
+      "statementKind": "EXPLICIT",
+      "sourceExcerpt": "Intensive care nurse"
+    },
+    {
+      "path": "/identity/contactPoints/0/contactValue",
+      "statementKind": "EXPLICIT",
+      "sourceExcerpt": "sam.example@example.org"
+    },
+    {
+      "path": "/identity/contactPoints/1/contactValue",
+      "statementKind": "EXPLICIT",
+      "sourceExcerpt": "https://example.org/sam"
+    },
+    {
+      "path": "/identity/displayName",
+      "statementKind": "EXPLICIT",
+      "sourceExcerpt": "Sam Example"
+    },
+    {
+      "path": "/identity/residence/countryCode",
+      "statementKind": "EXPLICIT",
+      "sourceExcerpt": "DE"
+    },
+    {
+      "path": "/identity/residence/geo",
+      "statementKind": "DERIVED",
+      "sourceExcerpt": "Leipzig",
+      "method": "gazetteer-city-centroid",
+      "note": "city centroid, precision 10 km"
+    },
+    {
+      "path": "/identity/residence/locality",
+      "statementKind": "EXPLICIT",
+      "sourceExcerpt": "Leipzig"
+    },
+    {
+      "path": "/identity/residence/postalCode",
+      "statementKind": "EXPLICIT",
+      "sourceExcerpt": "04109"
+    },
+    {
+      "path": "/identity/residence/region",
+      "statementKind": "EXPLICIT",
+      "sourceExcerpt": "Sachsen"
+    },
+    {
+      "path": "/summary",
+      "statementKind": "EXPLICIT",
+      "sourceExcerpt": "Synthetic example resume. Eight years in intensive care with ventilation experience."
+    }
+  ]
+}
